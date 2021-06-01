@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
-import 'consts_uils.dart';
-import 'screens/small_screens.dart';
+import '../utils/consts_uils.dart';
+import 'small_screens.dart';
 
 enum _ColorTween { color1, color2 }
 
@@ -67,16 +67,13 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
               },
             ),
           ),
-          profileIconWidget(
-            _screenSize,
-            visibleMainHeight,
-            opacityOfWidget,
-          ),
-          profileNameDescWidget(_screenSize, opacityOfWidget),
-          profileContractsWidgets(
-            _screenSize,
-            visibleMainHeight,
-            opacityOfWidget,
+          Positioned(
+            top: opacityOfWidget,
+            child: appbarContents(
+              _screenSize,
+              visibleMainHeight,
+              opacityOfWidget,
+            ),
           ),
         ],
       ),
@@ -84,10 +81,10 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => _screenSize.height * 0.90;
+  double get maxExtent => _screenSize.height * 0.80;
 
   @override
-  double get minExtent => _screenSize.height * 0.10;
+  double get minExtent => _screenSize.height * 0.20;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

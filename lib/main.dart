@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'custom_delegate.dart';
+import 'main_app.dart';
 void main() {
   runApp(App());
 }

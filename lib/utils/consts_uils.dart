@@ -3,7 +3,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'blob_generator.dart';
+import '../app_bar_contents/blob_generator.dart';
 
 const Map<int, String> urls = {
   0: "mailto:fsadakathussain@gmail.com ",

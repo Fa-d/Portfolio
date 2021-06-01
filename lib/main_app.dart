@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'SliverAppBarDelegate.dart';
+import 'app_bar_contents/appbar_deleget.dart';
 
 class MainApp extends StatefulWidget {
   @override
