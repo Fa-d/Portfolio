@@ -16,9 +16,10 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   var oneSec = const Duration(milliseconds: 100);
   double changingBlobsPosition = 0;
   bool callingSetStateForBlobBool = false;
-
-  SliverAppBarDelegate(Size size) {
+  var _scaffoldKey;
+  SliverAppBarDelegate(Size size, _ffoldKey) {
     _screenSize = size;
+    _scaffoldKey = _ffoldKey;
   }
 
   double scrollAnimationValue(double shrinkOffset) {
@@ -73,6 +74,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
               _screenSize,
               visibleMainHeight,
               opacityOfWidget,
+                _scaffoldKey
             ),
           ),
         ],

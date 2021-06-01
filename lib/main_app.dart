@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_bar_contents/appbar_deleget.dart';
+import 'app_bar_contents/appbar_drawer.dart';
 
 class MainApp extends StatefulWidget {
   @override
@@ -8,14 +9,19 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+  final GlobalKey _scaffoldKey = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: AppBarDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
             pinned: true,
-            delegate: SliverAppBarDelegate(MediaQuery.of(context).size),
+            delegate:
+                SliverAppBarDelegate(MediaQuery.of(context).size, _scaffoldKey),
           ),
           SliverFillRemaining(
             child: SingleChildScrollView(

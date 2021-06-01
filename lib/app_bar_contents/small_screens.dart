@@ -5,7 +5,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/consts_uils.dart';
 
-Widget appbarContents(Size size, visibleMainHeight, animationVal) {
+Widget appbarContents(Size size, visibleMainHeight, animationVal, _scaffoldKey) {
   return SizedBox(
     width: size.width,
     child: Column(
@@ -22,11 +22,16 @@ Widget appbarContents(Size size, visibleMainHeight, animationVal) {
             ),
             Padding(
               padding: const EdgeInsets.all(25.0),
-              child: CircleAvatar(
-                radius: size.width > visibleMainHeight
-                    ? visibleMainHeight / (pi / .6)
-                    : size.width / 3.8,
-                backgroundImage: const AssetImage('assets/my.jpg'),
+              child: GestureDetector(
+                onTap: (){
+                  _scaffoldKey.currentState.openDrawer();
+                },
+                child: CircleAvatar(
+                  radius: size.width > visibleMainHeight
+                      ? visibleMainHeight / (pi / .6)
+                      : size.width / 3.8,
+                  backgroundImage: const AssetImage('assets/my.jpg'),
+                ),
               ),
             ),
             Expanded(
