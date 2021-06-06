@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/sliver_list/education/factory_education.dart';
 import 'package:timelines/timelines.dart';
 
-import 'factory_experience.dart';
 
-class Experience extends StatelessWidget {
-  const Experience({Key? key}) : super(key: key);
+
+class Education extends StatelessWidget {
+  const Education({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class Experience extends StatelessWidget {
           height: 20,
         ),
         Text(
-          "Experiences",
+          "Education",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
         ),
         SizedBox(
@@ -25,12 +26,12 @@ class Experience extends StatelessWidget {
             contentsAlign: ContentsAlign.basic,
             oppositeContentsBuilder: (context, index) => Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FactoryExperience(index).getOppositeContents(),
+              child: FactoryEducation(index).getOppositeContents(),
             ),
             contentsBuilder: (context, index) => Card(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: FactoryExperience(index).getContents(),
+                child: FactoryEducation(index).getContents(),
               ),
             ),
             connectorStyleBuilder: (context, index) => ConnectorStyle.solidLine,

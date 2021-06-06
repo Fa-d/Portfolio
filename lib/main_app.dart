@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'app_bar_contents/appbar_deleget.dart';
 import 'app_bar_contents/appbar_drawer.dart';
@@ -10,25 +11,24 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final GlobalKey _scaffoldKey = new GlobalKey();
 
+  bool run = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       drawer: AppBarDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
             pinned: true,
             delegate:
-            SliverAppBarDelegate(MediaQuery.of(context).size, _scaffoldKey),
+                SliverAppBarDelegate(MediaQuery.of(context).size),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
+              (context, index) => Padding(
                 padding: const EdgeInsets.only(bottom: 5),
-                child:FactorySliverListChild(index).getChild(),
+                child: FactorySliverListChild(index).getChild(),
               ),
               childCount: 3,
             ),
@@ -37,10 +37,7 @@ class _MainAppState extends State<MainApp> {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  Container(
-                    color: Colors.redAccent,
-                    height: 400,
-                  )
+                  // CustomPaint(painter: Colored())
                 ],
               ),
             ),
@@ -50,4 +47,3 @@ class _MainAppState extends State<MainApp> {
     );
   }
 }
-

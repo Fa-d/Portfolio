@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'experience.dart';
+import 'education/education.dart';
+import 'experience/experience.dart';
 
 class FactorySliverListChild {
   final index;
@@ -11,12 +12,10 @@ class FactorySliverListChild {
     Widget ret = Container();
     switch (index) {
       case 0:
-        ret = Experience();
+        ret = Education();
         break;
       case 1:
-        ret = Container(
-          color: Colors.blue,
-        );
+        ret = Experience();
         break;
       case 2:
         ret = Container(
