@@ -10,28 +10,24 @@ class FactoryExperience extends EducationBehaviour {
     Widget ret = Container();
     switch (index) {
       case 0:
-        ret = Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Senior Android Developer",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-            ),
-            Text(
-              "June 2021 - Present",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-            ),
-          ],
+        ret = columnContents(
+          "Senior Android Developer)",
+          "June 2021 - Present",
+          "",
         );
         break;
       case 1:
-        ret = columnContents("Game Developoper(Level Designer)",
-            "February 2020 - March 2020", "");
+        ret = columnContents(
+          "Game Developer(Level Designer)",
+          "February 2020 - March 2020",
+          "",
+        );
         break;
       case 2:
-        ret = Container(
-          height: 10,
-          color: Colors.yellow,
+        ret = columnContents(
+          "Web Developer",
+          "October 2019 - November 2019",
+          "",
         );
         break;
       default:

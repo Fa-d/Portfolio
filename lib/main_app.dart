@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'app_bar_contents/appbar_deleget.dart';
 import 'app_bar_contents/appbar_drawer.dart';
+import 'footer/footer.dart';
 import 'sliver_list/FactorySliverListChild.dart';
 
 class MainApp extends StatefulWidget {
@@ -11,8 +12,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-
-  bool run = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +20,7 @@ class _MainAppState extends State<MainApp> {
         slivers: <Widget>[
           SliverPersistentHeader(
             pinned: true,
-            delegate:
-                SliverAppBarDelegate(MediaQuery.of(context).size),
+            delegate: SliverAppBarDelegate(MediaQuery.of(context).size),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -34,11 +32,15 @@ class _MainAppState extends State<MainApp> {
             ),
           ),
           SliverFillRemaining(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  // CustomPaint(painter: Colored())
-                ],
+            hasScrollBody: false,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: Color(Colors.blueGrey.value),
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Footer(),
+                ),
               ),
             ),
           )
