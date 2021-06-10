@@ -17,10 +17,8 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double changingBlobsPosition = 0;
   bool callingSetStateForBlobBool = false;
 
-
   SliverAppBarDelegate(Size size) {
     _screenSize = size;
-
   }
 
   double scrollAnimationValue(double shrinkOffset) {
@@ -56,7 +54,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         fit: StackFit.expand,
         children: <Widget>[
           minExtent == visibleMainHeight
-              ? Container(color: Colors.white)
+              ? Container(color: Colors.blueGrey[300])
               : ColoredBackground(),
           Opacity(
             opacity: opacityOfWidget,
@@ -71,23 +69,83 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           ),
           Positioned(
             top: opacityOfWidget,
-            child: AppBarContents(
-                size: _screenSize,
-                visibleMainHeight: visibleMainHeight,
-                animationVal: opacityOfWidget,
-                 key: GlobalKey()
-            ),
+            child: visibleMainHeight == minExtent
+                ? SizedBox(
+                    width: _screenSize.width,
+                    height: visibleMainHeight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: GestureDetector(
+                            onTap: () => Scaffold.of(context).openDrawer(),
+                            child: Icon(Icons.apps),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                          width: 10,
+                        ),
+                        goToPages(),
+                      ],
+                    ),
+                  )
+                : AppBarContents(
+                    size: _screenSize,
+                    visibleMainHeight: visibleMainHeight,
+                    animationVal: opacityOfWidget,
+                    key: GlobalKey()),
           ),
         ],
       ),
     );
   }
 
-  @override
-  double get maxExtent => _screenSize.height * 0.80;
+  Row goToPages() {
+    return Row(
+      children: [
+        getTexts("About"),
+        SizedBox(width: 10),
+        getTexts("Experience"),
+        SizedBox(width: 10),
+        getTexts("Education"),
+        SizedBox(width: 10),
+        getTexts("Skills"),
+        SizedBox(width: 10),
+        getTexts("Projects"),
+        SizedBox(width: 20),
+      ],
+    );
+  }
+
+  getTexts(a) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(width: 1.5),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+        child: Text(a, style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
+    );
+  }
 
   @override
-  double get minExtent => _screenSize.height * 0.20;
+  double get maxExtent => _screenSize.height * 0.90;
+
+  @override
+  double get minExtent => _screenSize.height * 0.10;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

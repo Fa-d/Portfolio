@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/consts_uils.dart';
 
@@ -15,296 +16,159 @@ class AppBarContents extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: size.width,
+      height: size.height,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
+          Wrap(
+            alignment: WrapAlignment.spaceEvenly,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: <Widget>[
-              Expanded(
-                flex: (animationVal * 100).toInt(),
-                child: Container(),
-              ),
               Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: GestureDetector(
-                  // key: key,
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: CircleAvatar(
-                    radius: size.width > visibleMainHeight
-                        ? visibleMainHeight / (pi / .6)
-                        : size.width / 3.8,
-                    backgroundImage: const AssetImage('assets/my.jpg'),
-                  ),
+                padding: EdgeInsets.only(left: animationVal),
+                child: CircleAvatar(
+                  radius: size.width > visibleMainHeight
+                      ? visibleMainHeight / (pi / .6)
+                      : size.width / 3.5,
+                  backgroundImage: const AssetImage('assets/my.jpg'),
                 ),
               ),
-              Expanded(
-                flex: 100,
-                child: Container(),
-              ),
-            ],
-          ),
-          Text(
-            "Hello\nI'm Sadakat Hussain Fahad",
-            textAlign: TextAlign.center,
-            // overflow: OverflowBox.,
-            style: TextStyle(
-                fontSize: 30,
-                color: Colors.black.withOpacity(animationVal),
-                fontWeight: FontWeight.w800),
-          ),
-          SizedBox(height: size.height * .01),
-          Center(
-            child: SizedBox(
-              width: size.width,
-              height: size.height * .1,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    width: size.width / 3,
-                  ),
-                  _decBOx(
-                    const Text(
-                      'I love working with ',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.w700),
+              animationVal < 1
+                  ? SizedBox(width: (size.width / 100) / animationVal)
+                  : Container(
+                      height: 1,
+                      width: 1,
+                      color: Colors.blue,
                     ),
+              SizedBox(
+                width: size.width / 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 25.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        "Hello\nI'm Sadakat Hussain",
+                        textAlign: TextAlign.center,
+                        // overflow: OverflowBox.,
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.black.withOpacity(animationVal),
+                            fontWeight: FontWeight.w800),
+                      ),
+                      SizedBox(height: size.height * .05),
+                      SizedBox(
+                        width: animationVal * 190,
+                        height: (animationVal * 30),
+                        child: Wrap(
+                          children: <Widget>[
+                            _decBOx(
+                              const Text(
+                                'I love working with ',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                            getAnimatedText()
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 20.0, height: 100.0),
-                  getAnimatedText()
-                ],
-              ),
-            ),
-          ),
-          Text(
-            "Reach me through ...",
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.clip,
-            style: TextStyle(
-                fontSize: 23,
-                color: Colors.black.withOpacity(animationVal),
-                fontWeight: FontWeight.w800),
-          ),
-          SizedBox(height: size.height * .02),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 20,
-                width: 10,
-              ),
-              SizedBox(
-                height: 20,
-                width: 10,
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: GestureDetector(
-                  onTap: () => launchURL(0),
-                  child: Image(image: AssetImage('assets/gmail.png')),
                 ),
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: GestureDetector(
-                    onTap: () => launchURL(1),
-                    child: Image(image: AssetImage('assets/linkedin.png'))),
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: GestureDetector(
-                    onTap: () => launchURL(2),
-                    child: Image(image: AssetImage('assets/twitter.png'))),
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: GestureDetector(
-                    onTap: () => launchURL(3),
-                    child: Image(image: AssetImage('assets/github.png'))),
-              ),
-              SizedBox(
-                height: 35,
-                width: 35,
-                child: GestureDetector(
-                    onTap: () => launchURL(4),
-                    child:
-                        Image(image: AssetImage('assets/stack-overflow.png'))),
-              ),
-              SizedBox(
-                height: 20,
-                width: 10,
-              ),
-              SizedBox(
-                height: 20,
-                width: 10,
               ),
             ],
           ),
-          SizedBox(
-            height: 20,
+          Column(
+            children: [
+              Text(
+                "Reach me through ...",
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.black.withOpacity(animationVal),
+                    fontWeight: FontWeight.w800),
+              ),
+              SizedBox(height: size.height * .04),
+              socialContractWidgets(),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           )
         ],
       ),
     );
   }
-}
 
-// Widget appbarContents(Size size, visibleMainHeight, animationVal, _scaffoldKey) {
-//   return SizedBox(
-//     width: size.width,
-//     child: Column(
-//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//       mainAxisSize: MainAxisSize.max,
-//       children: [
-//         Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           mainAxisSize: MainAxisSize.max,
-//           children: <Widget>[
-//             Expanded(
-//               flex: (animationVal * 100).toInt(),
-//               child: Container(),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(25.0),
-//               child: GestureDetector(
-//                 onTap: (){
-//                   _scaffoldKey.currentState.openDrawer();
-//                 },
-//                 child: CircleAvatar(
-//                   radius: size.width > visibleMainHeight
-//                       ? visibleMainHeight / (pi / .6)
-//                       : size.width / 3.8,
-//                   backgroundImage: const AssetImage('assets/my.jpg'),
-//                 ),
-//               ),
-//             ),
-//             Expanded(
-//               flex: 100,
-//               child: Container(),
-//             ),
-//           ],
-//         ),
-//         Text(
-//           "Hello\nI'm Sadakat Hussain Fahad",
-//           textAlign: TextAlign.center,
-//           // overflow: OverflowBox.,
-//           style: TextStyle(
-//               fontSize: 30,
-//               color: Colors.black.withOpacity(animationVal),
-//               fontWeight: FontWeight.w800),
-//         ),
-//         SizedBox(height: size.height * .01),
-//         SizedBox(
-//           width: size.width,
-//           height: size.height * .1,
-//           child: Row(
-//             mainAxisSize: MainAxisSize.min,
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             children: <Widget>[
-//               SizedBox(width: size.width/3,),
-//               _decBOx(
-//                 const Text(
-//                   'I love working with \t',
-//                   style: TextStyle(
-//                       fontSize: 20.0,
-//                       fontStyle: FontStyle.italic,
-//                       fontWeight: FontWeight.w700),
-//                 ),
-//               ),
-//               // const SizedBox(width: 20.0, height: 100.0),
-//               getAnimatedText()
-//             ],
-//           ),
-//         ),
-//         Text(
-//           "Reach me through ...", textAlign: TextAlign.center,
-//           overflow: TextOverflow.clip,
-//           style: TextStyle(
-//               fontSize: 23,
-//               color: Colors.black.withOpacity(animationVal),
-//               fontWeight: FontWeight.w800),
-//         ),
-//         SizedBox(height: size.height * .02),
-//         Row(
-//           mainAxisSize: MainAxisSize.max,
-//           mainAxisAlignment: MainAxisAlignment.spaceAround,
-//           // crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             SizedBox(
-//               height: 20,
-//               width: 10,
-//             ),
-//             SizedBox(
-//               height: 20,
-//               width: 10,
-//             ),
-//             SizedBox(
-//               height: 35,
-//               width: 35,
-//               child: GestureDetector(
-//                 onTap: () => launchURL(0),
-//                 child: Image(image: AssetImage('assets/gmail.png')),
-//               ),
-//             ),
-//             SizedBox(
-//               height: 35,
-//               width: 35,
-//               child: GestureDetector(
-//                   onTap: () => launchURL(1),
-//                   child: Image(image: AssetImage('assets/linkedin.png'))),
-//             ),
-//             SizedBox(
-//               height: 35,
-//               width: 35,
-//               child: GestureDetector(
-//                   onTap: () => launchURL(2),
-//                   child: Image(image: AssetImage('assets/twitter.png'))),
-//             ),
-//             SizedBox(
-//               height: 35,
-//               width: 35,
-//               child: GestureDetector(
-//                   onTap: () => launchURL(3),
-//                   child: Image(image: AssetImage('assets/github.png'))),
-//             ),
-//             SizedBox(
-//               height: 35,
-//               width: 35,
-//               child: GestureDetector(
-//                   onTap: () => launchURL(4),
-//                   child: Image(image: AssetImage('assets/stack-overflow.png'))),
-//             ),
-//             SizedBox(
-//               height: 20,
-//               width: 10,
-//             ),
-//             SizedBox(
-//               height: 20,
-//               width: 10,
-//             ),
-//           ],
-//         ),
-//         SizedBox(
-//           height: 20,
-//         )
-//       ],
-//     ),
-//   );
-// }
+  Row socialContractWidgets() {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      // crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 20,
+          width: 10,
+        ),
+        SizedBox(
+          height: 20,
+          width: 10,
+        ),
+        SizedBox(
+          height: 35,
+          width: 35,
+          child: GestureDetector(
+            onTap: () => launchURL(0),
+            child: Image(image: AssetImage('assets/gmail.png')),
+          ),
+        ),
+        SizedBox(
+          height: 35,
+          width: 35,
+          child: GestureDetector(
+              onTap: () => launchURL(1),
+              child: Image(image: AssetImage('assets/linkedin.png'))),
+        ),
+        SizedBox(
+          height: 35,
+          width: 35,
+          child: GestureDetector(
+              onTap: () => launchURL(2),
+              child: Image(image: AssetImage('assets/twitter.png'))),
+        ),
+        SizedBox(
+          height: 35,
+          width: 35,
+          child: GestureDetector(
+              onTap: () => launchURL(3),
+              child: Image(image: AssetImage('assets/github.png'))),
+        ),
+        SizedBox(
+          height: 35,
+          width: 35,
+          child: GestureDetector(
+              onTap: () => launchURL(4),
+              child: Image(image: AssetImage('assets/stack-overflow.png'))),
+        ),
+        SizedBox(
+          height: 20,
+          width: 10,
+        ),
+        SizedBox(
+          height: 20,
+          width: 10,
+        ),
+      ],
+    );
+  }
+}
 
 DefaultTextStyle getAnimatedText() {
   return DefaultTextStyle(
