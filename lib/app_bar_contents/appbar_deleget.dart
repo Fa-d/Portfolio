@@ -7,7 +7,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
 import '../utils/consts_uils.dart';
-import 'small_screens.dart';
+import 'appbar_contents.dart';
 
 enum _ColorTween { color1, color2 }
 
@@ -142,10 +142,14 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => _screenSize.height * 0.90;
+  double get maxExtent => _screenSize.height
+      * 0.90
+  ;
 
   @override
-  double get minExtent => _screenSize.height * 0.10;
+  double get minExtent => _screenSize.height
+      * 0.10
+  ;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

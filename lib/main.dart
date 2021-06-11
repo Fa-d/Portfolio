@@ -25,7 +25,8 @@ class App extends StatelessWidget {
       theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
-      title: "soME deMO",
+      title: "Sadakat Hussain",
+
       home: MainApp(),
     );
   }
