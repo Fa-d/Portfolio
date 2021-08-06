@@ -70,7 +70,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           Positioned(
             top: opacityOfWidget,
             child: visibleMainHeight == minExtent
-                ? SizedBox(
+                ?  SizedBox(
                     width: _screenSize.width,
                     height: visibleMainHeight,
                     child: Row(
