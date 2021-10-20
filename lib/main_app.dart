@@ -15,7 +15,9 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppBarDrawer(),
+      drawer: AppBarDrawer(
+        key: GlobalKey(),
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
@@ -39,7 +41,9 @@ class _MainAppState extends State<MainApp> {
                 color: Color(Colors.blueGrey.value),
                 child: Padding(
                   padding: EdgeInsets.all(20),
-                  child: Footer(),
+                  child: Footer(
+                    key: GlobalKey(),
+                  ),
                 ),
               ),
             ),

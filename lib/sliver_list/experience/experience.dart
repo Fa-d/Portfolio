@@ -4,7 +4,7 @@ import 'package:timelines/timelines.dart';
 import 'factory_experience.dart';
 
 class Experience extends StatelessWidget {
-  const Experience({Key? key}) : super(key: key);
+  const Experience({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

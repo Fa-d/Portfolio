@@ -3,7 +3,7 @@ import 'package:portfolio/utils/consts_uils.dart';
 
 class Contracts extends StatelessWidget {
   var animationVal, size, visibleMainHeight;
-  Contracts(this.animationVal,this.size, this.visibleMainHeight, {Key? key}) : super(key: key);
+  Contracts(this.animationVal,this.size, this.visibleMainHeight, {required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

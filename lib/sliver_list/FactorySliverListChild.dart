@@ -13,13 +13,17 @@ class FactorySliverListChild {
     Widget ret = Container();
     switch (index) {
       case 1:
-        ret = Education();
+        ret = Education(key: GlobalKey(),);
         break;
       case 2:
-        ret = Experience();
+        ret = Experience(
+          key: GlobalKey(),
+        );
         break;
       case 0:
-        ret = MyDescription();
+        ret = MyDescription(
+          key: GlobalKey(),
+        );
         break;
       default:
         ret = Container();

@@ -9,7 +9,7 @@ class ProfileIconTexts extends StatefulWidget {
   var visibleMainHeight, size;
 
   ProfileIconTexts(this.size, this.animationVal, this.visibleMainHeight,
-      {Key? key})
+      {required Key key})
       : super(key: key);
 
   @override

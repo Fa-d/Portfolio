@@ -1,15 +1,11 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
-
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:simple_animations/simple_animations.dart';
-import 'package:supercharged/supercharged.dart';
-
+import 'package:sa3_liquid/liquid/plasma/plasma.dart';
 import '../utils/consts_uils.dart';
 import 'appbar_contents.dart';
-
-enum _ColorTween { color1, color2 }
 
 class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Size _screenSize = const Size(0, 0);
@@ -55,7 +51,10 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         children: <Widget>[
           minExtent == visibleMainHeight
               ? Container(color: Colors.blueGrey[300])
-              : ColoredBackground(),
+              : ColoredBackground(key: GlobalKey()),
+          // ColoredBackground(
+          //         key: GlobalKey(),
+          //       ),
           Opacity(
             opacity: opacityOfWidget,
             child: StatefulBuilder(
@@ -70,7 +69,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           Positioned(
             top: opacityOfWidget,
             child: visibleMainHeight == minExtent
-                ?  SizedBox(
+                ? SizedBox(
                     width: _screenSize.width,
                     height: visibleMainHeight,
                     child: Row(
@@ -142,14 +141,11 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => _screenSize.height
-      * 0.90
-  ;
+  double get maxExtent => _screenSize.height * 0.90;
 
   @override
-  double get minExtent => _screenSize.height
-      * 0.10
-  ;
+  double get minExtent => _screenSize.height * 0.10;
+
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
@@ -159,58 +155,54 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
 class ColoredBackground extends StatelessWidget {
   const ColoredBackground({
-    Key? key,
+    required Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MirrorAnimation<MultiTweenValues<_ColorTween>>(
-      tween: MultiTween<_ColorTween>()
-        ..add(
-          _ColorTween.color1,
-          Color(0x48ffd6d6).tweenTo(Color(0x8dfaf4d6)),
-          1.seconds,
-        )
-        ..add(
-          _ColorTween.color2,
-          Color(0x8dfaf4d6).tweenTo(Color(0x81d7ffc8)),
-          1.seconds,
-        )
-        ..add(
-          _ColorTween.color2,
-          Color(0x81d7ffc8).tweenTo(Color(0x81cdc4fc)),
-          1.seconds,
-        )
-        ..add(
-          _ColorTween.color2,
-          Color(0x81cdc4fc).tweenTo(Color(0x81b4c8fc)),
-          1.seconds,
-        )
-        ..add(
-          _ColorTween.color2,
-          Color(0x81b4c8fc).tweenTo(Color(0x81fcd1f9)),
-          1.seconds,
-        )
-        ..add(
-          _ColorTween.color2,
-          Color(0x81fcd1f9).tweenTo(Color(0x81fdbdbd)),
-          1.seconds,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          tileMode: TileMode.mirror,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+/*            Color(0xfff44336),
+            Color(0xff2196f3),
+            Color(0x804148e4),
+            Color(0xfff67cf0),
+            Color(0xffa2457e), */
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+            Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+          ],
+          stops: [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1,
+          ],
         ),
-      duration: tween1.duration,
-      builder: (context, child, value) {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                value.get<Color>(_ColorTween.color1),
-                value.get<Color>(_ColorTween.color2)
-              ],
-            ),
-          ),
-        );
-      },
+        backgroundBlendMode: BlendMode.srcOver,
+      ),
+      child: PlasmaRenderer(
+        type: PlasmaType.infinity,
+        particles: 63,
+        color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
+        blur: 0.47,
+        size: 0.3,
+        speed: 4,
+        offset: 2.03,
+        blendMode: BlendMode.overlay,
+        particleType: ParticleType.atlas,
+        variation1: 0.43,
+        variation2: 1,
+        variation3: 0.49,
+        rotation: 2.07,
+      ),
     );
   }
 }

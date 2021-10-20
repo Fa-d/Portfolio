@@ -3,7 +3,7 @@ import 'package:portfolio/sliver_list/education/education.dart';
 import 'package:portfolio/sliver_list/experience/experience.dart';
 
 class MyDescription extends StatelessWidget {
-  const MyDescription({Key? key}) : super(key: key);
+  const MyDescription({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

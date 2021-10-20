@@ -5,7 +5,7 @@ import 'package:timelines/timelines.dart';
 
 
 class Education extends StatelessWidget {
-  const Education({Key? key}) : super(key: key);
+  const Education({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

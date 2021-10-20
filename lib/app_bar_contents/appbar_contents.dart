@@ -31,6 +31,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                   widget.size,
                   widget.animationVal,
                   widget.visibleMainHeight,
+                  key: GlobalKey(),
                 )
               : Container(),
           SizedBox(
@@ -41,6 +42,7 @@ class _AppBarContentsState extends State<AppBarContents> {
                   widget.animationVal,
                   widget.size,
                   widget.visibleMainHeight,
+                  key: GlobalKey(),
                 )
               : Container(),
         ],

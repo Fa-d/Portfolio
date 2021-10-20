@@ -3,7 +3,7 @@ import 'package:blobs/blobs.dart';
 import 'package:flutter/material.dart';
 
 class BlobGeneratorCus {
-  double? size;
+  double size;
   List<Color> colors;
 
   BlobGeneratorCus({

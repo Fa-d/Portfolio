@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_animations/simple_animations.dart';
-import 'package:supercharged/supercharged.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../app_bar_contents/blob_generator.dart';
@@ -18,38 +16,32 @@ void launchURL(i) async => await canLaunch(urls.values.elementAt(i))
     : throw 'Could not launch ${urls.values.elementAt(i)}';
 
 enum _ColorTween { color1, color2 }
-
+/*
 MultiTween tween1 = MultiTween<_ColorTween>()
   ..add(
     _ColorTween.color1,
-    Color(0x48ffd6d6).tweenTo(Color(0x8dfaf4d6)),
-    1.seconds,
+    Tween(begin: Color(0x48ffd6d6), end: Color(0x8dfaf4d6)),
   )
   ..add(
     _ColorTween.color2,
-    Color(0x8dfaf4d6).tweenTo(Color(0x81d7ffc8)),
-    1.seconds,
+    Tween(begin: Color(0x8dfaf4d6), end: Color(0x81d7ffc8)),
   )
   ..add(
     _ColorTween.color2,
-    Color(0x81d7ffc8).tweenTo(Color(0x81cdc4fc)),
-    1.seconds,
+    Tween(begin: Color(0x81d7ffc8), end: Color(0x81cdc4fc)),
   )
   ..add(
     _ColorTween.color2,
-    Color(0x81cdc4fc).tweenTo(Color(0x81b4c8fc)),
-    1.seconds,
+    Tween(begin: Color(0x81cdc4fc), end: Color(0x81b4c8fc)),
   )
   ..add(
     _ColorTween.color2,
-    Color(0x81b4c8fc).tweenTo(Color(0x81fcd1f9)),
-    1.seconds,
+    Tween(begin: Color(0x81b4c8fc), end: Color(0x81fcd1f9)),
   )
   ..add(
     _ColorTween.color2,
-    Color(0x81fcd1f9).tweenTo(Color(0x81fdbdbd)),
-    1.seconds,
-  );
+    Tween(begin: Color(0x81fcd1f9), end: Color(0x81fdbdbd)),
+  );*/
 
 var t1 = BlobGeneratorCus(
   size: 180,
