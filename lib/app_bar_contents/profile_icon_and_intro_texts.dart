@@ -94,7 +94,7 @@ class _ProfileIconTextsState extends State<ProfileIconTexts> {
                                 fontWeight: FontWeight.w700),
                           ),
                         ),
-                        _getAnimatedText()
+                        _getAnimatedText(),
                       ],
                     ),
                   ),
