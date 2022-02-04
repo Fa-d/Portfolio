@@ -167,11 +167,6 @@ class ColoredBackground extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-/*            Color(0xfff44336),
-            Color(0xff2196f3),
-            Color(0x804148e4),
-            Color(0xfff67cf0),
-            Color(0xffa2457e), */
             Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
             Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
             Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.3),
