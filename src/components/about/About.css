@@ -1,0 +1,41 @@
+.about {
+    min-height: 100vh;
+    position: relative;
+}
+
+
+.about-img {
+    margin-top: 40px;
+    pointer-events: none;
+}
+
+.about-description>h2 {
+    margin-bottom: 40px;
+    font-size: 3.5rem;
+    font-family: var(--primaryFont);
+}
+
+.about-description>p {
+    font-size: 1.25rem;
+    color: #e0d9d9;
+    font-family: var(--primaryFont);
+}
+
+.about-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 8rem;
+    height: fit-content;
+}
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex: 0.5;
+    width: 100%;
+    height: fit-content;
+}
