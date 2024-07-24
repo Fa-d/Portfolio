@@ -29,8 +29,7 @@ export default function About() {
                     <p style={{ color: theme.tertiary80 }}>HI !! I'm</p>
                     <div className='about-name-title'>
                         <h2 style={{ color: theme.primary }}>Sadakat Hussain Fahad</h2>
-                        <h4 style={{ color: theme.tertiary80}}>Softaware Engineer</h4>
-
+                        <h4 style={{ color: theme.tertiary80 }}>(Softaware Engineer)</h4>
                     </div>
                     <p> Results-driven Software Engineer seeking to collaborative opportunities with proactive teams to tackle complex problems and thrive on challenges. Strives to contribute to a structured and growth-oriented environment, making valuable contri- butions while advancing professional development. Committed to continuous improvement and leveraging capabilities to drive success.</p>
                 </div>
