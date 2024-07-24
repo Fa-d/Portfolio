@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Pushing to Portfolio repo
+        id: dist
+        uses: fa-d/Portfolio@master
+        env: 
+          API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
+        with: 
+          source-directory: /dist/
+          destination-github-username: 'fa-d'
+          destination-repository-name: 'Fa-d.github.io'
+          user-email: fsadakathussain@gmail.com
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: main
