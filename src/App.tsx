@@ -1,21 +1,20 @@
-import { Helmet } from 'react-helmet'
-
-
-import './App.css'
-import About from './components/about/About'
-import Education from './components/education/Education'
-
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Main from './components/main/Main.tsx';
+import ScrollToTop from './utils/ScrollToTop.tsx'
 function App() {
-
   return (
-    <>
-      <Helmet>
-        <title>Fahad's - Porfolio</title>
-      </Helmet>
-      <About/>
-      <Education/>
-    </>
-  )
+    <div className="app">
+      <Router>
+        <ScrollToTop />
+        <Switch>
+          <Route path="/" exact component={Main} />
+          <Route path="/blog" exact component={Main} />
+          <Route path="/projects" exact component={Main} />
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
-export default App
+export default App;

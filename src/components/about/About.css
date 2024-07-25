@@ -58,11 +58,11 @@
     height: fit-content;
 }
 
-.about-description >p {
+.about-description>p {
     font-size: 1.25rem;
     color: #e0d9d9;
     font-family: var(--primaryFont);
-    text-align:start;
+    text-align: start;
     text-justify: inter-word;
 }
 
@@ -72,9 +72,11 @@
     flex-direction: row;
     width: 100%;
 }
-.about-name-title > h4{
+
+.about-name-title>h4 {
     padding-left: 10px;
 }
+
 .about-img {
     width: 380px;
 }
