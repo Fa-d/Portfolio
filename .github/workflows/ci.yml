@@ -14,14 +14,9 @@ jobs:
         repository: Fa-d/Portfolio
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
-    - name: Copy directory
-      run: |
-        mkdir target-dir
-        cp -r dist/* ./ 
-
     - name: Commit files
       run: |
-        cd target-dir
+        cd dist
         git init
         git config --local user.name "Fa-d"
         git config --local user.email "fsadakathussain@gmail.com"
@@ -33,7 +28,7 @@ jobs:
       env:
         TARGET_REPO_PAT: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
-        cd target-dir
+        cd .
         git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/fa-d/Fa-d.github.io.git
         git branch -M main
         git push -u origin main --force
