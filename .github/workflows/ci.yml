@@ -28,9 +28,8 @@ jobs:
       env:
         TARGET_REPO_PAT: ${{ secrets.API_TOKEN_GITHUB }}
       run: |
-        git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/fa-d/Fa-d.github.io.git
+        git remote set-url origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/fa-d/Fa-d.github.io.git
         git branch -M main
-        git remote rm origin
         git push -u origin main --force
 
 
