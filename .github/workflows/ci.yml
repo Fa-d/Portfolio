@@ -8,9 +8,10 @@ on:
 jobs: 
   copy-file:
     runs-on: ubuntu-latest
+    container: pandoc/latex
     steps: 
       - name: Pushing to Portfolio repo
-        id: dist
+        id: push_directory
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env: 
           API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
