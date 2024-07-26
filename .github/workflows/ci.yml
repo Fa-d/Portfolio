@@ -22,3 +22,5 @@ jobs:
         user_email: 'fsadakathussain@gmail.com'
         user_name: 'Fa-d'
         commit_msg: 'Update the test files.'
+        destination_branch: 'main'
+        
