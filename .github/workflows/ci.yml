@@ -4,19 +4,21 @@ on:
   push:
     branches: [master]
 
-jobs: 
+jobs:
   copy-file:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Pushing to Portfolio repo
-        id: dist
-        uses: cpina/github-action-push-to-another-repository@v1.7.2
-        env: 
-          API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
-        with: 
-          source-directory: '.'
-          destination-github-username: 'fa-d'
-          destination-repository-name: 'Fa-d.github.io'
-          user-email: fsadakathussain@gmail.com
-          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: main
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test folder
+      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_folder: 'dist'
+        destination_repo: 'Fa-d.github.io'
+        destination_folder: '.'
+        user_email: 'fsadakathussain@gmail.com'
+        user_name: 'Fa-d'
+        commit_msg: 'Update the test files.'
