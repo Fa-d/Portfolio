@@ -23,9 +23,9 @@ jobs:
       run: |
         cd target-dir
         git init
-        git branch -m master
         git config --local user.name "Fa-d"
         git config --local user.email "fsadakathussain@gmail.com"
+        git branch -m master
         git add .
         git commit -m "Sync directory from source repository"
 
