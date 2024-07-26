@@ -15,7 +15,7 @@ jobs:
         env: 
           API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
         with: 
-          source-directory: '/github/workspace/Portfolio/dist'
+          source-directory: '/github/workspace/Portfolio/dist/'
           destination-github-username: 'fa-d'
           destination-repository-name: 'Fa-d.github.io'
           user-email: fsadakathussain@gmail.com
