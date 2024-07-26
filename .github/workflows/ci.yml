@@ -1,35 +1,23 @@
+
 name: CI
 
 on:
   push:
     branches: [master]
 
-jobs:
-  sync:
+jobs: 
+  copy-file:
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        repository: Fa-d/Portfolio
-        token: ${{ secrets.API_TOKEN_GITHUB }}
-
-    - name: Commit files
-      run: |
-        cd dist
-        git init
-        git config --local user.name "Fa-d"
-        git config --local user.email "fsadakathussain@gmail.com"
-        git branch -m master
-        git add .
-        git commit -m "Sync directory from source repository"
-
-    - name: Push to target repository
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      run: |
-        git remote set-url origin https://$API_TOKEN_GITHUB@github.com/fa-d/Fa-d.github.io.git
-        git branch -M main
-        git push -u origin main --force
-
-
+    steps: 
+      - name: Pushing to Portfolio repo
+        id: dist
+        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        env: 
+          API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
+        with: 
+          source-directory: './dist'
+          destination-github-username: 'fa-d'
+          destination-repository-name: 'Fa-d.github.io'
+          user-email: fsadakathussain@gmail.com
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: main
