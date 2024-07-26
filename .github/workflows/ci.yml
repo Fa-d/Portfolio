@@ -5,21 +5,36 @@ on:
     branches: [master]
 
 jobs:
-  copy-file:
+  sync:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Pushes test folder
-      uses: datalbry/copy_folder_to_another_repo_action@1.0.1
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_folder: 'dist'
-        destination_repo: 'Fa-d/Fa-d.github.io'
-        user_email: 'fsadakathussain@gmail.com'
-        user_name: 'Fa-d'
-        commit_msg: 'Update the test files.'
-        destination_branch: 'main'
-        
+        repository: Fa-d/Portfolio
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+
+    - name: Copy directory
+      run: |
+        mkdir .
+        cp -r dist/* ./ 
+
+    - name: Commit files
+      run: |
+        cd target-dir
+        git init
+        git config --local user.name "Fa-d"
+        git config --local user.email "fsadakathussain@gmail.com"
+        git add .
+        git commit -m "Sync directory from source repository"
+
+    - name: Push to target repository
+      env:
+        TARGET_REPO_PAT: ${{ secrets.API_TOKEN_GITHUB }}
+      run: |
+        cd target-dir
+        git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/fa-d/Fa-d.github.io.git
+        git branch -M main
+        git push -u origin main --force
+
+
