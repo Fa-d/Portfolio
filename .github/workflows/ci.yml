@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs: 
-  build:
+  copy-file:
     runs-on: ubuntu-latest
     steps: 
       - name: Pushing to Portfolio repo
