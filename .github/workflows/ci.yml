@@ -16,6 +16,7 @@ jobs:
 
     - name: Copy directory
       run: |
+        mkdir target-dir
         cp -r dist/* ./ 
 
     - name: Commit files
