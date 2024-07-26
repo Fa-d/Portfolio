@@ -17,7 +17,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
         source_folder: 'dist'
-        destination_repo: 'Fa-d.github.io'
+        destination_repo: 'https://github.com/Fa-d/Fa-d.github.io.git'
         destination_folder: '.'
         user_email: 'fsadakathussain@gmail.com'
         user_name: 'Fa-d'
