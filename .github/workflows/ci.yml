@@ -18,7 +18,6 @@ jobs:
       with:
         source_folder: 'dist'
         destination_repo: 'Fa-d/Fa-d.github.io'
-        destination_folder: '.'
         user_email: 'fsadakathussain@gmail.com'
         user_name: 'Fa-d'
         commit_msg: 'Update the test files.'
