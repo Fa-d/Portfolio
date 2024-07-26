@@ -8,7 +8,6 @@ on:
 jobs: 
   copy-file:
     runs-on: ubuntu-latest
-    container: pandoc/latex
     steps: 
       - name: Pushing to Portfolio repo
         id: push_directory
@@ -16,7 +15,7 @@ jobs:
         env: 
           API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
         with: 
-          source-directory: 'dist'
+          source-directory: '/github/workspace/Portfolio/dist'
           destination-github-username: 'fa-d'
           destination-repository-name: 'Fa-d.github.io'
           user-email: fsadakathussain@gmail.com
