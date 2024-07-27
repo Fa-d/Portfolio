@@ -8,16 +8,17 @@ on:
 jobs: 
   build:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Pushing to Portfolio repo
-        id: push_directory
-        uses: Fa-d/Portfolio@master
-        env: 
-          API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
-        with: 
-          source-directory: '.'
-          destination-github-username: 'fa-d'
-          destination-repository-name: 'Fa-d.github.io'
-          user-email: fsadakathussain@gmail.com
-          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: main
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: Portfolio
+          ref: 'master'
+          token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+      - name: setup git config and push
+        run: |
+          git config user.name "Fa-d"
+          git config user.email "fsadakathussain@gmail.com"
+          git add .
+          git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
+          git remote add "origin" git@github.com:Fa-d/Fa-d.github.io.git
+          git push -f origin main
