@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: Portfolio
+          repository: 'Fa-d/Portfolio'
           ref: 'master'
           token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
       - name: setup git config and push
