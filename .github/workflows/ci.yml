@@ -13,7 +13,7 @@ jobs:
         with:
           repository: 'Fa-d/Portfolio'
           ref: 'master'
-          token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          token:  ${{ secrets.API_TOKEN_GITHUB}}
       - name: setup git config and push
         run: |
           git config user.name "Fa-d"
