@@ -26,5 +26,5 @@ jobs:
           git add .
           git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
           git branch -M main
-          git remote add origin https://github.com/Fa-d/Fa-d.github.io.git
+          git remote set-url origin git@github.com:Fa-d/Fa-d.github.io.git
           git push  -u origin main --force
