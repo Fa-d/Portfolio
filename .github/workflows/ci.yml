@@ -26,4 +26,4 @@ jobs:
           git remote add origin https://github.com/Fa-d/Fa-d.github.io.git
           git add .
           git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
-          git push -u origin main --force
+          git push --all -u origin main --force
