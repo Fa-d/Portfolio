@@ -20,11 +20,11 @@ jobs:
           cp -r dist ../../_temp/portf_dist
           cd ../../_temp/portf_dist/dist
           rm -rf .git/
-          git init
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"
-          git remote add origin https://github.com/Fa-d/Fa-d.github.io.git
+          git init
           git add .
           git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
-   
+          git branch -M main
+          git remote add origin https://github.com/Fa-d/Fa-d.github.io.git
           git push  -u origin main --force
