@@ -21,7 +21,7 @@ jobs:
           git init
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"
+          git remote add "origin" git@github.com:Fa-d/Fa-d.github.io.git
           git add .
           git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
-          git remote add "origin" git@github.com:Fa-d/Fa-d.github.io.git
           git push -f origin main
