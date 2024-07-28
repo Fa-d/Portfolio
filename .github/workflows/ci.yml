@@ -16,7 +16,7 @@ jobs:
           token:  ${{ secrets.API_TOKEN_GITHUB}}
       - name: setup git config and push
         run: |
-          ls
+          cd dist
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"
           git add .
