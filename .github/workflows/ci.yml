@@ -25,6 +25,7 @@ jobs:
           git config user.email "fsadakathussain@gmail.com"
           git remote add origin https://github.com/Fa-d/Fa-d.github.io.git
           git add .
+          git reset --hard
           git pull origin main
           git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
           git push --all -u origin main --force
