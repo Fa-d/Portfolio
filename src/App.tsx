@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './components/main/Main.tsx';
 import Header from './components/header/Header.tsx';
 import "./App.css"
-
+import withSplashScreen from "./components/splash/withSplashScreen.tsx"  ;
 
 function App() {
   return (
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default withSplashScreen(App);
