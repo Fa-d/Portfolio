@@ -9,13 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: 'Fa-d/Portfolio'
           ref: 'master'
           token:  ${{ secrets.API_TOKEN_GITHUB}}
       - name: setup git config and push
         run: |
+          ls
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"
           git add .
