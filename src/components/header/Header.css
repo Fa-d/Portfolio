@@ -1,0 +1,54 @@
+.header {
+    position: sticky;
+    background-color: #686D76;
+    padding: 10px 20px;
+    top: 0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img {
+    position: relative;
+    left: 25%;
+}
+
+.img>img {
+    height: 30px;
+    width: 130px0px;
+}
+
+.right-box {
+    position: relative;
+    right: 25%;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.right-box-item {
+    padding-inline: 20px;
+    cursor: pointer;
+}
+
+.r-corner-card {
+    border-radius: 55px;
+    background: #FF8225;
+    padding-inline: 25px;
+    padding-block: 15px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    height: 5px;
+}
+
+.r-corner-card::after {
+    content: "\2192";
+    margin-right: 6px;
+    margin-left: 5px;
+
+}
