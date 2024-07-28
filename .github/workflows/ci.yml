@@ -16,5 +16,6 @@ jobs:
           token:  ${{ secrets.API_TOKEN_GITHUB}}
       - name: setup git config and push
         run: |
-          
-          ls ../..
+          mkdir ../../_temp/portf_dist
+          cp -r dist ../../_temp/portf_dist
+          ls ../../_temp/portf_dist
