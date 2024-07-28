@@ -18,4 +18,4 @@ jobs:
         run: |
           mkdir ../../_temp/portf_dist
           cp -r dist ../../_temp/portf_dist
-          ls ../../_temp/portf_dist
+          ls ../../_temp/portf_dist/dist
