@@ -2,11 +2,8 @@
 import './About.css';
 import Lottie from 'react-lottie';
 import animationData from '../../assets/person.json'
-import { useContext } from 'react';
-import ThemeContext from '../../context/ThemeContext';
 
 export default function About() {
-    const theme = useContext(ThemeContext);
 
     const defaultOptions = {
         loop: true,
@@ -18,26 +15,30 @@ export default function About() {
     };
 
     return (
-        <div className="about" id="about" style={{ backgroundColor: theme.secondary }}>
-            <div className="line-styling">
-                <div className="style-circle" style={{ backgroundColor: theme.primary }}></div>
-                <div className="style-circle" style={{ backgroundColor: theme.primary }}></div>
-                <div className="s tyle-line" style={{ backgroundColor: theme.primary }}></div>
-            </div>
+        <div className="about" >
             <div className="about-body">
                 <div className='about-description'>
-                    <p style={{ color: theme.tertiary80 }}>HI !! I'm</p>
-                    <div className='about-name-title'>
-                        <h2 style={{ color: theme.primary }}>Sadakat Hussain Fahad</h2>
-                        <h4 style={{ color: theme.tertiary80 }}>(Softaware Engineer)</h4>
+                    <h1>Hi I'm Sadakat Hussain Fahad</h1>
+                    <div className="content-text">
+                        <h2>Building digital</h2>
+                        <h2>products, brands, and experience.</h2>
+
+                        <p>
+                            A Frontend Developer and Visual Designer with experience in web
+                            design, brand identity and product design.
+                        </p>
                     </div>
-                    <p> Results-driven Software Engineer seeking to collaborative opportunities with proactive teams to tackle complex problems and thrive on challenges. Strives to contribute to a structured and growth-oriented environment, making valuable contri- butions while advancing professional development. Committed to continuous improvement and leveraging capabilities to drive success.</p>
+                    <a href="https://github.com/Fa-d" className="btn-secondary" target="_blank">Connect With Me</a>
                 </div>
                 <div className="about-img">
                     <Lottie options={defaultOptions} />
                 </div>
             </div>
-
+            <div className="line-styling">
+                <div className="style-circle" ></div>
+                <div className="style-circle" ></div>
+                <div className="style-line" ></div>
+            </div>
 
         </div>
     );

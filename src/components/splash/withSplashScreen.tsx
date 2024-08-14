@@ -1,10 +1,11 @@
 import React, { Component, ReactElement } from "react";
+import logo from '../../assets/logo.png'
 
 import "./Splash.css"
 function SplashMessage(): ReactElement {
   return (
-    <div >
-      <img src={"src/assets/logo.png"} className="center-image" alt="logo" />
+    <div  className="center-image">
+      <img src={logo} alt="logo" />
     </div>
   );
 }

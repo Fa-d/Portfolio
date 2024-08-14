@@ -12,10 +12,12 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    color: var(--bg-primary);
 }
 
 .education .line-styling .style-line {
     width: 95%;
     height: 5px;
     border-radius: 10px;
+    color: var(--bg-primary);
 }

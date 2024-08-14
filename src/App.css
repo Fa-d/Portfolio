@@ -2,4 +2,19 @@ html,
 body {
     padding: 0;
     margin: 0;
+    background-color: var(--body-bg-color);;
 }
+
+.light-mode {
+    --font-color: #101212;
+    --nav-header: #686d76;
+    --body-bg-color: #ffffff;
+    --common-color: #101212;
+  }
+  
+  .dark-mode {
+    --font-color: #cccccc;
+    --nav-header: #979289;
+    --body-bg-color: #101212;
+    --common-color: #101212;
+  }

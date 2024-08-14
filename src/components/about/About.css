@@ -1,20 +1,22 @@
 .about {
     min-height: 100vh;
     position: relative;
+    color: var(--font-color);
 }
 
 .about-body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: fit-content;
-    padding-top: 6rem;
+    color: var(--font-color);
+
 }
 
 .about .line-styling {
-    position: absolute;
-    top: 50px;
+    position: relative;
+    top: 100px;
     left: 50%;
     height: 50px;
     width: 85%;
@@ -28,12 +30,15 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    color: var(--bg-primary);
 }
 
 .about .line-styling .style-line {
     width: 95%;
     height: 5px;
     border-radius: 10px;
+    color: var(--bg-primary);
+
 }
 
 
@@ -56,24 +61,22 @@
     width: 100%;
     height: fit-content;
 }
-
-.about-description>p {
-    font-size: 1.25rem;
-    color: #e0d9d9;
-    font-family: var(--primaryFont);
-    text-align: start;
-    text-justify: inter-word;
+.about-description >h1, div{
+    color: var(--font-color);
 }
 
-.about-name-title {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
+.btn-secondary {
+    margin: 15px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: green;
+    color: var(--font-color);
+
 }
 
-.about-name-title>h4 {
-    padding-left: 10px;
+.header-container {
+    margin-top: 7rem;
+    text-align: center;
 }
 
 .about-img {

@@ -1,7 +1,7 @@
 .header {
     position: sticky;
-    background-color: #686D76;
-    padding: 10px 20px;
+    background-color: var(--nav-header);
+    padding: 15px 20px; 
     top: 0;
     color: white;
     display: flex;
@@ -16,7 +16,7 @@
 
 .img>img {
     height: 30px;
-    width: 130px0px;
+    width: 30px;
 }
 
 .right-box {
@@ -26,6 +26,12 @@
     align-items: center;
     display: flex;
     justify-content: space-evenly;
+}
+
+.right-box>img {
+    padding-inline-start: 30px;
+    height: 30px;
+    width: 30px;
 }
 
 .right-box-item {

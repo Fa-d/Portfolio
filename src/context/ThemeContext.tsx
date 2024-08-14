@@ -1,21 +1,56 @@
-import { createContext } from 'react'
+import React, { createContext, useContext, useState, useLayoutEffect, ReactNode } from "react";
 
-var blueTheme = {
-    type: 'dark',
-    primary: '#DC5F00',
-    primary400: '#6e76c7',
-    primary600: '#3644c9',
-    primary80: '#545fc4cc',
-    primary50: '#545fc480',
-    primary30: '#545fc44d',
-    secondary: '#373A40',
-    secondary70: '#212121b3',
-    secondary50: '#21212180',
-    tertiary: '#686D76',
-    tertiary80: '#eaeaeacc',
-    tertiary70: '#eaeaeab3',
-    tertiary50: '#eaeaea80',
-    extraLight:'#EEEEEE'
+interface ThemeContextType {
+    theme: string;
+    toggleTheme: () => void;
 }
-const ThemeContext = createContext(blueTheme)
-export default ThemeContext
+
+const ThemeContext = createContext<ThemeContextType>({
+    theme: "light",
+    toggleTheme: () => { },
+});
+
+export const useTheme = () => {
+    const context = useContext(ThemeContext);
+    
+    if (context === undefined) {
+        throw new Error("useTheme must be used within a ThemeProvider");
+    }
+    return context;
+};
+
+
+interface ThemeProviderProps {
+    children: ReactNode;
+}
+
+export const ThemeContextProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+    const initialTheme = () => localStorage.getItem("PORT_THEME") || "light";
+
+    const [theme, setTheme] = useState<string>(initialTheme);
+
+    const toggleTheme = () =>
+        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+
+    useLayoutEffect(() => {
+        localStorage.setItem("PORT_THEME", theme);
+
+        if (theme === "light") {
+            document.documentElement.classList.remove("dark-mode");
+            document.documentElement.classList.add("light-mode");
+        } else {
+            document.documentElement.classList.remove("light-mode");
+            document.documentElement.classList.add("dark-mode");
+        }
+    }, [theme]);
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+};
+
+
+export default { ThemeContextProvider };
+
