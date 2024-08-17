@@ -41,7 +41,7 @@
 }
 
 .r-corner-card {
-    color: #fde7f0;
+    color: var(--text-950);
     border-radius: 55px;
     background: var(--accent-300);
     padding-inline: 40px 25px;
