@@ -1,9 +1,8 @@
 .header {
     position: sticky;
-    background-color: var(--nav-header);
-    padding: 15px 20px; 
+    background-color: var(--secondary-100);
+    padding: 15px 20px;
     top: 0;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,12 +36,15 @@
 .right-box-item {
     padding-inline: 20px;
     cursor: pointer;
+    color: var(--background-950);
+
 }
 
 .r-corner-card {
+    color: #fde7f0;
     border-radius: 55px;
-    background: #FF8225;
-    padding-inline: 25px;
+    background: var(--accent-300);
+    padding-inline: 40px 25px;
     padding-block: 15px;
     width: 50px;
     display: flex;
@@ -50,6 +52,11 @@
     cursor: pointer;
     align-items: center;
     height: 5px;
+
+}
+
+.about-description>a{
+    background-color: var(--secondary-300);
 }
 
 .r-corner-card::after {

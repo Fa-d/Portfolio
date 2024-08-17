@@ -1,7 +1,7 @@
 .about {
     min-height: 100vh;
     position: relative;
-    color: var(--font-color);
+    background-color: var(--background-50);
 }
 
 .about-body {
@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: fit-content;
-    color: var(--font-color);
+    color: var(--text-950);
 
 }
 
@@ -69,7 +69,7 @@
     margin: 15px;
     border-radius: 10px;
     padding: 20px;
-    background-color: green;
+    background-color:var(--primary-50);
     color: var(--font-color);
 
 }

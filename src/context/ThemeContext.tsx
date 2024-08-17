@@ -36,11 +36,11 @@ export const ThemeContextProvider: React.FC<ThemeProviderProps> = ({ children })
         localStorage.setItem("PORT_THEME", theme);
 
         if (theme === "light") {
-            document.documentElement.classList.remove("dark-mode");
-            document.documentElement.classList.add("light-mode");
+            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.add("light");
         } else {
-            document.documentElement.classList.remove("light-mode");
-            document.documentElement.classList.add("dark-mode");
+            document.documentElement.classList.remove("light");
+            document.documentElement.classList.add("dark");
         }
     }, [theme]);
 
