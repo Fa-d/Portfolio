@@ -5,9 +5,9 @@ MY Portfolio
 - [x] Header
 - [ ] My T Shaped Experience
 - [ ] Education
-- [ ] Experience
+- [x] Experience
 - [ ] Projects
 - [ ] Blogs
 - [ ] Contact Me
-- [ ] Footer
+- [x] Footer
 
