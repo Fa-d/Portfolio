@@ -1,11 +1,13 @@
 .header {
     position: sticky;
+    top: 0;
     background-color: var(--secondary-100);
     padding: 15px 20px;
-    top: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
+    z-index: 2;
+    box-shadow: 0px 2px 4px var(--primary-100);
 }
 
 .img {
@@ -19,12 +21,11 @@
 }
 
 .right-box {
-    position: relative;
-    right: 25%;
     flex-direction: row;
     align-items: center;
     display: flex;
-    justify-content: space-evenly;
+    padding-inline-end: 50px;
+    justify-content: flex-end;
 }
 
 .right-box>img {

@@ -41,7 +41,9 @@
 
 }
 
-
+.about-description >a{
+    margin-top: 60px;
+}
 /*  */
 @media screen and (max-width: 992px) {
     .about-body {
@@ -54,15 +56,19 @@
 
 .about-description {
     display: flex;
+    color: var(--font-color);
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    flex: 0.6;
+    flex: 0.7;
     width: 100%;
     height: fit-content;
 }
-.about-description >h1, div{
-    color: var(--font-color);
+.name-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
 }
 
 .btn-secondary {

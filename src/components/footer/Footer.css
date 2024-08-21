@@ -12,7 +12,8 @@
 }
 
 .line {
-    height: 2px;
+    height: 1px;
+    width: 100%;
     border-bottom: 1px solid var(--text-300);
   }
 

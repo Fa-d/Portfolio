@@ -18,15 +18,14 @@ export default function About() {
         <div className="about" >
             <div className="about-body">
                 <div className='about-description'>
-                    <h1>Hi I'm Sadakat Hussain Fahad</h1>
-                    <div className="content-text">
-                        <h2>Software Engineer</h2>
-                        <h4>Building Mobile Applications.</h4>
-                        {/* <p>
-                            A Frontend Developer and Visual Designer with experience in web
-                            design, brand identity and product design.
-                        </p> */}
+                    <div className='name-desc'>
+                    <h1>MD. SADAKAT HUSSAIN FAHAD</h1>
+                    <h3>A Software Engineer</h3>
                     </div>
+                        <h3>Building Mobile Applications.</h3>
+                        <p>
+                            An android developer interested in all types of development. Has a kneen interest on open-source contribution. Likes to be updated on the latest technologies.
+                        </p> 
                     <a href="https://github.com/Fa-d" className="btn-secondary" target="_blank">Connect With Me</a>
                 </div>
                 <div className="about-img">
