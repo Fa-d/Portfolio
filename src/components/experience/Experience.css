@@ -23,6 +23,14 @@
   border-left: 3px solid var(--background-300);
 }
 
+.item_invidual:hover {
+  background-color: var(--secondary-50);
+
+  .skill-item {
+    background-color: var(--secondary-50);
+  }
+}
+
 .item_invidual {
   margin-top: 36px;
   padding: 20px;
@@ -45,60 +53,52 @@
   }
 }
 
-.job {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 10px;
-  border-radius: 5px;
+.current_job_title {
+  margin-inline-start: 15px;
+  font-size: 26px;
+  font-weight: bold;
 }
 
-.content>h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--text-950);
-}
-
-.role {
-  margin-top: 30px;
-  font-size: 18px;
-  font-weight: bold;
+.image-container {
+  width: 30px;
+  height: 30px;
 }
 
 .date {
-  margin-left: 30px;
-  font-size: 14px;
-  margin-top: 5px;
+  font-size: 22px;
+  margin-inline-start: 10px;
 }
 
-.date_role {
+.date_current_job_title {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  vertical-align: middle;
+  align-items: center;
 
 }
 
 .company {
-  font-size: 16px;
-  margin-top: 20px;
-}
+  font-size: 24px;
+  margin-inline-start: 10px;
+ font-weight: bold;
+} 
 
 .description {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+.skills{
+  margin-top: 20px;
 }
 
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-block: 20px;
-}
-
-.fourth {
-  background: var(--background-700);
-  color: #fff;
-  border: 2px  blue;
-
+.skill-item {
+  background: var(--background-100);
+  border: 1px solid var(--background-700);
+  color: var(--text-950);
+  border-radius: 12px;
+  padding: 10px;
+  margin-inline: 5px;
+  margin-top: 10px;
+  font-size: medium;
 }
