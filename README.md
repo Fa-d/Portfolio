@@ -10,4 +10,6 @@ MY Portfolio
 - [ ] Blogs
 - [ ] Contact Me
 - [x] Footer
+- [ ] Analytics
+- [ ] Open-Source Contributions
 
