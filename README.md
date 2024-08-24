@@ -10,3 +10,5 @@ MY Portfolio
 - [ ] Blogs
 - [ ] Contact Me (header)
 - [ ] My T Shaped Experience=
+- [ ] Analytics
+- [ ] Open-Source Contributions
