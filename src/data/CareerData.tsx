@@ -62,3 +62,4 @@ const i2Tech: ExperienceProps = {
 const careerStepsData = [kolpolok, ajkerDeal, labAr, i2Tech];
 
 export default careerStepsData 
+

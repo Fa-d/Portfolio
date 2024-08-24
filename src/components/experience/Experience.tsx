@@ -46,11 +46,9 @@ const CareerSteps: React.FC<{ steps: ExperienceProps[] }> = ({ steps }) => {
     return (
         <div className='content'>
             <h3 className="title">EXPERIENCE</h3>
-            <div className='3'>
                 <ul >
                     {listItems}
                 </ul>
-            </div>
         </div>
 
     );

@@ -2,12 +2,11 @@ MY Portfolio
 
 # Featues  
 - [x] Intro
-- [x] Header
-- [ ] My T Shaped Experience
-- [ ] Education
+- [x] Header (have to complete linking)
+- [x] Education
 - [x] Experience
+- [x] Footer (have to complete links)
 - [ ] Projects
 - [ ] Blogs
-- [ ] Contact Me
-- [x] Footer
-
+- [ ] Contact Me (header)
+- [ ] My T Shaped Experience=

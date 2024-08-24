@@ -23,13 +23,13 @@
   border-left: 3px solid var(--background-300);
 }
 
-.item_invidual:hover {
-  background-color: var(--secondary-50);
+/* .item_invidual:hover {
+  background-color: var(--primary-200);
 
   .skill-item {
-    background-color: var(--secondary-50);
+    background-color: var(--primary-200);
   }
-}
+} */
 
 .item_invidual {
   margin-top: 36px;
@@ -80,15 +80,16 @@
 .company {
   font-size: 24px;
   margin-inline-start: 10px;
- font-weight: bold;
-} 
+  font-weight: bold;
+}
 
 .description {
   margin-top: 20px;
   font-size: 16px;
   line-height: 1.5em;
 }
-.skills{
+
+.skills {
   margin-top: 20px;
 }
 
