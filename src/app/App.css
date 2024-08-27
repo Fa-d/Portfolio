@@ -17,135 +17,110 @@ h5 {
 }
 
 
-
 .light {
-  --text-50: #f9eeec;
-  --text-100: #f2ddd9;
-  --text-200: #e6bbb3;
-  --text-300: #d9998c;
-  --text-400: #cc7766;
-  --text-500: #bf5540;
-  --text-600: #994433;
-  --text-700: #733326;
-  --text-800: #4d2219;
-  --text-900: #26110d;
-  --text-950: #130806;
-
-  --background-50: #f9efec;
-  --background-100: #f2dfd9;
-  --background-200: #e6bfb3;
-  --background-300: #d99f8c;
-  --background-400: #cc7f66;
-  --background-500: #bf6040;
-  --background-600: #994d33;
-  --background-700: #733926;
-  --background-800: #4d2619;
-  --background-900: #26130d;
-  --background-950: #130a06;
-
-  --primary-50: #f9eeeb;
-  --primary-100: #f3ded8;
-  --primary-200: #e7bdb1;
-  --primary-300: #db9c8a;
-  --primary-400: #cf7a63;
-  --primary-500: #c3593c;
-  --primary-600: #9c4730;
-  --primary-700: #753624;
-  --primary-800: #4e2418;
-  --primary-900: #27120c;
-  --primary-950: #140906;
-
-  --secondary-50: #f5f9eb;
-  --secondary-100: #eaf3d8;
-  --secondary-200: #d5e7b1;
-  --secondary-300: #c0db8a;
-  --secondary-400: #abcf63;
-  --secondary-500: #96c33c;
-  --secondary-600: #789c30;
-  --secondary-700: #5a7524;
-  --secondary-800: #3c4e18;
-  --secondary-900: #1e270c;
-  --secondary-950: #0f1406;
-
-  --accent-50: #eef9eb;
-  --accent-100: #ddf3d8;
-  --accent-200: #bbe7b1;
-  --accent-300: #99db8a;
-  --accent-400: #77cf63;
-  --accent-500: #55c33c;
-  --accent-600: #449c30;
-  --accent-700: #337524;
-  --accent-800: #224e18;
-  --accent-900: #11270c;
-  --accent-950: #081406;
-
+  --primary: rgb(93 87 145);
+  --surface-tint: rgb(93 87 145);
+  --on-primary: rgb(255 255 255);
+  --primary-container: rgb(228 223 255);
+  --on-primary-container: rgb(25 18 73);
+  --secondary: rgb(95 92 113);
+  --on-secondary: rgb(255 255 255);
+  --secondary-container: rgb(228 223 249);
+  --on-secondary-container: rgb(27 25 44);
+  --tertiary: rgb(123 82 102);
+  --on-tertiary: rgb(255 255 255);
+  --tertiary-container: rgb(255 216 232);
+  --on-tertiary-container: rgb(48 17 34);
+  --error: rgb(186 26 26);
+  --on-error: rgb(255 255 255);
+  --error-container: rgb(255 218 214);
+  --on-error-container: rgb(65 0 2);
+  --background: rgb(252 248 255);
+  --on-background: rgb(28 27 32);
+  --surface: rgb(252 248 255);
+  --on-surface: rgb(28 27 32);
+  --surface-variant: rgb(229 225 236);
+  --on-surface-variant: rgb(71 70 79);
+  --outline: rgb(120 118 128);
+  --outline-variant: rgb(201 197 208);
+  --shadow: rgb(0 0 0);
+  --scrim: rgb(0 0 0);
+  --inverse-surface: rgb(49 48 54);
+  --inverse-on-surface: rgb(244 239 247);
+  --inverse-primary: rgb(198 191 255);
+  --primary-fixed: rgb(228 223 255);
+  --on-primary-fixed: rgb(25 18 73);
+  --primary-fixed-dim: rgb(198 191 255);
+  --on-primary-fixed-variant: rgb(69 64 119);
+  --secondary-fixed: rgb(228 223 249);
+  --on-secondary-fixed: rgb(27 25 44);
+  --secondary-fixed-dim: rgb(200 195 220);
+  --on-secondary-fixed-variant: rgb(71 68 89);
+  --tertiary-fixed: rgb(255 216 232);
+  --on-tertiary-fixed: rgb(48 17 34);
+  --tertiary-fixed-dim: rgb(236 184 207);
+  --on-tertiary-fixed-variant: rgb(97 59 78);
+  --surface-dim: rgb(221 216 224);
+  --surface-bright: rgb(252 248 255);
+  --surface-container-lowest: rgb(255 255 255);
+  --surface-container-low: rgb(246 242 250);
+  --surface-container: rgb(241 236 244);
+  --surface-container-high: rgb(235 230 239);
+  --surface-container-highest: rgb(229 225 233);
 }
-
 
 
 .dark {
-  --text-50: #120907;
-  --text-100: #25130e;
-  --text-200: #4a251c;
-  --text-300: #6f382a;
-  --text-400: #944a38;
-  --text-500: #b95d46;
-  --text-600: #c77d6b;
-  --text-700: #d59e90;
-  --text-800: #e3beb5;
-  --text-900: #f1dfda;
-  --text-950: #f8efed;
-
-  --background-50: #120907;
-  --background-100: #25130e;
-  --background-200: #4a251c;
-  --background-300: #6f382a;
-  --background-400: #944a38;
-  --background-500: #b95d46;
-  --background-600: #c77d6b;
-  --background-700: #d59e90;
-  --background-800: #e3beb5;
-  --background-900: #f1dfda;
-  --background-950: #f8efed;
-
-  --primary-50: #140906;
-  --primary-100: #27120c;
-  --primary-200: #4e2418;
-  --primary-300: #753624;
-  --primary-400: #9c4730;
-  --primary-500: #c3593c;
-  --primary-600: #cf7a63;
-  --primary-700: #db9c8a;
-  --primary-800: #e7bdb1;
-  --primary-900: #f3ded8;
-  --primary-950: #f9eeeb;
-
-  --secondary-50: #0f1406;
-  --secondary-100: #1e270c;
-  --secondary-200: #3c4e18;
-  --secondary-300: #5a7524;
-  --secondary-400: #789c30;
-  --secondary-500: #96c33c;
-  --secondary-600: #abcf63;
-  --secondary-700: #c0db8a;
-  --secondary-800: #d5e7b1;
-  --secondary-900: #eaf3d8;
-  --secondary-950: #f5f9eb;
-
-  --accent-50: #081406;
-  --accent-100: #11270c;
-  --accent-200: #224e18;
-  --accent-300: #337524;
-  --accent-400: #449c30;
-  --accent-500: #55c33c;
-  --accent-600: #77cf63;
-  --accent-700: #99db8a;
-  --accent-800: #bbe7b1;
-  --accent-900: #ddf3d8;
-  --accent-950: #eef9eb;
+  --primary: rgb(198 191 255);
+  --surface-tint: rgb(198 191 255);
+  --on-primary: rgb(47 41 95);
+  --primary-container: rgb(69 64 119);
+  --on-primary-container: rgb(228 223 255);
+  --secondary: rgb(200 195 220);
+  --on-secondary: rgb(48 46 65);
+  --secondary-container: rgb(71 68 89);
+  --on-secondary-container: rgb(228 223 249);
+  --tertiary: rgb(236 184 207);
+  --on-tertiary: rgb(72 37 55);
+  --tertiary-container: rgb(97 59 78);
+  --on-tertiary-container: rgb(255 216 232);
+  --error: rgb(255 180 171);
+  --on-error: rgb(105 0 5);
+  --error-container: rgb(147 0 10);
+  --on-error-container: rgb(255 218 214);
+  --background: rgb(20 19 24);
+  --on-background: rgb(229 225 233);
+  --surface: rgb(20 19 24);
+  --on-surface: rgb(229 225 233);
+  --surface-variant: rgb(71 70 79);
+  --on-surface-variant: rgb(201 197 208);
+  --outline: rgb(146 143 153);
+  --outline-variant: rgb(71 70 79);
+  --shadow: rgb(0 0 0);
+  --scrim: rgb(0 0 0);
+  --inverse-surface: rgb(229 225 233);
+  --inverse-on-surface: rgb(49 48 54);
+  --inverse-primary: rgb(93 87 145);
+  --primary-fixed: rgb(228 223 255);
+  --on-primary-fixed: rgb(25 18 73);
+  --primary-fixed-dim: rgb(198 191 255);
+  --on-primary-fixed-variant: rgb(69 64 119);
+  --secondary-fixed: rgb(228 223 249);
+  --on-secondary-fixed: rgb(27 25 44);
+  --secondary-fixed-dim: rgb(200 195 220);
+  --on-secondary-fixed-variant: rgb(71 68 89);
+  --tertiary-fixed: rgb(255 216 232);
+  --on-tertiary-fixed: rgb(48 17 34);
+  --tertiary-fixed-dim: rgb(236 184 207);
+  --on-tertiary-fixed-variant: rgb(97 59 78);
+  --surface-dim: rgb(20 19 24);
+  --surface-bright: rgb(58 56 62);
+  --surface-container-lowest: rgb(14 14 19);
+  --surface-container-low: rgb(28 27 32);
+  --surface-container: rgb(32 31 37);
+  --surface-container-high: rgb(42 41 47);
+  --surface-container-highest: rgb(53 52 58);
 }
-
-
 
 
 

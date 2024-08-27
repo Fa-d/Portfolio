@@ -26,7 +26,10 @@ export default function About() {
                     <p>
                         An android developer interested in all types of development. Has a kneen interest on open-source contribution. Likes to be updated on the latest technologies.
                     </p>
-                    <a href="https://github.com/Fa-d" className="btn-secondary" target="_blank">Connect With Me</a>
+
+                    <a href="mailto:contact@sadakat.dev" style={{ textDecoration: 'none' }} target="_blank">
+                        <div className='connect-btn'>Contact Me</div>
+                    </a>
                 </div>
                 <div className="about-img">
                     <Lottie options={defaultOptions} />

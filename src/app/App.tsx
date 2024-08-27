@@ -4,25 +4,22 @@ import Header from '../components/header/Header.tsx';
 import "./App.css"
 import withSplashScreen from "../components/splash/withSplashScreen.tsx";
 import Footer from '../components/footer/Footer.tsx';
+import Skills from '../components/skills/Skills.tsx';
 
 function App() {
   return (
     <>
-      <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Main />}
-          />
-          <Route
-            path="/project"
-            element={<Main />}
-          />
-        </Routes>
 
+      <BrowserRouter>
+        <Header />
+        <Routes>
+        <Route path="/skills" element={<Skills />} />
+          <Route path="/" element={<Main />} />
+        </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
+     
+
     </>
 
   );

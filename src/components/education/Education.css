@@ -1,10 +1,10 @@
 .content-edu {
-  background-color: var(--background-50);
+  background-color: var(--primary-container);
   padding-inline: 100px;
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--text-950);
+  color: var(--on-background);
   padding-block-end: 100px;
 }
 
@@ -15,7 +15,7 @@
   flex-grow: 1;
   margin-inline: 10px;
   padding: 20px;
-  background-color: var(--background-100);
+  background-color: var(--on-secondary);
   border-radius: 10px;
 }
 

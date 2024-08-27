@@ -1,7 +1,7 @@
 .about {
-    min-height: 100vh;
+    min-height: 95vh;
     position: relative;
-    background-color: var(--background-50);
+    background-color: var(--primary-container);
 }
 
 .about-body {
@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: fit-content;
-    color: var(--text-950);
+    color: var(--on-background);
 
 }
 
@@ -30,26 +30,34 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    color: var(--bg-primary);
+    color: var(--on-background);
+
 }
 
 .about .line-styling .style-line {
     width: 95%;
     height: 5px;
     border-radius: 10px;
-    color: var(--bg-primary);
+    color: var(--on-background);
+
 
 }
 
-.about-description >a{
+.connect-btn {
     margin-top: 60px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--tertiary);
+    color: var(--background);
+
 }
 
 
-.about-description >p{
+.about-description>p {
     font-size: 20px;
     line-height: 1.5em;
 }
+
 /*  */
 @media screen and (max-width: 992px) {
     .about-body {
@@ -62,7 +70,7 @@
 
 .about-description {
     display: flex;
-    color: var(--font-color);
+    color: var(--on-background);
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
@@ -70,21 +78,14 @@
     width: 100%;
     height: fit-content;
 }
-.name-desc{
+
+.name-desc {
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: start;
 }
 
-.btn-secondary {
-    margin: 15px;
-    border-radius: 10px;
-    padding: 20px;
-    background-color:var(--primary-50);
-    color: var(--font-color);
-
-}
 
 .header-container {
     margin-top: 7rem;

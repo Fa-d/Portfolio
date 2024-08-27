@@ -19,7 +19,6 @@ jobs:
           mkdir ../../_temp/portf_dist
           cp -r dist ../../_temp/portf_dist
           cd ../../_temp/portf_dist/dist
-          rm -rf .git/
           git init
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"

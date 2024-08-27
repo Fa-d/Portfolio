@@ -8,7 +8,7 @@ import ReactGA from 'react-ga4';
 
 export default function Main() {
   ReactGA.initialize('YOUR_TRACKING_ID');
-
+ 
   return (
     <>
       <About />
