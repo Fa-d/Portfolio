@@ -1,5 +1,4 @@
 import './Skills.css'
-import { GraphCanvas } from 'reagraph';
 
 const nodes = [
   {
@@ -30,7 +29,7 @@ const edges = [
 export default function Skills() {
   return (
     <div className='rectangle'>
-      <GraphCanvas
+      {/* <GraphCanvas
         nodes={nodes}
         edges={edges}
         contextMenu={({ data, onClose }) => (
@@ -41,7 +40,7 @@ export default function Skills() {
             <button onClick={onClose}>Close Menu</button>
           </div>
         )}
-      />
+      /> */}
     </div>
 
   );
