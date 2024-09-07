@@ -1,5 +1,5 @@
 /**
- * @remix-run/router v1.18.0
+ * @remix-run/router v1.19.1
  *
  * Copyright (c) Remix Software Inc.
  *
