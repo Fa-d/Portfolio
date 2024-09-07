@@ -36,7 +36,7 @@ const ajkerDeal: ExperienceProps = {
 
 const labAr: ExperienceProps = {
     date: 'Feb 2020 - Mar 2020',
-    role: 'Game Developer (Internship)',
+    role: 'Internship (Game Development)',
     company: 'Lab AR',
     description: "Responsible for translating logistics, E-commerce business requirements into android applications.",
     skills: [
@@ -50,7 +50,7 @@ const labAr: ExperienceProps = {
 
 const i2Tech: ExperienceProps = {
     date: 'Aug 2019 - Sep 2019',
-    role: 'Web Developer (Internship)',
+    role: 'Internship (Web Development)',
     company: 'i2 Technologies',
     description: "Responsible for translating logistics, E-commerce business requirements into android applications.",
     skills: [

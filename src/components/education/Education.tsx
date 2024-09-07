@@ -4,7 +4,7 @@ import { EducationProps } from '../../data/EducationData'
 const Education: React.FC<{ steps: EducationProps[] }> = ({ steps }) => {
 
     var listItems = steps.map(item =>
-        <li className='item_root-edu'>
+        <li key={item.institution} className='item_root-edu'>
             <div className='degree-title'>{item.degree}</div>
             <div className='date-edu'>{item.date}</div>
             <div className='inistitute'>{item.institution} </div>

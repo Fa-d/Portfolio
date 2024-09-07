@@ -1,18 +1,11 @@
 
 import './About.css';
-import Lottie from 'react-lottie';
+import Lottie from 'react-lottie-player'
 import animationData from '../../assets/person.json'
+import { ContactItems } from '../contactItems/ContactItems';
 
 export default function About() {
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
-    };
 
     return (
         <div className="about" >
@@ -27,12 +20,17 @@ export default function About() {
                         An android developer interested in all types of development. Has a kneen interest on open-source contribution. Likes to be updated on the latest technologies.
                     </p>
 
-                    <a href="mailto:contact@sadakat.dev" style={{ textDecoration: 'none' }} target="_blank">
-                        <div className='connect-btn'>Contact Me</div>
-                    </a>
+                    <div className='connect-btn'>
+                        <h4>Connect with me on:</h4>
+                        {ContactItems()}
+                    </div>
+
                 </div>
                 <div className="about-img">
-                    <Lottie options={defaultOptions} />
+                    <Lottie
+                        style={{ width: 500, height: 500 }}
+                        animationData={animationData}
+                    />
                 </div>
             </div>
         </div>

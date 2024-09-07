@@ -3,8 +3,10 @@ import './Experience.css'
 import idImg from '../../assets/identification-card.png';
 import calender from '../../assets/calender.png';
 import jobLoc from '../../assets/job_loc.png';
+import newTab from '../../assets/new-tab.png';
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ExperienceProps {
     date: string;
@@ -16,18 +18,25 @@ interface ExperienceProps {
 }
 
 const CareerSteps: React.FC<{ steps: ExperienceProps[] }> = ({ steps }) => {
-    var listItems = steps.map(item =>
-        <li className='item_root'>
+    const navigate = useNavigate();
+    var listItems = steps.map((item, index) =>
+        <li key={item.company || index} className='item_root' >
             <div className='item_invidual'>
-                <div className='date_current_job_title'>
-                    <img className='image-container' src={idImg} />
-                    <div className="current_job_title">{item.role}</div>
-                    <img className='image-container' style={{ marginLeft: '50px' }} src={calender} />
-                    <div className="date">{item.date}</div>
+                <div className='title-with-link'>
+                    <div className='date_current_job_title' key={item.company}>
+                        <img className='image-container' src={idImg} />
+                        <div className="current_job_title">{item.role}</div>
+                    </div>
+                    <img className='job-link' src={newTab} onClick={() => { navigate('/') }} />
                 </div>
-                <div className='date_current_job_title' style={{marginTop: '30px'}}>
+
+
+                <div className='date_current_job_title' style={{ marginTop: '30px' }}>
                     <img className='image-container' src={jobLoc} />
                     <div className="company">{item.company}</div>
+
+                    <img className='image-container' style={{ marginLeft: '50px' }} src={calender} />
+                    <div className="date">{item.date}</div>
                 </div>
 
                 {/* <div className="description">{item.description}</div> */}
@@ -46,9 +55,9 @@ const CareerSteps: React.FC<{ steps: ExperienceProps[] }> = ({ steps }) => {
     return (
         <div className='content'>
             <h3 className="title">EXPERIENCE</h3>
-                <ul >
-                    {listItems}
-                </ul>
+            <ul >
+                {listItems}
+            </ul>
         </div>
 
     );
