@@ -28,6 +28,7 @@ export default function About() {
                 </div>
                 <div className="about-img">
                     <Lottie
+                        loop={true}
                         style={{ width: 500, height: 500 }}
                         animationData={animationData}
                     />

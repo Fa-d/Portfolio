@@ -13,7 +13,7 @@ export default function Header() {
         <div className="header">
             <div className="img"></div>
             <div className="right-box">
-                <div onClick={() => { }} className="right-box-item"><b>Projects</b></div>
+                <div onClick={() => { navigate('/projects') }} className="right-box-item"><b>Projects</b></div>
                 <div onClick={() => { navigate('/skills') }} className="right-box-item"><b>Skills</b></div>
                 <div onClick={() => { }} className="right-box-item"><b>Blogs</b></div>
                 <div onClick={() => { navigate('/') }} className="right-box-item"><b>Home</b></div>

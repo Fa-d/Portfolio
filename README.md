@@ -8,7 +8,7 @@ MY Portfolio
 - [x] Footer (have to complete links)
 - [ ] Projects
 - [ ] Blogs
-- [ ] Contact Me (header)
+- [x] Contact Me (header)
 - [ ] My T Shaped Experience=
 - [ ] Analytics
 - [ ] Open-Source Contributions

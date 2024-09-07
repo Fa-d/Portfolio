@@ -4,6 +4,8 @@ import Header from '../components/header/Header.tsx';
 import "./App.css"
 import withSplashScreen from "../components/splash/withSplashScreen.tsx";
 import Footer from '../components/footer/Footer.tsx';
+import Projects from '../components/projects/Projects.tsx';
+import { allProjects } from '../data/ProjectData.tsx';
 
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/skills" element={<Main />} />
           <Route path="/" element={<Main />} />
+          <Route path="/projects" element={ <Projects items={allProjects} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -64,7 +64,7 @@ li {
     border-radius: 15px;
     padding-inline: 10px;
     padding-block: 7px;
-    width: min-content;
+    width: 100%;
 
     &:hover {
         background-color: var(--on-background);
