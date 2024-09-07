@@ -65,7 +65,7 @@ li {
     padding-inline: 10px;
     padding-block: 7px;
     width: 100%;
-
+    cursor: pointer;
     &:hover {
         background-color: var(--on-background);
     }

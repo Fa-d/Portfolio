@@ -1,6 +1,7 @@
 import React from "react";
 import "./Projects.css";
 import { ProjectLinkProps } from "../../data/ProjectData";
+import { openInNewTab } from "../../utils/NewTab";
 
 const ProjectLinks: React.FC<{ items: ProjectLinkProps[] }> = ({ items }) => {
     return (
@@ -17,10 +18,5 @@ const ProjectLinks: React.FC<{ items: ProjectLinkProps[] }> = ({ items }) => {
         </div>
     );
 }
-export const openInNewTab = (url: string): void => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-    if (newWindow) {
-        newWindow.focus();
-    }
-};
+
 export default ProjectLinks;

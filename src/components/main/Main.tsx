@@ -6,6 +6,8 @@ import Education from '../education/Education'
 import ReactGA from 'react-ga4';
 import Projects from '../projects/Projects'
 import { allProjects } from '../../data/ProjectData'
+import ArticleNote from '../articles/ArticleNote'
+import {articleData, noteData} from '../../data/ArticleNote'
 
 
 export default function Main() {
@@ -17,6 +19,8 @@ export default function Main() {
       <CareerSteps steps={careerStepsData} />
       <Education steps={educationStepsData} />
       <Projects items={allProjects} />
+      <ArticleNote items={articleData} isArticle={true} />
+      <ArticleNote items={noteData} isArticle={false} />
     </>
   )
 }

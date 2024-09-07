@@ -2,9 +2,7 @@ import React from 'react';
 import './Footer.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 import arrow from '../../assets/up-arrow.png'
-
 import { ContactItems } from '../contactItems/ContactItems';
 
 
@@ -43,17 +41,16 @@ const Footer: React.FC = () => {
                     <div className="line"></div>
                     <ul>
                         <li>
-                            <div onClick={() => { navigate('/') }} className='hyperlink-item'>ABOUT</div>
+                            <div onClick={() => { scrollToTop() }} className='hyperlink-item'>ABOUT</div>
                         </li>
                         <li>
-                            <div onClick={() => { navigate('/') }} className='hyperlink-item'>PROJECTS</div>
+                            <div onClick={() => { navigate('/projects') }} className='hyperlink-item'>PROJECTS</div>
                         </li>
                         <li>
                             <div onClick={() => { navigate('/skills') }} className='hyperlink-item'>SKILLS</div>
                         </li>
-                        <div onClick={() => { navigate('/') }} className='hyperlink-item'>BLOGS</div>
                         <li>
-                            <div onClick={() => { navigate('/') }} className='hyperlink-item'>SKILLS</div>
+                            <div onClick={() => { navigate('/articles') }} className='hyperlink-item'>ARTICLES</div>
                         </li>
                     </ul>
                 </div>

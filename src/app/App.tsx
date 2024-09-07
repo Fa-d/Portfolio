@@ -6,6 +6,8 @@ import withSplashScreen from "../components/splash/withSplashScreen.tsx";
 import Footer from '../components/footer/Footer.tsx';
 import Projects from '../components/projects/Projects.tsx';
 import { allProjects } from '../data/ProjectData.tsx';
+import ArticleNote from '../components/articles/ArticleNote.tsx';
+import { articleData } from '../data/ArticleNote.tsx';
 
 
 function App() {
@@ -16,9 +18,10 @@ function App() {
         <Routes>
           <Route path="/skills" element={<Main />} />
           <Route path="/" element={<Main />} />
+          <Route path="/articles" element={<ArticleNote items={articleData} isArticle={true} />} />
           <Route path="/projects" element={ <Projects items={allProjects} />} />
         </Routes>
-        <Footer />
+        <Footer />   
       </BrowserRouter>
     </>
 

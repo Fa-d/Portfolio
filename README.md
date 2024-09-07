@@ -2,13 +2,15 @@ MY Portfolio
 
 # Featues  
 - [x] Intro
-- [x] Header (have to complete linking)
+- [x] Header 
 - [x] Education
 - [x] Experience
-- [x] Footer (have to complete links)
-- [ ] Projects
-- [ ] Blogs
-- [x] Contact Me (header)
-- [ ] My T Shaped Experience=
+- [x] Footer
+- [x] Projects
+- [x] Contact Me 
+- [ ] Articles
+- [ ] Notes
+- [ ] Skills
+- [ ] Certifications
 - [ ] Analytics
 - [ ] Open-Source Contributions

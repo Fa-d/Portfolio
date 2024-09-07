@@ -15,7 +15,7 @@ export default function Header() {
             <div className="right-box">
                 <div onClick={() => { navigate('/projects') }} className="right-box-item"><b>Projects</b></div>
                 <div onClick={() => { navigate('/skills') }} className="right-box-item"><b>Skills</b></div>
-                <div onClick={() => { }} className="right-box-item"><b>Blogs</b></div>
+                <div onClick={() => { navigate('/articles') }} className="right-box-item"><b>Article</b></div>
                 <div onClick={() => { navigate('/') }} className="right-box-item"><b>Home</b></div>
                 <a style={{ textDecoration: 'none' }} href={myRes} target="_blank">
                     <div onClick={() => { }} className="r-corner-card">Resume</div>
