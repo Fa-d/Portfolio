@@ -28,7 +28,8 @@
   margin-top: 36px;
   padding: 30px;
   position: relative;
-  background-color: var(--on-secondary);
+  border: 1px solid var(--outline);
+  background-color: var(--primary-container);
   border-radius: 10px;
   width: 100%;
 
@@ -37,7 +38,7 @@
     content: "";
     width: 20px;
     height: 20px;
-    background-color: var(--on-tertiary);
+    background-color: var(--outline);
     top: 50%;
     transform: translateY(-50%);
     left: calc(-1 * ((50px / 2) + 45px));
@@ -106,9 +107,9 @@
 }
 
 .skill-item {
-  background: var(--on-secondary);
-  border: 1px solid var(--outline);
+  border: 1px solid  var(--surface-container-high);
   color: var(--on-background);
+  background-color: var(--surface-container-high);
   border-radius: 12px;
   padding: 10px;
   margin-inline: 5px;

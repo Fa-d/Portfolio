@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
     };
     return (
         <div className="container">
-            <div >
+            <div className='left-cont'>
                 <h3>Contact</h3>
                 {ContactItems()}
                 <div className="copyright">

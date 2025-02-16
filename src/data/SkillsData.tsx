@@ -7,6 +7,8 @@ import javascript from '../../src/assets/jscript.png'
 import android from '../../src/assets/android.png'
 import node from '../../src/assets/node.png'
 import react from '../../src/assets/react.png'
+import restApi from '../../src/assets/api.png'
+import mysql from '../../src/assets/mysql.png'
 
 
 export interface SkillsProps {
@@ -43,6 +45,12 @@ export const skillsList: SkillsProps[] = [
     }, {
         title: "React",
         image: react,
-    }
+    }, {
+        title: "REST-API",
+        image: restApi,
+    }, {
+        title: "MySQL",
+        image: mysql,
+    },
 ]
 

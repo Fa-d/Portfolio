@@ -3,10 +3,10 @@ import './Experience.css'
 import idImg from '../../assets/identification-card.png';
 import calender from '../../assets/calender.png';
 import jobLoc from '../../assets/job_loc.png';
-import newTab from '../../assets/new-tab.png';
+//import newTab from '../../assets/new-tab.png';
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 interface ExperienceProps {
     date: string;
@@ -18,7 +18,7 @@ interface ExperienceProps {
 }
 
 const CareerSteps: React.FC<{ steps: ExperienceProps[] }> = ({ steps }) => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     var listItems = steps.map((item, index) =>
         <li key={item.company || index} className='item_root' >
             <div className='item_invidual'>
@@ -27,7 +27,7 @@ const CareerSteps: React.FC<{ steps: ExperienceProps[] }> = ({ steps }) => {
                         <img className='image-container' src={idImg} />
                         <div className="current_job_title">{item.role}</div>
                     </div>
-                    <img className='job-link' src={newTab} onClick={() => { navigate('/') }} />
+                    {/* <img className='job-link' src={newTab} onClick={() => { navigate('/') }} /> */}
                 </div>
 
 

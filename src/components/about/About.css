@@ -1,97 +1,69 @@
-.about {
-    min-height: 95vh;
+.about-root {
     position: relative;
     background-color: var(--primary-container);
+    padding-inline: 100px;
+
+
 }
 
-.about-body {
+.about-row {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    height: fit-content;
     color: var(--on-background);
-
+    min-height: 90vh;
 }
 
-.about .line-styling {
-    position: relative;
-    top: 100px;
-    left: 50%;
-    height: 50px;
-    width: 85%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.about .line-styling .style-circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    color: var(--on-background);
-
-}
-
-.about .line-styling .style-line {
-    width: 95%;
-    height: 5px;
-    border-radius: 10px;
-    color: var(--on-background);
-
-
-}
-
-.connect-btn {
-    margin-top: 60px;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: var(--surface-container-high);
-    color: var(--on-background);
-
-}
-
-
-.about-description>p {
-    font-size: 20px;
-    line-height: 1.5em;
-}
-
-/*  */
-@media screen and (max-width: 992px) {
-    .about-body {
-        display: flex;
+@media (max-width: 768px) {
+    .about-row {
         flex-direction: column-reverse;
-        align-items: center;
-        justify-content: space-around;
     }
 }
 
-.about-description {
+.left-item {
+    padding-inline-end: 50px;
+    flex-direction: column;
     display: flex;
+    justify-content: center;
+
+    h2 {
+        font-size: 18pt;
+        font-weight: 500;
+        line-height: 10px;
+    }
+
+    h3 {
+        font-size: 22pt;
+        font-weight: 600;
+    }
+
+    h4 {
+        font-size: 16pt;
+        line-height: 2.2rem;
+        font-weight: lighter;
+    }
+
+}
+
+
+.connect-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 0px .1px 1px var(--shadow);
     color: var(--on-background);
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    flex: 0.7;
-    width: 100%;
-    height: fit-content;
+    width: fit-content;
+    margin-top: 30px;
+    padding-inline: 20px;
 }
 
-.name-desc {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: start;
+.export-title {
+    font-size: 14pt;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-weight: 600;
 }
 
-
-.header-container {
-    margin-top: 7rem;
-    text-align: center;
-}
-
-.about-img {
+.right-item {
     width: 380px;
+    align-self: center;
 }

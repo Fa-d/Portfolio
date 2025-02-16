@@ -1,127 +1,116 @@
 @import url('https://fonts.googleapis.com/css?family=Alice:700|Alice:400');
 
 body {
-  font-family: 'Alice';
-  font-weight: 400;
   padding: 0;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Alice';
-  font-weight: 700;
-}
 
 
 .light {
-  --primary: rgb(93 87 145);
-  --surface-tint: rgb(93 87 145);
-  --on-primary: rgb(255 255 255);
-  --primary-container: rgb(228 223 255);
-  --on-primary-container: rgb(25 18 73);
-  --secondary: rgb(95 92 113);
-  --on-secondary: rgb(255 255 255);
-  --secondary-container: rgb(228 223 249);
-  --on-secondary-container: rgb(27 25 44);
-  --tertiary: rgb(123 82 102);
-  --on-tertiary: rgb(255 255 255);
-  --tertiary-container: rgb(255 216 232);
-  --on-tertiary-container: rgb(48 17 34);
-  --error: rgb(186 26 26);
-  --on-error: rgb(255 255 255);
-  --error-container: rgb(255 218 214);
-  --on-error-container: rgb(65 0 2);
-  --background: rgb(252 248 255);
-  --on-background: rgb(28 27 32);
-  --surface: rgb(252 248 255);
-  --on-surface: rgb(28 27 32);
-  --surface-variant: rgb(229 225 236);
-  --on-surface-variant: rgb(71 70 79);
-  --outline: rgb(120 118 128);
-  --outline-variant: rgb(201 197 208);
-  --shadow: rgb(0 0 0);
-  --scrim: rgb(0 0 0);
-  --inverse-surface: rgb(49 48 54);
-  --inverse-on-surface: rgb(244 239 247);
-  --inverse-primary: rgb(198 191 255);
-  --primary-fixed: rgb(228 223 255);
-  --on-primary-fixed: rgb(25 18 73);
-  --primary-fixed-dim: rgb(198 191 255);
-  --on-primary-fixed-variant: rgb(69 64 119);
-  --secondary-fixed: rgb(228 223 249);
-  --on-secondary-fixed: rgb(27 25 44);
-  --secondary-fixed-dim: rgb(200 195 220);
-  --on-secondary-fixed-variant: rgb(71 68 89);
-  --tertiary-fixed: rgb(255 216 232);
-  --on-tertiary-fixed: rgb(48 17 34);
-  --tertiary-fixed-dim: rgb(236 184 207);
-  --on-tertiary-fixed-variant: rgb(97 59 78);
-  --surface-dim: rgb(221 216 224);
-  --surface-bright: rgb(252 248 255);
-  --surface-container-lowest: rgb(255 255 255);
-  --surface-container-low: rgb(246 242 250);
-  --surface-container: rgb(241 236 244);
-  --surface-container-high: rgb(235 230 239);
-  --surface-container-highest: rgb(229 225 233);
+  --primary: rgb(240, 240, 240);
+  --surface-tint: rgb(240, 240, 240);
+  --on-primary: rgb(0, 0, 0);
+  --primary-container: rgb(255, 255, 255);
+  --on-primary-container: rgb(50, 50, 50);
+  --secondary: rgb(220, 220, 220);
+  --on-secondary: rgb(0, 0, 0);
+  --secondary-container: rgb(245, 245, 245);
+  --on-secondary-container: rgb(50, 50, 50);
+  --tertiary: rgb(200, 200, 200);
+  --on-tertiary: rgb(0, 0, 0);
+  --tertiary-container: rgb(230, 230, 230);
+  --on-tertiary-container: rgb(50, 50, 50);
+  --error: rgb(255, 100, 100);
+  --on-error: rgb(255, 255, 255);
+  --error-container: rgb(255, 200, 200);
+  --on-error-container: rgb(100, 0, 0);
+  --background: rgb(250, 250, 250);
+  --on-background: rgb(30, 30, 30);
+  --surface: rgb(250, 250, 250);
+  --on-surface: rgb(30, 30, 30);
+  --surface-variant: rgb(240, 240, 240);
+  --on-surface-variant: rgb(70, 70, 70);
+  --outline: rgb(200, 200, 200);
+  --outline-variant: rgb(220, 220, 220);
+  --shadow: rgb(0, 0, 0);
+  --scrim: rgb(0, 0, 0);
+  --inverse-surface: rgb(50, 50, 50);
+  --inverse-on-surface: rgb(240, 240, 240);
+  --inverse-primary: rgb(220, 220, 220);
+  --primary-fixed: rgb(255, 255, 255);
+  --on-primary-fixed: rgb(50, 50, 50);
+  --primary-fixed-dim: rgb(220, 220, 220);
+  --on-primary-fixed-variant: rgb(70, 70, 70);
+  --secondary-fixed: rgb(245, 245, 245);
+  --on-secondary-fixed: rgb(50, 50, 50);
+  --secondary-fixed-dim: rgb(220, 220, 220);
+  --on-secondary-fixed-variant: rgb(70, 70, 70);
+  --tertiary-fixed: rgb(230, 230, 230);
+  --on-tertiary-fixed: rgb(50, 50, 50);
+  --tertiary-fixed-dim: rgb(210, 210, 210);
+  --on-tertiary-fixed-variant: rgb(70, 70, 70);
+  --surface-dim: rgb(240, 240, 240);
+  --surface-bright: rgb(255, 255, 255);
+  --surface-container-lowest: rgb(255, 255, 255);
+  --surface-container-low: rgb(245, 245, 245);
+  --surface-container: rgb(240, 240, 240);
+  --surface-container-high: rgb(235, 235, 235);
+  --surface-container-highest: rgb(230, 230, 230);
 }
-
 
 .dark {
-  --primary: rgb(198 191 255);
-  --surface-tint: rgb(198 191 255);
-  --on-primary: rgb(47 41 95);
-  --primary-container: rgb(69 64 119);
-  --on-primary-container: rgb(228 223 255);
-  --secondary: rgb(200 195 220);
-  --on-secondary: rgb(48 46 65);
-  --secondary-container: rgb(71 68 89);
-  --on-secondary-container: rgb(228 223 249);
-  --tertiary: rgb(236 184 207);
-  --on-tertiary: rgb(72 37 55);
-  --tertiary-container: rgb(97 59 78);
-  --on-tertiary-container: rgb(255 216 232);
-  --error: rgb(255 180 171);
-  --on-error: rgb(105 0 5);
-  --error-container: rgb(147 0 10);
-  --on-error-container: rgb(255 218 214);
-  --background: rgb(20 19 24);
-  --on-background: rgb(229 225 233);
-  --surface: rgb(20 19 24);
-  --on-surface: rgb(229 225 233);
-  --surface-variant: rgb(71 70 79);
-  --on-surface-variant: rgb(201 197 208);
-  --outline: rgb(146 143 153);
-  --outline-variant: rgb(71 70 79);
-  --shadow: rgb(0 0 0);
-  --scrim: rgb(0 0 0);
-  --inverse-surface: rgb(229 225 233);
-  --inverse-on-surface: rgb(49 48 54);
-  --inverse-primary: rgb(93 87 145);
-  --primary-fixed: rgb(228 223 255);
-  --on-primary-fixed: rgb(25 18 73);
-  --primary-fixed-dim: rgb(198 191 255);
-  --on-primary-fixed-variant: rgb(69 64 119);
-  --secondary-fixed: rgb(228 223 249);
-  --on-secondary-fixed: rgb(27 25 44);
-  --secondary-fixed-dim: rgb(200 195 220);
-  --on-secondary-fixed-variant: rgb(71 68 89);
-  --tertiary-fixed: rgb(255 216 232);
-  --on-tertiary-fixed: rgb(48 17 34);
-  --tertiary-fixed-dim: rgb(236 184 207);
-  --on-tertiary-fixed-variant: rgb(97 59 78);
-  --surface-dim: rgb(20 19 24);
-  --surface-bright: rgb(58 56 62);
-  --surface-container-lowest: rgb(14 14 19);
-  --surface-container-low: rgb(28 27 32);
-  --surface-container: rgb(32 31 37);
-  --surface-container-high: rgb(42 41 47);
-  --surface-container-highest: rgb(53 52 58);
+  --primary: rgb(50, 50, 50);
+  --surface-tint: rgb(50, 50, 50);
+  --on-primary: rgb(240, 240, 240);
+  --primary-container: rgb(70, 70, 70);
+  --on-primary-container: rgb(220, 220, 220);
+  --secondary: rgb(70, 70, 70);
+  --on-secondary: rgb(240, 240, 240);
+  --secondary-container: rgb(90, 90, 90);
+  --on-secondary-container: rgb(220, 220, 220);
+  --tertiary: rgb(90, 90, 90);
+  --on-tertiary: rgb(240, 240, 240);
+  --tertiary-container: rgb(110, 110, 110);
+  --on-tertiary-container: rgb(220, 220, 220);
+  --error: rgb(255, 100, 100);
+  --on-error: rgb(255, 255, 255);
+  --error-container: rgb(150, 0, 0);
+  --on-error-container: rgb(255, 200, 200);
+  --background: rgb(30, 30, 30);
+  --on-background: rgb(220, 220, 220);
+  --surface: rgb(30, 30, 30);
+  --on-surface: rgb(220, 220, 220);
+  --surface-variant: rgb(50, 50, 50);
+  --on-surface-variant: rgb(200, 200, 200);
+  --outline: rgb(100, 100, 100);
+  --outline-variant: rgb(50, 50, 50);
+  --shadow: rgb(0, 0, 0);
+  --scrim: rgb(0, 0, 0);
+  --inverse-surface: rgb(220, 220, 220);
+  --inverse-on-surface: rgb(50, 50, 50);
+  --inverse-primary: rgb(70, 70, 70);
+  --primary-fixed: rgb(220, 220, 220);
+  --on-primary-fixed: rgb(50, 50, 50);
+  --primary-fixed-dim: rgb(200, 200, 200);
+  --on-primary-fixed-variant: rgb(70, 70, 70);
+  --secondary-fixed: rgb(220, 220, 220);
+  --on-secondary-fixed: rgb(50, 50, 50);
+  --secondary-fixed-dim: rgb(200, 200, 200);
+  --on-secondary-fixed-variant: rgb(70, 70, 70);
+  --tertiary-fixed: rgb(200, 200, 200);
+  --on-tertiary-fixed: rgb(50, 50, 50);
+  --tertiary-fixed-dim: rgb(180, 180, 180);
+  --on-tertiary-fixed-variant: rgb(70, 70, 70);
+  --surface-dim: rgb(30, 30, 30);
+  --surface-bright: rgb(60, 60, 60);
+  --surface-container-lowest: rgb(20, 20, 20);
+  --surface-container-low: rgb(40, 40, 40);
+  --surface-container: rgb(50, 50, 50);
+  --surface-container-high: rgb(60, 60, 60);
+  --surface-container-highest: rgb(70, 70, 70);
 }
-
 
 
 html {

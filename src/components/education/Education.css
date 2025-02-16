@@ -15,7 +15,8 @@
   flex-grow: 1;
   margin-inline: 10px;
   padding: 20px;
-  background-color: var(--on-secondary);
+  border: 1px solid var(--outline);
+  background-color: var(--primary-container);
   border-radius: 10px;
 }
 
@@ -28,6 +29,12 @@
   margin-top: 15px;
   font-size: 26px;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .root-ul {
+    flex-direction: column-reverse;
+  }
 }
 
 .date-edu {

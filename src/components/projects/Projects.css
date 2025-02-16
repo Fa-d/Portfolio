@@ -6,12 +6,16 @@
 
 .item-root {
     padding: 30px;
-    background-color: var(--surface-container-highest);
+    border: 2px solid var(--primary);
     border-radius: 10px;
 }
 
+.item-root:hover {
+    background-color: var(--surface-container-high);
+}
+
+
 .title-root {
-    background-color: var(--primary-container);
     display: flex;
     color: var(--on-background);
     flex-direction: column;
@@ -27,7 +31,7 @@
 }
 
 .img-desc {
-    cursor:pointer;
+    cursor: pointer;
     height: 30px;
     width: 30px;
     margin-right: 10px;

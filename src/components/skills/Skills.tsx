@@ -5,7 +5,7 @@ import "./Skills.css"
 const Skills: React.FC<{ items: SkillsProps[] }> = ({ items }) => {
     return (
         <div className="skils-root">
-            <h3 className="title">My Professional Skills</h3>
+            <h3 className="title">Works with</h3>
             <div className="skill-root">
                 {
                     items.map((item =>
