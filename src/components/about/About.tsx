@@ -21,9 +21,9 @@ export default function About() {
                     </p>
 
                     <div className='connect-btn'>
-                        <h4>Connect with me on:</h4>
-                        {ContactItems()}
-                    </div>
+                    <h4 style={{ fontFamily: 'Arial, sans-serif', fontSize: '1.25rem', color: '#444' }}>Connect with me on:</h4>
+                    {ContactItems()}
+                </div>
 
                 </div>
                 <div className="about-img">
