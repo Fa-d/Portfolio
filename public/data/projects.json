@@ -1,0 +1,86 @@
+[
+  {
+    "name": "RickandMorty ",
+    "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
+    "languages": [
+      {
+        "logo": "/assets/kotlin.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/RickandMorty"
+      }
+    ]
+  },
+  {
+    "name": "URLEncryption  ",
+    "desc": "Encrypting network data within compiled binary",
+    "languages": [
+      {
+        "logo": "/assets/cpp.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/java.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/URLEncryption"
+      }
+    ]
+  },
+  {
+    "name": "Portfolio  ",
+    "desc": "The portfolio you are currently visiting.",
+    "languages": [
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/jscript.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/Portfolio"
+      },
+      {
+        "logo": "/assets/live.png",
+        "url": "https://sadakat.dev"
+      }
+    ]
+  },
+  {
+    "name": "VPNSDK   ",
+    "desc": "This project ensembles the basic features of all protocols.",
+    "languages": [
+      {
+        "logo": "/assets/java.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/kotlin.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/cpp.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/VPNSDK"
+      }
+    ]
+  }
+]

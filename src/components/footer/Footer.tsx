@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import arrow from '../../assets/up-arrow.png'
 import { ContactItems } from '../contactItems/ContactItems';
 
+const arrowImgPath = '/assets/up-arrow.png';
+
+interface SiteStrings {
+    FullName?: string;
+    // Add other string properties if needed by Footer in future
+}
 
 const Footer: React.FC = () => {
     const [time, setTime] = useState(new Date());
+    const [siteStrings, setSiteStrings] = useState<SiteStrings>({});
+    const [loadingStrings, setLoadingStrings] = useState<boolean>(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,6 +21,25 @@ const Footer: React.FC = () => {
             setTime(new Date());
         }, 1000);
 
+        // Fetch site strings
+        const fetchStrings = async () => {
+            try {
+                const response = await fetch('/data/strings.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch site strings');
+                }
+                const data: SiteStrings = await response.json();
+                setSiteStrings(data);
+            } catch (error) {
+                console.error("Error fetching site strings for Footer:", error);
+                // Set default or handle error appropriately
+                setSiteStrings({ FullName: "MD. SADAKAT HUSSAIN FAHAD" }); // Fallback
+            } finally {
+                setLoadingStrings(false);
+            }
+        };
+
+        fetchStrings();
         return () => clearInterval(intervalId);
     }, []);
 
@@ -24,16 +49,19 @@ const Footer: React.FC = () => {
             behavior: 'smooth',
         });
     };
+
+    // Display a loading state or default content until strings are loaded
+    const displayName = loadingStrings ? "Loading..." : (siteStrings.FullName || "MD. SADAKAT HUSSAIN FAHAD");
+
     return (
         <div className="container">
             <div className='left-cont'>
                 <h3>Contact</h3>
                 {ContactItems()}
                 <div className="copyright">
-                    <p>© 2024</p>
-                    <h1>MD. SADAKT HUSSAIN FAHAD</h1>
+                    <p>© {new Date().getFullYear()}</p> {/* Dynamic year */}
+                    <h1>{displayName}</h1>
                 </div>
-
             </div>
             <div className='right-cont'>
                 <div className="navigation">
@@ -80,7 +108,7 @@ const Footer: React.FC = () => {
                         <p>{time.toLocaleTimeString()}</p>
                     </div>
                     <div className="go-top">
-                        <img src={arrow} onClick={scrollToTop} />
+                        <img src={arrowImgPath} onClick={scrollToTop} alt="Go to top" />
                     </div>
 
                 </div>

@@ -1,15 +1,13 @@
-import careerStepsData from '../../data/CareerData'
-import educationStepsData from '../../data/EducationData'
-import About from '../about/About'
-import CareerSteps from '../experience/Experience'
-import Education from '../education/Education'
+import React from 'react'; // Added React import for completeness
+import About from '../about/About';
+import CareerSteps from '../experience/Experience';
+import Education from '../education/Education';
 import ReactGA from 'react-ga4';
-import Projects from '../projects/Projects'
-import { allProjects } from '../../data/ProjectData'
-import ArticleNote from '../articles/ArticleNote'
-import { articleData } from '../../data/ArticleNote'
-import Skills from '../skills/Skills'
-import { skillsList } from '../../data/SkillsData'
+import Projects from '../projects/Projects';
+import ArticleNote from '../articles/ArticleNote';
+import Skills from '../skills/Skills';
+
+// All direct data imports from '../../data/...' are now removed
 
 
 export default function Main() {
@@ -19,17 +17,19 @@ export default function Main() {
     <>
       <About />
  
-      <Skills items={skillsList} />
+      <Skills /> {/* No more 'items' prop */}
  
-      <Projects items={allProjects} />
+      <Projects /> {/* No more 'items' prop */}
    
-      <CareerSteps steps={careerStepsData} />
+      <CareerSteps /> {/* No more 'steps' prop */}
 
-      <ArticleNote items={articleData} isArticle={true} />
+       {/* The /articles route in App.tsx handles the main "Articles" display. */}
+       {/* This instance in Main.tsx is for "Notes" or other purposes. */}
+       <ArticleNote isArticle={false} /> {/* Fetches notes.json */}
 
-      <Education steps={educationStepsData} />
+       <Education /> {/* No more 'steps' prop */}
 
-      {/* <ArticleNote items={noteData} isArticle={false} /> */}
+      {/* The above line replaces the old articleData instance and the commented noteData one. */}
     </>
   )
 }
