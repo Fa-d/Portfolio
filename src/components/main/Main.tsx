@@ -1,15 +1,12 @@
-import careerStepsData from '../../data/CareerData'
-import educationStepsData from '../../data/EducationData'
-import About from '../about/About'
-import CareerSteps from '../experience/Experience'
-import Education from '../education/Education'
+import About from './About';
+import CareerSteps from './Experience';
+import Education from '../education/Education';
 import ReactGA from 'react-ga4';
-import Projects from '../projects/Projects'
-import { allProjects } from '../../data/ProjectData'
-import ArticleNote from '../articles/ArticleNote'
-import { articleData } from '../../data/ArticleNote'
-import Skills from '../skills/Skills'
-import { skillsList } from '../../data/SkillsData'
+import Projects from './projects/Projects';
+import ArticleNote from './ArticleNote';
+import Skills from './Skills';
+
+// All direct data imports from '../../data/...' are now removed
 
 
 export default function Main() {
@@ -19,17 +16,16 @@ export default function Main() {
     <>
       <About />
  
-      <Skills items={skillsList} />
- 
-      <Projects items={allProjects} />
+      <Skills /> 
+      <Projects /> 
    
-      <CareerSteps steps={careerStepsData} />
+      <CareerSteps /> 
 
-      <ArticleNote items={articleData} isArticle={true} />
+       <ArticleNote isArticle={false} /> 
 
-      <Education steps={educationStepsData} />
+       <Education />  
 
-      {/* <ArticleNote items={noteData} isArticle={false} /> */}
+
     </>
   )
 }

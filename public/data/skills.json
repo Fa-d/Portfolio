@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Kotlin",
+    "image": "/assets/kotlin.png"
+  },
+  {
+    "title": "Android",
+    "image": "/assets/android.png"
+  },
+  {
+    "title": "Git",
+    "image": "/assets/git.png"
+  },
+  {
+    "title": "TypeScript",
+    "image": "/assets/typescript.png"
+  },
+  {
+    "title": "JavaScript",
+    "image": "/assets/jscript.png"
+  },
+  {
+    "title": "C++",
+    "image": "/assets/cpp.png"
+  },
+  {
+    "title": "Java",
+    "image": "/assets/java.png"
+  },
+  {
+    "title": "Node",
+    "image": "/assets/node.png"
+  },
+  {
+    "title": "React",
+    "image": "/assets/react.png"
+  },
+  {
+    "title": "REST-API",
+    "image": "/assets/api.png"
+  },
+  {
+    "title": "MySQL",
+    "image": "/assets/mysql.png"
+  }
+]
