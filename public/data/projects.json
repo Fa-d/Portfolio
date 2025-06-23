@@ -1,5 +1,25 @@
 [
   {
+    "name": "JobSage ",
+    "desc": "A website that works With AI for job recommendation, CV Andlysis, Application Tracking etc., Built With AI, for AI jobs",
+    "languages": [
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/jscript.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/live.png",
+        "url": "https://jobsage.sadakat.dev"
+      }
+    ]
+  },
+  {
     "name": "RickandMorty ",
     "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
     "languages": [

@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
+import Avatar from '@mui/material/Avatar';
+import WorkIcon from '@mui/icons-material/Work';
 
 // Image paths are now direct URLs to public/assets
 const idImgPath = '/assets/identification-card.png';
@@ -60,31 +62,68 @@ const CareerSteps: React.FC = () => {
     }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>EXPERIENCE</Typography>
-            <Stack spacing={4} sx={{ width: '100%' }}>
-                {steps.map((item, index) => (
-                    <Paper key={item.company || index} elevation={3} sx={{ p: 3, borderRadius: 2, width: '100%' }}>
-                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
-                            <Box component="img" src={idImgPath} alt="Role icon" sx={{ width: 30, height: 30, mr: 2 }} />
-                            <Typography variant="h5" sx={{ fontWeight: 700 }}>{item.role}</Typography>
+        <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4 }}>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Experience</Typography>
+            <Box sx={{ position: 'relative', pl: { xs: 4, md: 8 } }}>
+                {/* Continuous vertical timeline line (always full height) */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        left: { xs: 12, md: 12 },
+                        top: 0,
+                        bottom: 0,
+                        width: 2,
+                        bgcolor: 'primary.main',
+                        zIndex: 0,
+                    }}
+                />
+                {steps.map((item, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', mb: 6, position: 'relative', minHeight: 80 }}>
+                        {/* Unique dot with icon */}
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                left: { xs: 0, md: 0 },
+                                top: 32,
+                                width: 24,
+                                height: 24,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                zIndex: 1,
+                                border: '2px solid',
+                                borderColor: 'primary.main',
+                                borderRadius: '50%',
+                                bgcolor: 'background.paper',
+                            }}
+                        >
+                            <Avatar sx={{ bgcolor: 'primary.main', width: 20, height: 20 }}>
+                                <WorkIcon fontSize="small" />
+                            </Avatar>
                         </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
-                            <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
-                            <Typography variant="h6" sx={{ fontWeight: 600, mr: 4 }}>{item.company}</Typography>
-                            <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: 4, mr: 1 }} />
-                            <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
-                        </Box>
-                        {/* Uncomment if you want to show description */}
-                        {/* <Typography variant="body1" sx={{ mt: 2 }}>{item.description}</Typography> */}
-                        <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
-                            {item.skills.map((skill, skillIndex) => (
-                                <Chip key={skillIndex} label={skill} sx={{ mb: 1 }} />
-                            ))}
-                        </Stack>
-                    </Paper>
+                        {/* Card */}
+                        <Paper sx={{ ml: { xs: 6, md: 8 }, p: 3, borderRadius: 2, width: '100%' }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
+                                <Box component="img" src={idImgPath} alt="Role icon" sx={{ width: 30, height: 30, mr: 2 }} />
+                                <Typography variant="h5" sx={{ fontWeight: 700 }}>{item.role}</Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
+                                <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
+                                <Typography variant="h6" sx={{ fontWeight: 600, mr: 4 }}>{item.company}</Typography>
+                                <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: 4, mr: 1 }} />
+                                <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                            </Box>
+                            {/* Uncomment if you want to show description */}
+                            {/* <Typography variant="body1" sx={{ mt: 2 }}>{item.description}</Typography> */}
+                            <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
+                                {item.skills.map((skill, skillIndex) => (
+                                    <Chip key={skillIndex} label={skill} sx={{ mb: 1 }} />
+                                ))}
+                            </Stack>
+                        </Paper>
+                    </Box>
                 ))}
-            </Stack>
+            </Box>
         </Box>
     );
 };

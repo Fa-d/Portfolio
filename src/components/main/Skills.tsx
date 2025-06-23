@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 // Define the interface locally
 export interface SkillsProps {
@@ -34,33 +38,46 @@ const Skills: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading skills...</p>;
+        return <Typography>Loading skills...</Typography>;
     }
 
     if (error) {
-        return <p style={{ color: 'red' }}>Error: {error}</p>;
+        return <Typography color="error">Error: {error}</Typography>;
     }
 
     if (items.length === 0) {
-        return <p>No skills found.</p>;
+        return <Typography>No skills found.</Typography>;
     }
 
     return (
-        <div className="skils-root">
-            <h3 className="title">Works with</h3>
-            <div className="skill-root">
+        <Box sx={{ maxWidth: 700, mx: 'auto', my: 4, px: 2 }}>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center' , color: 'text.primary'  }}>Skills</Typography>
+            <Grid container spacing={2} justifyContent="center">
                 {items.map((item, index) => (
-                    <div className="skill-item-container" key={item.title || index}>
-                        <img
-                            style={{ height: 30, width: 30, marginInlineEnd: 20 }}
-                            src={item.image}
-                            alt={item.title} // Added alt text
-                        />
-                        {item.title}
-                    </div>
+                    <Grid key={item.title || index}>
+                        <Paper
+                            elevation={2}
+                            sx={{
+                                p: 2,
+                                display: 'flex',
+                                alignItems: 'center',
+                                borderRadius: 3,
+                                minHeight: 60,
+                                transition: 'box-shadow 0.2s, transform 0.2s',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    boxShadow: 8,
+                                    transform: 'translateY(-1px) scale(1.03)',
+                                },
+                            }}
+                        >
+                            <Box component="img" src={item.image} alt={item.title} sx={{ height: 36, width: 36, mr: 2 }} />
+                            <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>{item.title}</Typography>
+                        </Paper>
+                    </Grid>
                 ))}
-            </div>
-        </div>
+            </Grid>
+        </Box>
     );
 };
 

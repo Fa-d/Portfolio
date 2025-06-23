@@ -62,32 +62,35 @@ export default function About() {
     }
 
     return (
-        <Box sx={{ position: 'relative', bgcolor: 'background.paper', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, minHeight: '90vh' }}>
+        <Box sx={{ position: 'relative', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, minHeight: '90vh' }}>
             <Grid container spacing={4} alignItems="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }}>
-                <Grid item xs={12} md={7}>
+                <Grid >
                     <Box sx={{ pr: { md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <Typography variant="h5" sx={{ whiteSpace: 'pre-line', mb: 2 }}>
+                        <Typography variant="h5" sx={{ whiteSpace: 'pre-line', mb: 2, color: 'text.secondary' }}>
                             {strings.AboutMeDescription || ''}
                         </Typography>
-                        <Typography variant="h3" sx={{ fontWeight: 600, mb: 1 }}>
+                        <Typography variant="h4" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>
                             {strings.FullName || 'Your Name'}
+                        </Typography>
+                        <Typography variant="h4" sx={{ fontWeight: 500, mb: 1, color: 'text.primary' }}>
+                            {strings.Position || 'Your Position'}
+                        </Typography>
+                        <Typography variant="h5" sx={{ color: 'text.secondary', mb: 10 }}>
+                            {strings.Subtitle || 'Your Subtitle'}
                         </Typography>
                         <Typography variant="h6" sx={{ whiteSpace: 'pre-line', mb: 2, color: 'text.secondary' }}>
                             {strings.AboutMeDescription2 || ''}
                         </Typography>
-                        <Typography variant="h4" sx={{ fontWeight: 500, mb: 1 }}>
-                            {strings.Position || 'Your Position'}
-                        </Typography>
-                        <Typography variant="h5" sx={{ color: 'text.secondary', mb: 3 }}>
-                            {strings.Subtitle || 'Your Subtitle'}
-                        </Typography>
-                        <Paper elevation={2} sx={{ display: 'flex', flexDirection: 'column', borderRadius: 2, boxShadow: 1, color: 'text.primary', width: 'fit-content', mt: 3, px: 3, py: 2 }}>
+
+                        <Paper 
+                            sx={{ display: 'flex', flexDirection: 'column', borderRadius: 2, color: 'text.primary', width: 'fit-content', mt: 3, px: 3, py: 2 }}
+                        >
                             <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>{strings.ExportTitle || 'Connect'}</Typography>
                             <ContactItems />
                         </Paper>
                     </Box>
                 </Grid>
-                <Grid item xs={12} md={5} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Grid sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {animationData && (
                         <Lottie
                             loop={true}

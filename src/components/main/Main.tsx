@@ -1,6 +1,6 @@
 import About from './About';
 import CareerSteps from './Experience';
-import Education from '../education/Education';
+import Education from './Education';
 import ReactGA from 'react-ga4';
 import Projects from './projects/Projects';
 import ArticleNote from './ArticleNote';
@@ -21,7 +21,7 @@ export default function Main() {
    
       <CareerSteps /> 
 
-       <ArticleNote isArticle={false} /> 
+       <ArticleNote isArticle={true} /> 
 
        <Education />  
 

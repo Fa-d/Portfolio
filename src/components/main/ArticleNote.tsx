@@ -53,8 +53,8 @@ const ArticleNote: React.FC<{ isArticle: boolean }> = ({ isArticle }) => {
     }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>
+        <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4, display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center' , color: 'text.primary'  }}>
                 {isArticle ? 'ARTICLES' : 'NOTES'}
             </Typography>
             {items.map((item, index) => (

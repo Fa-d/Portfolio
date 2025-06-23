@@ -51,11 +51,11 @@ const Education: React.FC = () => {
     }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, position: 'relative' }}>
-            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>EDUCATION</Typography>
-            <Grid container spacing={4} justifyContent="space-around">
+        <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, position: 'relative' }}>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Education</Typography>
+            <Grid container spacing={4} justifyContent="flex-start">
                 {steps.map(item => (
-                    <Grid  key={item.institution}>
+                    <Grid key={item.institution}>
                         <Paper elevation={2} sx={{ p: 3, borderRadius: 2, height: '100%' }}>
                             <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>{item.degree}</Typography>
                             <Typography variant="subtitle1" sx={{ my: 2, fontSize: 20 }}>{item.date}</Typography>

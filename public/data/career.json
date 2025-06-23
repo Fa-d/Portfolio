@@ -10,7 +10,9 @@
       "Datastore",
       "Ktor",
       "Flow",
-      "Coroutine"
+      "Coroutine",
+      "Chrome Extension",
+      "React"
     ]
   },
   {

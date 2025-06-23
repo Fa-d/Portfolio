@@ -28,7 +28,30 @@ interface ThemeProviderProps {
 }
 
 const getMuiTheme = (mode: string) => createTheme({
-    palette: { mode: mode === 'dark' ? 'dark' : 'light' },
+    palette: {
+        mode: mode === 'dark' ? 'dark' : 'light',
+        background: {
+            default: mode === 'dark' ? '#181a1b' : '#f5f6fa',
+            paper: mode === 'dark' ? '#23272b' : '#f9fafb', // slightly different from default
+        },
+        // Central custom colors
+        custom: {
+            button: mode === 'dark' ? '#1976d2' : '#1976d2', // Example, change as needed
+            footer: mode === 'dark' ? '#23272b' : '#222831', // Example, change as needed
+        } as any,
+    },
+    components: {
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    boxShadow: 'none',
+                    border: '0px solid',
+                    borderColor: 'divider',
+                    backgroundImage: 'none',
+                },
+            },
+        },
+    },
 });
 
 export const ThemeContextProvider: React.FC<ThemeProviderProps> = ({ children }) => {

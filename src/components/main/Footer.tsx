@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const arrowImgPath = '/assets/up-arrow.png';
 
@@ -20,6 +21,7 @@ const Footer: React.FC = () => {
     const [siteStrings, setSiteStrings] = useState<SiteStrings>({});
     const [loadingStrings, setLoadingStrings] = useState<boolean>(true);
     const navigate = useNavigate();
+    const muiTheme = useMuiTheme();
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -59,66 +61,73 @@ const Footer: React.FC = () => {
     const displayName = loadingStrings ? "Loading..." : (siteStrings.FullName || "MD. SADAKAT HUSSAIN FAHAD");
 
     return (
-        <Box component="footer" sx={{ bgcolor: 'secondary.main', color: 'text.primary', p: { xs: 2, md: 5 }, mt: 4 }}>
-            <Grid container spacing={4} justifyContent="space-evenly" alignItems="flex-start">
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h5" gutterBottom>Contact</Typography>
-                    <Box sx={{ mb: 2 }}>
-                        <ContactItems />
-                    </Box>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <Typography variant="body1" sx={{ fontSize: '1.5em' }}>© {new Date().getFullYear()}</Typography>
-                        <Typography variant="h4" sx={{ fontSize: '2em' }}>{displayName}</Typography>
-                    </Box>
-                </Grid>
-                <Grid item xs={12} md={7}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
-                            <Typography variant="h6" gutterBottom>NAVIGATION</Typography>
-                            <Divider sx={{ mb: 1 }} />
-                            <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" onClick={scrollToTop} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>ABOUT</Button>
-                                </li>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/projects')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>PROJECTS</Button>
-                                </li>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/skills')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>SKILLS</Button>
-                                </li>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/articles')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>ARTICLES</Button>
-                                </li>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Typography variant="h6" gutterBottom>RESOURCES</Typography>
-                            <Divider sx={{ mb: 1 }} />
-                            <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" href="https://medium.com/@fsadakathussain" target="_blank" sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>MEDIUM</Button>
-                                </li>
-                                <li>
-                                    <Button fullWidth variant="text" color="inherit" href="https://codeforces.com/profile/faddy_fahad" target="_blank" sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1 }}>CONTESTS</Button>
-                                </li>
-                            </Box>
+        // @ts-expect-error: custom is a valid extension for our palette
+        <Box component="footer" sx={{ bgcolor: muiTheme.palette.custom.footer, color: '#fff', px: { xs: 1, md: 0 }, py: { xs: 2, md: 5 } }}>
+            <Box sx={{ maxWidth: 'lg', mx: 'auto', width: '100%' }}>
+                <Grid container spacing={4} direction={{ xs: 'column', md: 'row' }} justifyContent="space-around" alignItems={{ xs: 'stretch', md: 'flex-start' }}>
+                    {/* Contact Section */}
+                    <Grid>
+                        <Typography variant="h5" gutterBottom sx={{ color: '#fff' }}>Contact</Typography>
+                        <Box sx={{ mb: 2 }}>
+                            <ContactItems />
+                        </Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'flex-start' }, mt: 2 }}>
+                            <Typography variant="body1" sx={{ fontSize: '1.2em', color: '#fff' }}>© {new Date().getFullYear()}</Typography>
+                            <Typography variant="h6" sx={{ fontSize: '1.3em', wordBreak: 'break-word', color: '#fff' }}>{displayName}</Typography>
+                        </Box>
+                    </Grid>
+                    {/* Navigation and Resources Section */}
+                    <Grid>
+                        <Grid container spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+                            <Grid item xs={12} sm={6}>
+                                <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>NAVIGATION</Typography>
+                                <Divider sx={{ mb: 1, borderColor: '#fff' }} />
+                                <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" onClick={scrollToTop} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>ABOUT</Button>
+                                    </li>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/projects')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>PROJECTS</Button>
+                                    </li>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/skills')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>SKILLS</Button>
+                                    </li>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/articles')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>ARTICLES</Button>
+                                    </li>
+                                </Box>
+                            </Grid>
+                            <Grid>
+                                <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>RESOURCES</Typography>
+                                <Divider sx={{ mb: 1, borderColor: '#fff' }} />
+                                <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" href="https://medium.com/@fsadakathussain" target="_blank" sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>MEDIUM</Button>
+                                    </li>
+                                    <li>
+                                        <Button fullWidth variant="text" color="inherit" href="https://codeforces.com/profile/faddy_fahad" target="_blank" sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>CONTESTS</Button>
+                                    </li>
+                                </Box>
+                            </Grid>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={2} sx={{ mt: 2 }} alignItems="center">
-                        <Grid item xs={6}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'flex-end' } }}>
-                                <Typography variant="h6" sx={{ mb: 0.5 }}>LOCAL TIME</Typography>
-                                <Typography variant="body1">{time.toLocaleTimeString()}</Typography>
-                            </Box>
-                        </Grid>
-                        <Grid item xs={6} sx={{ display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
-                            <IconButton onClick={scrollToTop} color="primary" sx={{ width: 70 }}>
-                                <img src={arrowImgPath} alt="Go to top" style={{ width: 30, height: 30 }} />
-                            </IconButton>
+                    <Grid>
+                        <Grid container spacing={2} sx={{ mt: 2 }} alignItems="center">
+                            <Grid>
+                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'flex-end' } }}>
+                                    <Typography variant="h6" sx={{ mb: 0.5, color: '#fff' }}>LOCAL TIME</Typography>
+                                    <Typography variant="body1" sx={{ color: '#fff' }}>{time.toLocaleTimeString()}</Typography>
+                                </Box>
+                            </Grid>
+                            <Grid sx={{ display: 'flex', justifyContent: { xs: 'flex-end', md: 'flex-end' } }}>
+                                <IconButton onClick={scrollToTop} color="primary" sx={{ width: 50, color: '#fff' }}>
+                                    <img src={arrowImgPath} alt="Go to top" style={{ width: 30, height: 30, filter: 'invert(1)' }} />
+                                </IconButton>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </Box>
     );
 };

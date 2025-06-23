@@ -6,7 +6,7 @@ import { ProjectLinkProps } from "./Projects";
 
 const ProjectLinks: React.FC<{ items: ProjectLinkProps[] }> = ({ items }) => {
     function openInNewTab(url: string): void {
-        throw new Error("Function not implemented.");
+        window.open(url, '_blank', 'noopener,noreferrer');
     }
 
     return (

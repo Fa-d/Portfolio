@@ -19,14 +19,38 @@ import ManageStrings from '../components/admin/ManageStrings.tsx';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Projects from '../components/main/projects/Projects.tsx';
-import withSplashScreen from '../components/main/withSplashScreen.tsx';
+import { useState, useEffect } from 'react';
+import Lottie from 'react-lottie-player';
+import { useLoading } from '../utils/LoadingContext';
 
 function App() {
+  const { loading } = useLoading();
+  const [animationData, setAnimationData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/assets/connecting.json')
+      .then(res => res.json())
+      .then(setAnimationData);
+  }, []);
+
+  if (loading || !animationData) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Lottie
+          loop
+          play
+          animationData={animationData}
+          style={{ width: 180, height: 180 }}
+        />
+      </Box>
+    );
+  }
+
   return (
     <BrowserRouter>
       <Header />
       <Box sx={{ minHeight: '80vh', bgcolor: 'background.default' }}>
-        <Container maxWidth="lg" sx={{ pt: 4, pb: 4 }}>
+        <Container maxWidth={false} disableGutters>
           <Routes>
             <Route path="/skills" element={<Skills />} />
             <Route path="/" element={<Main />} />
@@ -35,8 +59,8 @@ function App() {
 
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminLogin />} />
-            <Route element={<ProtectedRoute />}> {/* Protects all nested routes */}
-              <Route path="/admin/dashboard" element={<AdminDashboard />}> {/* AdminDashboard has an <Outlet> */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin/dashboard" element={<AdminDashboard />}>
                 <Route index element={<div>Please select a section to manage from the sidebar.</div>} />
                 <Route path="articles" element={<ManageArticles />} />
                 <Route path="notes" element={<ManageNotes />} />
@@ -55,4 +79,6 @@ function App() {
   );
 }
 
-export default withSplashScreen(App);
+export default App;
+
+
