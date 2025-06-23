@@ -1,11 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from '../components/main/Main.tsx';
-import Header from '../components/header/Header.tsx';
-import withSplashScreen from "../components/splash/withSplashScreen.tsx";
-import Footer from '../components/footer/Footer.tsx';
-import Projects from '../components/projects/Projects.tsx';
-import ArticleNote from '../components/articles/ArticleNote.tsx';
-import Skills from '../components/skills/Skills.tsx';
+import Header from '../components/main/Header.tsx';
+import Footer from '../components/main/Footer.tsx';
+import ArticleNote from '../components/main/ArticleNote.tsx';
+import Skills from '../components/main/Skills.tsx';
 
 import AdminLogin from '../components/admin/AdminLogin.tsx';
 import AdminDashboard from '../components/admin/AdminDashboard.tsx';
@@ -20,6 +18,8 @@ import ManageStrings from '../components/admin/ManageStrings.tsx';
 
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import Projects from '../components/main/projects/Projects.tsx';
+import withSplashScreen from '../components/main/withSplashScreen.tsx';
 
 function App() {
   return (

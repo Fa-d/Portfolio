@@ -1,13 +1,16 @@
 import React, { createContext, useContext, useState, useLayoutEffect, ReactNode } from "react";
+import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 
 interface ThemeContextType {
     theme: string;
     toggleTheme: () => void;
+    muiTheme: Theme;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
     theme: "light",
     toggleTheme: () => { },
+    muiTheme: createTheme({ palette: { mode: 'light' } }),
 });
 
 export const useTheme = () => {
@@ -24,10 +27,15 @@ interface ThemeProviderProps {
     children: ReactNode;
 }
 
+const getMuiTheme = (mode: string) => createTheme({
+    palette: { mode: mode === 'dark' ? 'dark' : 'light' },
+});
+
 export const ThemeContextProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const initialTheme = () => localStorage.getItem("PORT_THEME") || "light";
 
     const [theme, setTheme] = useState<string>(initialTheme);
+    const muiTheme = getMuiTheme(theme);
 
     const toggleTheme = () =>
         setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -45,8 +53,10 @@ export const ThemeContextProvider: React.FC<ThemeProviderProps> = ({ children })
     }, [theme]);
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
+        <ThemeContext.Provider value={{ theme, toggleTheme, muiTheme }}>
+            <ThemeProvider theme={muiTheme}>
+                {children}
+            </ThemeProvider>
         </ThemeContext.Provider>
     );
 };

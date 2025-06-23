@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Lottie from 'react-lottie-player';
-import { ContactItems } from '../contactItems/ContactItems';
+import { ContactItems } from './ContactItems';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';

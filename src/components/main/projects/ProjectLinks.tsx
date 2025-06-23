@@ -2,10 +2,13 @@ import React from "react";
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import { openInNewTab } from "../../utils/NewTab";
 import { ProjectLinkProps } from "./Projects";
 
 const ProjectLinks: React.FC<{ items: ProjectLinkProps[] }> = ({ items }) => {
+    function openInNewTab(url: string): void {
+        throw new Error("Function not implemented.");
+    }
+
     return (
         <Stack direction="row" spacing={1}>
             {items.map((item, idx) => (

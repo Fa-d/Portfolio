@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Education.css';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 // Define the interface locally
 export interface EducationProps {
@@ -36,30 +39,32 @@ const Education: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading education...</p>;
+        return <Typography>Loading education...</Typography>;
     }
 
     if (error) {
-        return <p style={{ color: 'red' }}>Error: {error}</p>;
+        return <Typography color="error">Error: {error}</Typography>;
     }
 
     if (steps.length === 0) {
-        return <p>No education data found.</p>;
+        return <Typography>No education data found.</Typography>;
     }
 
     return (
-        <div className='content-edu'>
-            <h3 className="title">EDUCATION</h3>
-            <ul className='root-ul'>
+        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, position: 'relative' }}>
+            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>EDUCATION</Typography>
+            <Grid container spacing={4} justifyContent="space-around">
                 {steps.map(item => (
-                    <li key={item.institution} className='item_root-edu'>
-                        <div className='degree-title'>{item.degree}</div>
-                        <div className='date-edu'>{item.date}</div>
-                        <div className='inistitute'>{item.institution}</div>
-                    </li>
+                    <Grid  key={item.institution}>
+                        <Paper elevation={2} sx={{ p: 3, borderRadius: 2, height: '100%' }}>
+                            <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>{item.degree}</Typography>
+                            <Typography variant="subtitle1" sx={{ my: 2, fontSize: 20 }}>{item.date}</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>{item.institution}</Typography>
+                        </Paper>
+                    </Grid>
                 ))}
-            </ul>
-        </div>
+            </Grid>
+        </Box>
     );
 };
 

@@ -9,13 +9,12 @@ import Stack from '@mui/material/Stack';
 
 // Define interfaces locally or move to a shared types file
 export interface ProjectLanguageProps {
-    logo: string; // Path to image, e.g., /assets/kotlin.png
-    url: string;  // This was empty in original data, but keeping for structure
+    logo: string; 
+    url: string; 
 }
-
 export interface ProjectLinkProps {
-    logo: string; // Path to image, e.g., /assets/github.png
-    url: string;  // URL to the project or live site
+    logo: string;
+    url: string;  
 }
 
 export interface ProjectProps {
@@ -69,7 +68,7 @@ const Projects: React.FC = () => {
             <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>PROJECTS</Typography>
             <Grid container spacing={4}>
                 {items.map((item, index) => (
-                    <Grid item xs={12} md={6} key={item.name || index}>
+                    <Grid key={item.name || index}>
                         <Paper elevation={3} sx={{ p: 3, borderRadius: 2, height: '100%' }}>
                             <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>{item.name}</Typography>
                             <Typography variant="body1" sx={{ mb: 2 }}>{item.desc}</Typography>
