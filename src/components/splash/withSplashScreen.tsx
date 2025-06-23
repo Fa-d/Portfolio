@@ -1,12 +1,20 @@
 import React, { Component, ReactElement } from "react";
-import logo from '../../assets/logo.png'
+import logo from '../../../public/assets/logo.png'
+import Box from '@mui/material/Box';
 
-import "./Splash.css"
 function SplashMessage(): ReactElement {
   return (
-    <div  className="center-image">
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        bgcolor: 'background.paper',
+      }}
+    >
       <img src={logo} alt="logo" />
-    </div>
+    </Box>
   );
 }
 

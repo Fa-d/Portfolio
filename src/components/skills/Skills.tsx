@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "./Skills.css";
 
 // Define the interface locally
 export interface SkillsProps {

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ProjectLanguages from "./ProjectLanguages";
 import ProjectLinks from "./ProjectLinks";
-import './Projects.css';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 // Define interfaces locally or move to a shared types file
 export interface ProjectLanguageProps {
@@ -20,7 +24,6 @@ export interface ProjectProps {
     languages: ProjectLanguageProps[];
     references: ProjectLinkProps[];
 }
-
 
 const Projects: React.FC = () => {
     const [items, setItems] = useState<ProjectProps[]>([]);
@@ -49,45 +52,36 @@ const Projects: React.FC = () => {
         fetchData();
     }, []);
 
-
     if (loading) {
-        return <p>Loading projects...</p>;
+        return <Typography>Loading projects...</Typography>;
     }
 
     if (error) {
-        return <p style={{ color: 'red' }}>Error: {error}</p>;
+        return <Typography color="error">Error: {error}</Typography>;
     }
 
     if (items.length === 0) {
-        return <p>No projects found.</p>;
+        return <Typography>No projects found.</Typography>;
     }
 
     return (
-        <div className="title-root">
-            <h3 className="title">PROJECTS</h3>
-            <div className="project-root">
+        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4 }}>
+            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>PROJECTS</Typography>
+            <Grid container spacing={4}>
                 {items.map((item, index) => (
-                    <div className='item-root' key={item.name || index}>
-                        <div className="repo-name-div">
-                            <h4 className="repo-name">
-                                {item.name}
-                            </h4>
-                        </div>
-                        <p className="repo-description">
-                            {item.desc}
-                        </p>
-                        <div className="flexDiv">
-                            <div className="repo-details Leftitem">
+                    <Grid item xs={12} md={6} key={item.name || index}>
+                        <Paper elevation={3} sx={{ p: 3, borderRadius: 2, height: '100%' }}>
+                            <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>{item.name}</Typography>
+                            <Typography variant="body1" sx={{ mb: 2 }}>{item.desc}</Typography>
+                            <Stack direction="row" justifyContent="space-between" alignItems="center">
                                 <ProjectLanguages items={item.languages} />
-                            </div>
-                            <div className="repo-details Rightitem">
                                 <ProjectLinks items={item.references} />
-                            </div>
-                        </div>
-                    </div>
+                            </Stack>
+                        </Paper>
+                    </Grid>
                 ))}
-            </div>
-        </div>
+            </Grid>
+        </Box>
     );
 };
 

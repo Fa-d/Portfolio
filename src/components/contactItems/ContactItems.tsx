@@ -1,60 +1,37 @@
-import './ContactItems.css'
-import linkedin from '../../assets/linkedin.png'
-import github from '../../assets/github.png'
-import whatsapp from '../../assets/whatsapp.png'
-import facebook from '../../assets/facebook.png'
-import email from '../../assets/email.png'
-import x from '../../assets/x.png'
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import linkedin from '../../../public/assets/linkedin.png'
+import github from '../../../public/assets/github.png'
+import whatsapp from '../../../public/assets/whatsapp.png'
+import facebook from '../../../public/assets/facebook.png'
+import email from '../../../public/assets/email.png'
+import x from '../../../public/assets/x.png'
 
 export function ContactItems() {
-    return <ul className='contact_items'>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='mailto:contact@sadakat.dev' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={email} />
-                </div>
-            </a>
-        </li>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='https://www.linkedin.com/in/sadakat-hussain-fahad/' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={linkedin} />
-                </div>
-            </a>
-        </li>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='https://github.com/Fa-d' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={github} />
-                </div>
-            </a>
-        </li>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='https://wa.me/8801749948098' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={whatsapp} />
-                </div>
-            </a>
-        </li>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='https://www.facebook.com/sadakat.hussain.fahad/' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={facebook} />
-                </div>
-            </a>
-        </li>
-        <li>
-            <a style={{ textDecoration: 'none' }}
-                href='https://x.com/faddy_fahad__' target="_blank">
-                <div className='hyperlink-item'>
-                    <img style={{ height: 40, width: 40 }} src={x} />
-                </div>
-            </a>
-        </li>
-    </ul>;
+    const contacts = [
+        { href: 'mailto:contact@sadakat.dev', icon: email, alt: 'Email' },
+        { href: 'https://www.linkedin.com/in/sadakat-hussain-fahad/', icon: linkedin, alt: 'LinkedIn' },
+        { href: 'https://github.com/Fa-d', icon: github, alt: 'GitHub' },
+        { href: 'https://wa.me/8801749948098', icon: whatsapp, alt: 'WhatsApp' },
+        { href: 'https://www.facebook.com/sadakat.hussain.fahad/', icon: facebook, alt: 'Facebook' },
+        { href: 'https://x.com/faddy_fahad__', icon: x, alt: 'X' },
+    ];
+
+    return (
+        <Stack direction="row" spacing={2}>
+            {contacts.map((contact, idx) => (
+                <IconButton
+                    key={contact.href}
+                    component="a"
+                    href={contact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ p: 0 }}
+                >
+                    <Box component="img" src={contact.icon} alt={contact.alt} sx={{ height: 40, width: 40 }} />
+                </IconButton>
+            ))}
+        </Stack>
+    );
 }

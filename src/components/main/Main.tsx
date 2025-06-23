@@ -1,4 +1,3 @@
-import React from 'react'; // Added React import for completeness
 import About from '../about/About';
 import CareerSteps from '../experience/Experience';
 import Education from '../education/Education';

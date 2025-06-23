@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './ArticleNote.css';
 import { openInNewTab } from '../../utils/NewTab';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import Paper from '@mui/material/Paper';
 
 // Define the interface locally or import from a shared types file later
 export interface ArticlesNoteProps {
@@ -38,37 +41,39 @@ const ArticleNote: React.FC<{ isArticle: boolean }> = ({ isArticle }) => {
     }, [isArticle]);
 
     if (loading) {
-        return <p>Loading {isArticle ? 'articles' : 'notes'}...</p>;
+        return <Typography>Loading {isArticle ? 'articles' : 'notes'}...</Typography>;
     }
 
     if (error) {
-        return <p style={{ color: 'red' }}>Error: {error}</p>;
+        return <Typography color="error">Error: {error}</Typography>;
     }
 
     if (items.length === 0) {
-        return <p>No {isArticle ? 'articles' : 'notes'} found.</p>;
+        return <Typography>No {isArticle ? 'articles' : 'notes'} found.</Typography>;
     }
 
     return (
-        <div className="title-root">
-            <h3 className="title">{isArticle ? "ARTICLES" : "NOTES"}</h3>
-            {items.map((item, index) => ( // Added index for key if titles/urls aren't unique
-                <div
-                    key={item.url || index} // Use URL as key, fallback to index
-                    className="item-indiv"
+        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4, display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>
+                {isArticle ? 'ARTICLES' : 'NOTES'}
+            </Typography>
+            {items.map((item, index) => (
+                <Paper
+                    key={item.url || index}
+                    elevation={2}
+                    sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', p: 2, mb: 2, cursor: isArticle && item.url ? 'pointer' : 'default', transition: 'box-shadow 0.2s', '&:hover': { boxShadow: isArticle && item.url ? 6 : 2 } }}
                     onClick={() => {
                         if (isArticle && item.url) {
                             openInNewTab(item.url);
                         }
                     }}
-                    style={{ cursor: (isArticle && item.url) ? 'pointer' : 'default' }}
                 >
-                    <h4>{item.title}</h4>
-                    <h4>{item.date}</h4>
-                </div>
+                    <Typography variant="h6">{item.title}</Typography>
+                    <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                </Paper>
             ))}
-            <div className="line"></div>
-        </div>
+            <Divider sx={{ mt: 4 }} />
+        </Box>
     );
 };
 

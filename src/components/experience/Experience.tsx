@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './Experience.css';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import Chip from '@mui/material/Chip';
 
 // Image paths are now direct URLs to public/assets
 const idImgPath = '/assets/identification-card.png';
@@ -44,55 +48,44 @@ const CareerSteps: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading experience...</p>;
+        return <Typography>Loading experience...</Typography>;
     }
 
     if (error) {
-        return <p style={{ color: 'red' }}>Error: {error}</p>;
+        return <Typography color="error">Error: {error}</Typography>;
     }
 
     if (steps.length === 0) {
-        return <p>No experience data found.</p>;
+        return <Typography>No experience data found.</Typography>;
     }
 
     return (
-        <div className='content'>
-            <h3 className="title">EXPERIENCE</h3>
-            <ul>
+        <Box sx={{ bgcolor: 'background.paper', color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="h4" sx={{ mb: 4, fontWeight: 600 }}>EXPERIENCE</Typography>
+            <Stack spacing={4} sx={{ width: '100%' }}>
                 {steps.map((item, index) => (
-                    <li key={item.company || index} className='item_root'>
-                        <div className='item_invidual'>
-                            <div className='title-with-link'>
-                                <div className='date_current_job_title' key={item.company}>
-                                    <img className='image-container' src={idImgPath} alt="Role icon" />
-                                    <div className="current_job_title">{item.role}</div>
-                                </div>
-                                {/* Links can be added here if item.links exists */}
-                            </div>
-
-                            <div className='date_current_job_title' style={{ marginTop: '30px' }}>
-                                <img className='image-container' src={jobLocPath} alt="Company location icon" />
-                                <div className="company">{item.company}</div>
-
-                                <img className='image-container' style={{ marginLeft: '50px' }} src={calenderPath} alt="Date icon" />
-                                <div className="date">{item.date}</div>
-                            </div>
-
-                            {/* Description can be uncommented if desired */}
-                            {/* <div className="description" style={{ marginTop: '10px' }}>{item.description}</div> */}
-
-                            <div className="skills">
-                                {item.skills.map((skill, skillIndex) => (
-                                    <button key={skillIndex} className="skill-item">
-                                        {skill}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </li>
+                    <Paper key={item.company || index} elevation={3} sx={{ p: 3, borderRadius: 2, width: '100%' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
+                            <Box component="img" src={idImgPath} alt="Role icon" sx={{ width: 30, height: 30, mr: 2 }} />
+                            <Typography variant="h5" sx={{ fontWeight: 700 }}>{item.role}</Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
+                            <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
+                            <Typography variant="h6" sx={{ fontWeight: 600, mr: 4 }}>{item.company}</Typography>
+                            <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: 4, mr: 1 }} />
+                            <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                        </Box>
+                        {/* Uncomment if you want to show description */}
+                        {/* <Typography variant="body1" sx={{ mt: 2 }}>{item.description}</Typography> */}
+                        <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
+                            {item.skills.map((skill, skillIndex) => (
+                                <Chip key={skillIndex} label={skill} sx={{ mb: 1 }} />
+                            ))}
+                        </Stack>
+                    </Paper>
                 ))}
-            </ul>
-        </div>
+            </Stack>
+        </Box>
     );
 };
 
