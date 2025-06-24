@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define the interface locally
 export interface SkillsProps {
@@ -14,11 +13,9 @@ export interface SkillsProps {
 const Skills: React.FC = () => {
     const [items, setItems] = useState<SkillsProps[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading('skills', true);
             setError(null);
             try {
                 const response = await fetch('/data/skills.json');
@@ -31,7 +28,6 @@ const Skills: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching skills');
                 setItems([]);
             } finally {
-                setLoading('skills', false);
             }
         };
 
@@ -49,7 +45,7 @@ const Skills: React.FC = () => {
 
     return (
         <Box sx={{ maxWidth: 700, mx: 'auto', my: 4, px: 2 }}>
-            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center' , color: 'text.primary'  }}>Skills</Typography>
+            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Skills</Typography>
             <Grid container spacing={2} justifyContent="center">
                 {items.map((item, index) => (
                     <Grid key={item.title || index}>

@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define an interface for the strings data
 interface SiteStrings {
@@ -21,11 +20,9 @@ export default function About() {
     const [strings, setStrings] = useState<SiteStrings>({});
     const [animationData, setAnimationData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
-    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading('about', true);
             setError(null);
             try {
                 // Fetch strings data
@@ -47,12 +44,11 @@ export default function About() {
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred');
             } finally {
-                setLoading('about', false);
             }
         };
 
         fetchData();
-    }, [setLoading]);
+    }, []);
 
     if (error) {
         return <Typography color="error">Error: {error}</Typography>;
@@ -79,7 +75,7 @@ export default function About() {
                             {strings.AboutMeDescription2 || ''}
                         </Typography>
 
-                        <Paper 
+                        <Paper
                             sx={{ display: 'flex', flexDirection: 'column', borderRadius: 2, color: 'text.primary', width: 'fit-content', mt: 3, px: 3, py: 2 }}
                         >
                             <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>{strings.ExportTitle || 'Connect'}</Typography>

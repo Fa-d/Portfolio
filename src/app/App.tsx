@@ -20,12 +20,9 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Projects from '../components/main/projects/Projects.tsx';
 import { useState, useEffect } from 'react';
-import Lottie from 'react-lottie-player';
-import { GlobalLoadingProvider, useGlobalLoading } from '../utils/GlobalLoadingContext';
 
-function AppContent() {
-  const { isAnyLoading } = useGlobalLoading();
-  const [animationData, setAnimationData] = useState<any>(null);
+export default function AppContent() {
+  const [setAnimationData] = useState<any>(null);
 
   useEffect(() => {
     fetch('/assets/connecting.json')
@@ -33,18 +30,18 @@ function AppContent() {
       .then(setAnimationData);
   }, []);
 
-  if (!animationData || isAnyLoading) {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <Lottie
-          loop
-          play
-          animationData={animationData}
-          style={{ width: 180, height: 180 }}
-        />
-      </Box>
-    );
-  }
+  // if (!animationData) {
+  //   return (
+  //     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+  //       <Lottie
+  //         loop
+  //         play
+  //         animationData={animationData}
+  //         style={{ width: 180, height: 180 }}
+  //       />
+  //     </Box>
+  //   );
+  // }
 
   return (
     <BrowserRouter>
@@ -76,14 +73,6 @@ function AppContent() {
       </Box>
       <Footer />
     </BrowserRouter>
-  );
-}
-
-export default function App() {
-  return (
-    <GlobalLoadingProvider>
-      <AppContent />
-    </GlobalLoadingProvider>
   );
 }
 

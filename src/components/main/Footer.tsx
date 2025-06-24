@@ -8,7 +8,6 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
-import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 const arrowImgPath = '/assets/up-arrow.png';
 
@@ -20,7 +19,6 @@ interface SiteStrings {
 const Footer: React.FC = () => {
     const [time, setTime] = useState(new Date());
     const [siteStrings, setSiteStrings] = useState<SiteStrings>({});
-    const { setLoading } = useGlobalLoading();
     const navigate = useNavigate();
     const muiTheme = useMuiTheme();
 
@@ -31,7 +29,6 @@ const Footer: React.FC = () => {
 
         // Fetch site strings
         const fetchStrings = async () => {
-            setLoading('footer', true);
             try {
                 const response = await fetch('/data/strings.json');
                 if (!response.ok) {
@@ -44,7 +41,6 @@ const Footer: React.FC = () => {
                 // Set default or handle error appropriately
                 setSiteStrings({ FullName: "MD. SADAKAT HUSSAIN FAHAD" }); // Fallback
             } finally {
-                 setLoading('footer', false);
             }
         };
 

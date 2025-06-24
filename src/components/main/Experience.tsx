@@ -6,7 +6,6 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import WorkIcon from '@mui/icons-material/Work';
-import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Image paths are now direct URLs to public/assets
 const idImgPath = '/assets/identification-card.png';
@@ -26,11 +25,9 @@ interface ExperienceProps {
 const CareerSteps: React.FC = () => {
     const [steps, setSteps] = useState<ExperienceProps[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading('experience', true);
             setError(null);
             try {
                 const response = await fetch('/data/career.json');
@@ -43,12 +40,11 @@ const CareerSteps: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching career data');
                 setSteps([]);
             } finally {
-                setLoading('experience', false);
             }
         };
 
         fetchData();
-    }, [setLoading]);
+    }, []);
 
     if (steps.length === 0 && !error) {
         return <Typography>No experience data found.</Typography>;
