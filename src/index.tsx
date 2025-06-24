@@ -15,17 +15,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 
-const [animationData, setAnimationData] = useState<any>(null);
-
-useEffect(() => {
-  fetch('/assets/connecting.json')
-    .then(res => res.json())
-    .then(setAnimationData);
-}, []);
-
-<Lottie
-loop
-play
-animationData={animationData}
-style={{ width: 180, height: 180 }}
-/>

@@ -61,7 +61,6 @@ const Footer: React.FC = () => {
     const displayName = loadingStrings ? "Loading..." : (siteStrings.FullName || "MD. SADAKAT HUSSAIN FAHAD");
 
     return (
-        // @ts-expect-error: custom is a valid extension for our palette
         <Box component="footer" sx={{ bgcolor: muiTheme.palette.custom.footer, color: '#fff', px: { xs: 1, md: 0 }, py: { xs: 2, md: 5 } }}>
             <Box sx={{ maxWidth: 'lg', mx: 'auto', width: '100%' }}>
                 <Grid container spacing={4} direction={{ xs: 'column', md: 'row' }} justifyContent="space-around" alignItems={{ xs: 'stretch', md: 'flex-start' }}>
@@ -79,7 +78,7 @@ const Footer: React.FC = () => {
                     {/* Navigation and Resources Section */}
                     <Grid>
                         <Grid container spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-                            <Grid item xs={12} sm={6}>
+                            <Grid>
                                 <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>NAVIGATION</Typography>
                                 <Divider sx={{ mb: 1, borderColor: '#fff' }} />
                                 <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>

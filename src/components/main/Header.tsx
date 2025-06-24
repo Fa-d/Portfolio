@@ -93,7 +93,6 @@ export default function Header() {
                             href={resumePath}
                             target="_blank"
                             rel="noopener noreferrer"
-                            // @ts-expect-error: custom is a valid extension for our palette
                             sx={{ borderRadius: 5, ml: 2, backgroundColor: muiTheme.palette.custom.button, color: '#fff', '&:hover': { backgroundColor: muiTheme.palette.custom.button } }}
                             endIcon={<span style={{ marginLeft: 4 }}>&rarr;</span>}
                         >

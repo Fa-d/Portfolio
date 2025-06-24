@@ -1,6 +1,22 @@
 import React, { createContext, useContext, useState, useLayoutEffect, ReactNode } from "react";
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 
+// Extend MUI Palette to include custom colors
+declare module '@mui/material/styles' {
+    interface Palette {
+        custom: {
+            button: string;
+            footer: string;
+        };
+    }
+    interface PaletteOptions {
+        custom?: {
+            button: string;
+            footer: string;
+        };
+    }
+}
+
 interface ThemeContextType {
     theme: string;
     toggleTheme: () => void;

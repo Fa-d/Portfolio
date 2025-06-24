@@ -20,7 +20,7 @@ export function ContactItems() {
 
     return (
         <Stack direction="row" spacing={2}>
-            {contacts.map((contact, idx) => (
+            {contacts.map((contact, _) => (
                 <IconButton
                     key={contact.href}
                     component="a"
