@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
+import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define the interface locally or import from a shared types file later
 export interface ArticlesNoteProps {
@@ -14,12 +15,13 @@ export interface ArticlesNoteProps {
 
 const ArticleNote: React.FC<{ isArticle: boolean }> = ({ isArticle }) => {
     const [items, setItems] = useState<ArticlesNoteProps[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            // Only set global loading for 'articles' if isArticle, otherwise for 'notes' skip (not in global state)
+            if (isArticle) setLoading('articles', true);
             setError(null);
             const dataType = isArticle ? 'articles' : 'notes';
             try {
@@ -33,22 +35,15 @@ const ArticleNote: React.FC<{ isArticle: boolean }> = ({ isArticle }) => {
                 setError(err instanceof Error ? err.message : `An unknown error occurred while fetching ${dataType}`);
                 setItems([]); // Clear items on error or set to default
             } finally {
-                setLoading(false);
+               // if (isArticle) 
+                    setLoading('articles', false);
             }
         };
 
         fetchData();
-    }, [isArticle]);
+    }, [isArticle, setLoading]);
 
-    if (loading) {
-        return <Typography>Loading {isArticle ? 'articles' : 'notes'}...</Typography>;
-    }
-
-    if (error) {
-        return <Typography color="error">Error: {error}</Typography>;
-    }
-
-    if (items.length === 0) {
+    if (items.length === 0 && !error) {
         return <Typography>No {isArticle ? 'articles' : 'notes'} found.</Typography>;
     }
 

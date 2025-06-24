@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import { useGlobalLoading } from '../../../utils/GlobalLoadingContext';
 
 // Define interfaces locally or move to a shared types file
 export interface ProjectLanguageProps {
@@ -25,12 +26,12 @@ export interface ProjectProps {
 
 const Projects: React.FC = () => {
     const [items, setItems] = useState<ProjectProps[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading('projects', true);
             setError(null);
             try {
                 const response = await fetch('/data/projects.json');
@@ -43,22 +44,13 @@ const Projects: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching projects');
                 setItems([]);
             } finally {
-                setLoading(false);
+                setLoading('projects', false);
             }
         };
-
         fetchData();
-    }, []);
+    }, [setLoading]);
 
-    if (loading) {
-        return <Typography>Loading projects...</Typography>;
-    }
-
-    if (error) {
-        return <Typography color="error">Error: {error}</Typography>;
-    }
-
-    if (items.length === 0) {
+    if (items.length === 0 && !error) {
         return <Typography>No projects found.</Typography>;
     }
 

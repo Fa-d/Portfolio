@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import WorkIcon from '@mui/icons-material/Work';
+import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Image paths are now direct URLs to public/assets
 const idImgPath = '/assets/identification-card.png';
@@ -24,12 +25,12 @@ interface ExperienceProps {
 
 const CareerSteps: React.FC = () => {
     const [steps, setSteps] = useState<ExperienceProps[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading('experience', true);
             setError(null);
             try {
                 const response = await fetch('/data/career.json');
@@ -42,22 +43,14 @@ const CareerSteps: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching career data');
                 setSteps([]);
             } finally {
-                setLoading(false);
+                setLoading('experience', false);
             }
         };
 
         fetchData();
-    }, []);
+    }, [setLoading]);
 
-    if (loading) {
-        return <Typography>Loading experience...</Typography>;
-    }
-
-    if (error) {
-        return <Typography color="error">Error: {error}</Typography>;
-    }
-
-    if (steps.length === 0) {
+    if (steps.length === 0 && !error) {
         return <Typography>No experience data found.</Typography>;
     }
 

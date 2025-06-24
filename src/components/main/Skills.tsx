@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define the interface locally
 export interface SkillsProps {
@@ -12,12 +13,12 @@ export interface SkillsProps {
 
 const Skills: React.FC = () => {
     const [items, setItems] = useState<SkillsProps[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading('skills', true);
             setError(null);
             try {
                 const response = await fetch('/data/skills.json');
@@ -30,16 +31,13 @@ const Skills: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching skills');
                 setItems([]);
             } finally {
-                setLoading(false);
+                setLoading('skills', false);
             }
         };
 
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    if (loading) {
-        return <Typography>Loading skills...</Typography>;
-    }
 
     if (error) {
         return <Typography color="error">Error: {error}</Typography>;

@@ -21,10 +21,10 @@ import Box from '@mui/material/Box';
 import Projects from '../components/main/projects/Projects.tsx';
 import { useState, useEffect } from 'react';
 import Lottie from 'react-lottie-player';
-import { useLoading } from '../utils/LoadingContext';
+import { GlobalLoadingProvider, useGlobalLoading } from '../utils/GlobalLoadingContext';
 
-function App() {
-  const { loading } = useLoading();
+function AppContent() {
+  const { isAnyLoading } = useGlobalLoading();
   const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
       .then(setAnimationData);
   }, []);
 
-  if (loading || !animationData) {
+  if (!animationData || isAnyLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <Lottie
@@ -79,6 +79,12 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <GlobalLoadingProvider>
+      <AppContent />
+    </GlobalLoadingProvider>
+  );
+}
 
 

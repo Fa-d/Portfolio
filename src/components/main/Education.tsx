@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define the interface locally
 export interface EducationProps {
@@ -13,12 +14,12 @@ export interface EducationProps {
 
 const Education: React.FC = () => {
     const [steps, setSteps] = useState<EducationProps[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading('education', true);
             setError(null);
             try {
                 const response = await fetch('/data/education.json');
@@ -31,22 +32,14 @@ const Education: React.FC = () => {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred while fetching education data');
                 setSteps([]);
             } finally {
-                setLoading(false);
+                setLoading('education', false);
             }
         };
 
         fetchData();
-    }, []);
+    }, [setLoading]);
 
-    if (loading) {
-        return <Typography>Loading education...</Typography>;
-    }
-
-    if (error) {
-        return <Typography color="error">Error: {error}</Typography>;
-    }
-
-    if (steps.length === 0) {
+    if (steps.length === 0 && !error) {
         return <Typography>No education data found.</Typography>;
     }
 

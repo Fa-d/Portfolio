@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import { useGlobalLoading } from '../../utils/GlobalLoadingContext';
 
 // Define an interface for the strings data
 interface SiteStrings {
@@ -19,12 +20,12 @@ interface SiteStrings {
 export default function About() {
     const [strings, setStrings] = useState<SiteStrings>({});
     const [animationData, setAnimationData] = useState<any>(null);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const { setLoading } = useGlobalLoading();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading('about', true);
             setError(null);
             try {
                 // Fetch strings data
@@ -46,16 +47,12 @@ export default function About() {
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An unknown error occurred');
             } finally {
-                setLoading(false);
+                setLoading('about', false);
             }
         };
 
         fetchData();
-    }, []);
-
-    if (loading) {
-        return <Typography>Loading about section...</Typography>;
-    }
+    }, [setLoading]);
 
     if (error) {
         return <Typography color="error">Error: {error}</Typography>;
