@@ -1,20 +1,27 @@
-
-name: CI
+name: CI + Deploy to GitHub Pages + VPN Server
 
 on:
   push:
     branches: [master]
 
-jobs: 
-  build:
+jobs:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
         with:
           repository: 'Fa-d/Portfolio'
           ref: 'master'
-          token:  ${{ secrets.API_TOKEN_GITHUB}}
-      - name: setup git config and push
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+
+      - name: Build Project (adjust if using npm/yarn)
+        run: |
+          npm install
+          npm run build
+
+      - name: Push to GitHub Pages
         run: |
           mkdir ../../_temp/portf_dist
           cp -r dist ../../_temp/portf_dist
@@ -23,7 +30,18 @@ jobs:
           git config user.name "Fa-d"
           git config user.email "fsadakathussain@gmail.com"
           git add .
-          git commit -m "See ORIGIN_COMMIT from $GITHUB_REF"
+          git commit -m "Deployed from $GITHUB_SHA"
           git branch -M main
-          git remote add origin https://${{ secrets.API_TOKEN_GITHUB}}@github.com/Fa-d/Fa-d.github.io.git
-          git push  -u origin main --force
+          git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/Fa-d/Fa-d.github.io.git
+          git push -u origin main --force
+
+      - name: Setup SSH for Portfolio Server
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PORTFOLIO_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H jobsage.sadakat.dev >> ~/.ssh/known_hosts
+
+      - name: Sync to Portfolio Server (sadakat.dev)
+        run: |
+          rsync -avz -e "ssh -i ~/.ssh/id_ed25519" dist/ deployer@jobsage.sadakat.dev:/var/www/sadakat.dev/
