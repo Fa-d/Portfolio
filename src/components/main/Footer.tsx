@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ContactItems } from './ContactItems';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
@@ -61,9 +61,9 @@ const Footer: React.FC = () => {
     return (
         <Box component="footer" sx={{ bgcolor: muiTheme.palette.custom.footer, color: '#fff', px: { xs: 1, md: 0 }, py: { xs: 2, md: 5 } }}>
             <Box sx={{ maxWidth: 'lg', mx: 'auto', width: '100%' }}>
-                <Grid container spacing={4} direction={{ xs: 'column', md: 'row' }} justifyContent="space-around" alignItems={{ xs: 'stretch', md: 'flex-start' }}>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, justifyContent: 'space-around', alignItems: { xs: 'stretch', md: 'flex-start' } }}>
                     {/* Contact Section */}
-                    <Grid>
+                    <Box>
                         <Typography variant="h5" gutterBottom sx={{ color: '#fff' }}>Contact</Typography>
                         <Box sx={{ mb: 2 }}>
                             <ContactItems />
@@ -72,11 +72,11 @@ const Footer: React.FC = () => {
                             <Typography variant="body1" sx={{ fontSize: '1.2em', color: '#fff' }}>© {new Date().getFullYear()}</Typography>
                             <Typography variant="h6" sx={{ fontSize: '1.3em', wordBreak: 'break-word', color: '#fff' }}>{displayName}</Typography>
                         </Box>
-                    </Grid>
+                    </Box>
                     {/* Navigation and Resources Section */}
-                    <Grid>
-                        <Grid container spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-                            <Grid>
+                    <Box>
+                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                            <Box>
                                 <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>NAVIGATION</Typography>
                                 <Divider sx={{ mb: 1, borderColor: '#fff' }} />
                                 <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
@@ -93,8 +93,8 @@ const Footer: React.FC = () => {
                                         <Button fullWidth variant="text" color="inherit" onClick={() => navigate('/articles')} sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>ARTICLES</Button>
                                     </li>
                                 </Box>
-                            </Grid>
-                            <Grid>
+                            </Box>
+                            <Box>
                                 <Typography variant="h6" gutterBottom sx={{ color: '#fff' }}>RESOURCES</Typography>
                                 <Divider sx={{ mb: 1, borderColor: '#fff' }} />
                                 <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
@@ -105,25 +105,25 @@ const Footer: React.FC = () => {
                                         <Button fullWidth variant="text" color="inherit" href="https://codeforces.com/profile/faddy_fahad" target="_blank" sx={{ justifyContent: 'flex-start', borderRadius: 2, mb: 1, color: '#fff' }}>CONTESTS</Button>
                                     </li>
                                 </Box>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid>
-                        <Grid container spacing={2} sx={{ mt: 2 }} alignItems="center">
-                            <Grid>
+                            </Box>
+                        </Box>
+                    </Box>
+                    <Box>
+                        <Box sx={{ display: 'flex', gap: 2, mt: 2, alignItems: 'center' }}>
+                            <Box>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'flex-end' } }}>
                                     <Typography variant="h6" sx={{ mb: 0.5, color: '#fff' }}>LOCAL TIME</Typography>
                                     <Typography variant="body1" sx={{ color: '#fff' }}>{time.toLocaleTimeString()}</Typography>
                                 </Box>
-                            </Grid>
-                            <Grid sx={{ display: 'flex', justifyContent: { xs: 'flex-end', md: 'flex-end' } }}>
+                            </Box>
+                            <Box sx={{ display: 'flex', justifyContent: { xs: 'flex-end', md: 'flex-end' } }}>
                                 <IconButton onClick={scrollToTop} color="primary" sx={{ width: 50, color: '#fff' }}>
                                     <img src={arrowImgPath} alt="Go to top" style={{ width: 30, height: 30, filter: 'invert(1)' }} />
                                 </IconButton>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             </Box>
         </Box>
     );

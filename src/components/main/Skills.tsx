@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Grid from '@mui/material/Grid';
+
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -46,9 +46,9 @@ const Skills: React.FC = () => {
     return (
         <Box sx={{ maxWidth: 700, mx: 'auto', my: 4, px: 2 }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Skills</Typography>
-            <Grid container spacing={2} justifyContent="center">
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
                 {items.map((item, index) => (
-                    <Grid key={item.title || index}>
+                    <Box key={item.title || index}>
                         <Paper
                             elevation={2}
                             sx={{
@@ -68,9 +68,9 @@ const Skills: React.FC = () => {
                             <Box component="img" src={item.image} alt={item.title} sx={{ height: 36, width: 36, mr: 2 }} />
                             <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>{item.title}</Typography>
                         </Paper>
-                    </Grid>
+                    </Box>
                 ))}
-            </Grid>
+            </Box>
         </Box>
     );
 };

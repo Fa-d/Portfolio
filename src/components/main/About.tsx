@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Lottie from 'react-lottie-player';
 import { ContactItems } from './ContactItems';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 
@@ -56,8 +56,8 @@ export default function About() {
 
     return (
         <Box sx={{ position: 'relative', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, minHeight: '90vh' }}>
-            <Grid container spacing={4} alignItems="center" justifyContent="center" direction={{ xs: 'column-reverse', md: 'row' }}>
-                <Grid >
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, gap: 4, alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ flex: 1 }}>
                     <Box sx={{ pr: { md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Typography variant="h5" sx={{ whiteSpace: 'pre-line', mb: 2, color: 'text.secondary' }}>
                             {strings.AboutMeDescription || ''}
@@ -82,18 +82,18 @@ export default function About() {
                             <ContactItems />
                         </Paper>
                     </Box>
-                </Grid>
-                <Grid sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                </Box>
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {animationData && (
                         <Lottie
                             loop={true}
-                            style={{ width: 400, height: 400, maxWidth: '100%' }}
+                            style={{ width: '100%', height: '100%', maxWidth: 400, maxHeight: 400 }}
                             animationData={animationData}
                             play
                         />
                     )}
-                </Grid>
-            </Grid>
+                </Box>
+            </Box>
         </Box>
     );
 }

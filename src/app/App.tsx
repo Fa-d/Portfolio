@@ -47,7 +47,7 @@ export default function AppContent() {
     <BrowserRouter>
       <Header />
       <Box sx={{ minHeight: '80vh', bgcolor: 'background.default' }}>
-        <Container maxWidth={false} disableGutters>
+        <Container maxWidth={"xl"} sx={{ p: 0 }}>
           <Routes>
             <Route path="/skills" element={<Skills />} />
             <Route path="/" element={<Main />} />

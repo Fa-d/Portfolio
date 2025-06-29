@@ -91,20 +91,32 @@ const CareerSteps: React.FC = () => {
                             </Avatar>
                         </Box>
                         {/* Card */}
-                        <Paper sx={{ ml: { xs: 6, md: 8 }, p: 3, borderRadius: 2, width: '100%' }}>
+                        <Paper sx={{ ml: { xs: 6, md: 8 }, p: 3, borderRadius: 2, flexGrow: 1 }}>
                             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
                                 <Box component="img" src={idImgPath} alt="Role icon" sx={{ width: 30, height: 30, mr: 2 }} />
                                 <Typography variant="h5" sx={{ fontWeight: 700 }}>{item.role}</Typography>
                             </Box>
-                            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
-                                <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
-                                <Typography variant="h6" sx={{ fontWeight: 600, mr: 4 }}>{item.company}</Typography>
-                                <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: 4, mr: 1 }} />
-                                <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, mb: 2 }}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: { xs: 2, md: 0 } }}>
+                                    <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
+                                    <Typography variant="h6" sx={{ fontWeight: 600, mr: { md: 4 } }}>{item.company}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: { md: 4 }, mr: 1 }} />
+                                    <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                                </Box>
                             </Box>
                             {/* Uncomment if you want to show description */}
                             {/* <Typography variant="body1" sx={{ mt: 2 }}>{item.description}</Typography> */}
-                            <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
+                            <Stack
+                                direction="row"
+                                spacing={1}
+                                sx={{
+                                    mt: 2,
+                                    flexWrap: 'wrap',
+                                    rowGap: 1,
+                                }}
+                            >
                                 {item.skills.map((skill, skillIndex) => (
                                     <Chip key={skillIndex} label={skill} sx={{ mb: 1 }} />
                                 ))}

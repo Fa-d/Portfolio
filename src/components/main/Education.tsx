@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+
 
 // Define the interface locally
 export interface EducationProps {
@@ -42,17 +42,17 @@ const Education: React.FC = () => {
     return (
         <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, py: { xs: 4, md: 8 }, position: 'relative' }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Education</Typography>
-            <Grid container spacing={4} justifyContent="flex-start">
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'flex-start' }}>
                 {steps.map(item => (
-                    <Grid key={item.institution}>
+                    <Box key={item.institution} sx={{ flex: '1 1 300px' }}>
                         <Paper elevation={2} sx={{ p: 3, borderRadius: 2, height: '100%' }}>
                             <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>{item.degree}</Typography>
                             <Typography variant="subtitle1" sx={{ my: 2, fontSize: 20 }}>{item.date}</Typography>
                             <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>{item.institution}</Typography>
                         </Paper>
-                    </Grid>
+                    </Box>
                 ))}
-            </Grid>
+            </Box>
         </Box>
     );
 };
