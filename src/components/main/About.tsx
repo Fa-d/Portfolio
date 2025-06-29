@@ -62,13 +62,13 @@ export default function About() {
                         <Typography variant="h5" sx={{ whiteSpace: 'pre-line', mb: 2, color: 'text.secondary' }}>
                             {strings.AboutMeDescription || ''}
                         </Typography>
-                        <Typography variant="h4" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>
+                        <Typography variant="h5" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>
                             {strings.FullName || 'Your Name'}
                         </Typography>
-                        <Typography variant="h4" sx={{ fontWeight: 500, mb: 1, color: 'text.primary' }}>
+                        <Typography variant="h5" sx={{ fontWeight: 500, mb: 1, color: 'text.primary' }}>
                             {strings.Position || 'Your Position'}
                         </Typography>
-                        <Typography variant="h5" sx={{ color: 'text.secondary', mb: 10 }}>
+                        <Typography variant="h6" sx={{ color: 'text.secondary', mb: 10 }}>
                             {strings.Subtitle || 'Your Subtitle'}
                         </Typography>
                         <Typography variant="h6" sx={{ whiteSpace: 'pre-line', mb: 2, color: 'text.secondary' }}>

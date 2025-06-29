@@ -53,12 +53,13 @@ const CareerSteps: React.FC = () => {
     return (
         <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4 }}>
             <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Experience</Typography>
-            <Box sx={{ position: 'relative', pl: { xs: 4, md: 8 } }}>
+            <Box sx={{ position: 'relative' }}>
                 {/* Continuous vertical timeline line (always full height) */}
                 <Box
                     sx={{
                         position: 'absolute',
-                        left: { xs: 12, md: 12 },
+                        left: { xs: 20, md: 20 },
+                        transform: 'translateX(-50%)',
                         top: 0,
                         bottom: 0,
                         width: 2,
@@ -66,44 +67,54 @@ const CareerSteps: React.FC = () => {
                         zIndex: 0,
                     }}
                 />
+
                 {steps.map((item, idx) => (
-                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', mb: 6, position: 'relative', minHeight: 80 }}>
-                        {/* Unique dot with icon */}
+                    <Box key={idx} sx={{ display: 'flex', alignItems: 'flex-start', mb: 6, minHeight: 80 }}>
+                        {/* Timeline Dot Container */}
                         <Box
                             sx={{
-                                position: 'absolute',
-                                left: { xs: 0, md: 0 },
-                                top: 32,
-                                width: 24,
-                                height: 24,
+                                width: { xs: 40, md: 40 },
+                                flexShrink: 0,
                                 display: 'flex',
-                                alignItems: 'center',
                                 justifyContent: 'center',
+                                alignItems: 'center',
                                 zIndex: 1,
-                                border: '2px solid',
-                                borderColor: 'primary.main',
-                                borderRadius: '50%',
-                                bgcolor: 'background.paper',
                             }}
                         >
-                            <Avatar sx={{ bgcolor: 'primary.main', width: 20, height: 20 }}>
-                                <WorkIcon fontSize="small" />
-                            </Avatar>
+                            {/* Unique dot with icon */}
+                            <Box
+                                sx={{
+                                    transform: 'translateY(100%)',
+                                    width: 24,
+                                    height: 24,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    border: '2px solid',
+                                    borderColor: 'primary.main',
+                                    borderRadius: '50%',
+                                    bgcolor: 'background.paper',
+                                }}
+                            >
+                                <Avatar sx={{ bgcolor: 'primary.main', width: 20, height: 20 }}>
+                                    <WorkIcon fontSize="small" />
+                                </Avatar>
+                            </Box>
                         </Box>
                         {/* Card */}
-                        <Paper sx={{ ml: { xs: 6, md: 8 }, p: 3, borderRadius: 2, flexGrow: 1 }}>
+                        <Paper sx={{ p: 3, borderRadius: 2, flexGrow: 1 }}>
                             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
                                 <Box component="img" src={idImgPath} alt="Role icon" sx={{ width: 30, height: 30, mr: 2 }} />
-                                <Typography variant="h5" sx={{ fontWeight: 700 }}>{item.role}</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: 700 }}>{item.role}</Typography>
                             </Box>
                             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, mb: 2 }}>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: { xs: 2, md: 0 } }}>
                                     <Box component="img" src={jobLocPath} alt="Company location icon" sx={{ width: 30, height: 30, mr: 1 }} />
-                                    <Typography variant="h6" sx={{ fontWeight: 600, mr: { md: 4 } }}>{item.company}</Typography>
+                                    <Typography variant="subtitle1" sx={{ fontWeight: 600, mr: { md: 4 } }}>{item.company}</Typography>
                                 </Box>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                     <Box component="img" src={calenderPath} alt="Date icon" sx={{ width: 30, height: 30, ml: { md: 4 }, mr: 1 }} />
-                                    <Typography variant="subtitle1" color="text.secondary">{item.date}</Typography>
+                                    <Typography variant="subtitle2" color="text.secondary">{item.date}</Typography>
                                 </Box>
                             </Box>
                             {/* Uncomment if you want to show description */}
