@@ -161,6 +161,28 @@
   },
 
   {
+    "name": "Proxy Browser Extension",
+    "desc": "A Chrome Extension that allows users to access blocked websites by routing traffic through a proxy server.",
+    "image": "/assets/techtrends.png",
+    "type": "office",
+    "languages": [
+      {
+        "logo": "/assets/react.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/proxy-browser-extension"
+      }
+    ]
+  },
+  {
     "name": "Tech Trends",
     "desc": "A Mobile App that provides the latest tech news and trends, keeping users informed about the ever-evolving world of technology.",
     "image": "/assets/techtrends.png",
