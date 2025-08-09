@@ -19,17 +19,36 @@ html, body {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+/* Light theme scrollbar */
+html.light ::-webkit-scrollbar-track {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+html.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(255, 107, 107, 0.8));
   border-radius: 10px;
+  transition: background 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #764ba2, #667eea);
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, rgba(102, 126, 234, 1), rgba(255, 107, 107, 1));
+}
+
+/* Dark theme scrollbar */
+html.dark ::-webkit-scrollbar-track {
+  background: rgba(120, 119, 198, 0.1);
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, rgba(120, 119, 198, 0.8), rgba(255, 107, 107, 0.8));
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, rgba(120, 119, 198, 1), rgba(255, 107, 107, 1));
 }
 
 /* Global transition for smooth interactions */

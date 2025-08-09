@@ -36,11 +36,23 @@
     "image": "/assets/react.png"
   },
   {
+    "title": "Next.js",
+    "image": "/assets/nextjs.png"
+  },
+  {
     "title": "REST-API",
     "image": "/assets/api.png"
   },
   {
     "title": "MySQL",
     "image": "/assets/mysql.png"
+  },
+  {
+    "title": "LLM's",
+    "image": "/assets/llms.png"
+  },
+  {
+    "title": "Python",
+    "image": "/assets/python.png"
   }
 ]

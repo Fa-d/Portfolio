@@ -3,7 +3,6 @@ import Lottie from "react-lottie-player";
 import { ContactItems } from "./ContactItems";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import { keyframes } from "@mui/system";
 
 // Define an interface for the strings data
@@ -78,10 +77,12 @@ export default function About() {
     <Box
       sx={{
         position: "relative",
-        px: { xs: 2, md: 12 },
+        px: 0,
         py: { xs: 4, md: 8 },
         minHeight: "70vh",
         bgcolor: "background.default",
+        width: "100vw",
+        marginLeft: "calc(50% - 50vw)",
         background: (theme) =>
           theme.palette.mode === "dark"
             ? "linear-gradient(135deg, rgba(25, 25, 25, 0.95) 0%, rgba(35, 39, 43, 1) 100%)"
@@ -110,6 +111,9 @@ export default function About() {
           justifyContent: "center",
           zIndex: 2,
           position: "relative",
+          maxWidth: "xl",
+          margin: "0 auto",
+          px: { xs: 2, md: 12 },
         }}
       >
         <Box
