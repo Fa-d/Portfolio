@@ -155,7 +155,7 @@ const DataManager: React.FC<DataManagerProps> = ({
         );
       }
 
-      const result = await response.json();
+      await response.json();
       setSuccessMessage(
         `✅ ${displayTitle} saved successfully to backend! Changes written to JSON file.`
       );

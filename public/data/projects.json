@@ -2,6 +2,8 @@
   {
     "name": "JobSage ",
     "desc": "A website that works With AI for job recommendation, CV Andlysis, Application Tracking etc., Built With AI, for AI jobs",
+    "image": "/assets/project-jobsage.jpg",
+    "type": "client",
     "languages": [
       {
         "logo": "/assets/typescript.png",
@@ -22,6 +24,8 @@
   {
     "name": "RickandMorty ",
     "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
+    "image": "/assets/project-rickmorty.jpg",
+    "type": "personal",
     "languages": [
       {
         "logo": "/assets/kotlin.png",
@@ -38,6 +42,8 @@
   {
     "name": "URLEncryption  ",
     "desc": "Encrypting network data within compiled binary",
+    "image": "/assets/project-encryption.jpg",
+    "type": "open-source",
     "languages": [
       {
         "logo": "/assets/cpp.png",
@@ -58,6 +64,8 @@
   {
     "name": "Portfolio  ",
     "desc": "The portfolio you are currently visiting.",
+    "image": "/assets/project-portfolio.jpg",
+    "type": "personal",
     "languages": [
       {
         "logo": "/assets/typescript.png",
@@ -82,6 +90,8 @@
   {
     "name": "VPNSDK   ",
     "desc": "This project ensembles the basic features of all protocols.",
+    "image": "/assets/project-vpn.jpg",
+    "type": "office",
     "languages": [
       {
         "logo": "/assets/java.png",
@@ -100,6 +110,68 @@
       {
         "logo": "/assets/github.png",
         "url": "https://github.com/Fa-d/VPNSDK"
+      }
+    ]
+  },
+  {
+    "name": "E-Commerce Platform",
+    "desc": "A full-stack e-commerce solution with modern UI and secure payment integration.",
+    "image": "/assets/project-ecommerce.jpg",
+    "type": "client",
+    "languages": [
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/jscript.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/ecommerce"
+      }
+    ]
+  },
+  {
+    "name": "Mobile Finance App",
+    "desc": "React Native application for personal finance tracking with AI insights.",
+    "image": "/assets/project-finance.jpg",
+    "type": "personal",
+    "languages": [
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/finance-app"
+      }
+    ]
+  },
+  {
+    "name": "Task Management System",
+    "desc": "Enterprise-level project management tool with team collaboration features.",
+    "image": "/assets/project-task.jpg",
+    "type": "office",
+    "languages": [
+      {
+        "logo": "/assets/typescript.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/java.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/live.png",
+        "url": "https://tasks.company.com"
       }
     ]
   }
