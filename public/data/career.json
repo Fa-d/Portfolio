@@ -1,54 +1,172 @@
 [
   {
-    "date": "May 2021- Present",
-    "role": "Software Engineer (III)",
     "company": "Kolpolok Limited",
-    "description": "Responsibilities include publishing and maintaining application binaries, Collaborating with international clients, gathering requirements and building, refactoring, updating necessary changes, writing documentations for the development of mobile and android TV apps. ",
-    "skills": [
-      "Multi-module",
-      "Compose",
-      "Datastore",
-      "Ktor",
-      "Flow",
-      "Coroutine",
-      "Chrome Extension",
-      "React",
-      "NextJS"
+    "totalDuration": "May 2021 - Present",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Software Engineer (III)",
+        "date": "Jan 2023 - Present",
+        "description": "Leading mobile and android TV application development, collaborating with international clients, publishing and maintaining application binaries, and mentoring junior developers. Architected scalable solutions using modern technologies.",
+        "skills": [
+          "Multi-module",
+          "Compose",
+          "Datastore",
+          "Ktor",
+          "Flow",
+          "Coroutine",
+          "Chrome Extension",
+          "React",
+          "NextJS"
+        ],
+        "projects": [
+          {
+            "name": "MoodSpace Android TV",
+            "description": "Mental health and meditation app for Android TV platform",
+            "url": "https://play.google.com/store/apps/details?id=com.moodspace.tv"
+          },
+          {
+            "name": "Ktor Client Library",
+            "description": "Internal HTTP client library for mobile apps"
+          },
+          {
+            "name": "Portfolio Website",
+            "description": "Personal portfolio built with React and NextJS"
+          }
+        ]
+      },
+      {
+        "role": "Software Engineer (II)",
+        "date": "Jun 2022 - Dec 2022",
+        "description": "Developed and maintained complex mobile applications, implemented new features, and improved application performance. Collaborated with cross-functional teams to deliver high-quality software solutions.",
+        "skills": [
+          "Android Development",
+          "Kotlin",
+          "MVVM",
+          "Retrofit",
+          "Room",
+          "Dagger Hilt",
+          "Git"
+        ],
+        "projects": [
+          {
+            "name": "MoodSpace Mobile",
+            "description": "Core mobile application development",
+            "url": "https://play.google.com/store/apps/details?id=com.moodspace"
+          },
+          {
+            "name": "Analytics Dashboard",
+            "description": "Internal analytics and reporting system"
+          }
+        ]
+      },
+      {
+        "role": "Junior Software Engineer",
+        "date": "May 2021 - May 2022",
+        "description": "Started career in mobile development, worked on feature implementation, bug fixes, and learning modern Android development practices. Contributed to team projects and gained experience in agile methodologies.",
+        "skills": [
+          "Java",
+          "Kotlin",
+          "Android SDK",
+          "REST APIs",
+          "SQLite",
+          "Firebase"
+        ],
+        "projects": [
+          {
+            "name": "MoodSpace Features",
+            "description": "User authentication and profile management features"
+          },
+          {
+            "name": "Bug Fixes & Testing",
+            "description": "Quality assurance and bug resolution tasks"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Jul 2021 - Apr 2022",
-    "role": "Junior Software Engineer",
     "company": "AjkerDeal.Com",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "REST APIs",
-      "Java",
-      "Kotlin",
-      "Andorid"
+    "totalDuration": "Jul 2021 - Apr 2022",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Junior Software Engineer",
+        "date": "Jul 2021 - Apr 2022",
+        "description": "Responsible for translating logistics, E-commerce business requirements into android applications. Developed user-facing features and worked on improving app performance.",
+        "skills": [
+          "REST APIs",
+          "Java",
+          "Kotlin",
+          "Android"
+        ],
+        "projects": [
+          {
+            "name": "AjkerDeal Mobile App",
+            "description": "E-commerce mobile application for customers",
+            "url": "https://play.google.com/store/apps/details?id=com.ajkerdeal"
+          },
+          {
+            "name": "Logistics Tracker",
+            "description": "Internal logistics tracking system"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Feb 2020 - Mar 2020",
-    "role": "Internship (Game Development)",
     "company": "Lab AR",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "Unity",
-      "Colliders",
-      "Shaders",
-      "Level Design"
+    "totalDuration": "Feb 2020 - Mar 2020",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Internship (Game Development)",
+        "date": "Feb 2020 - Mar 2020",
+        "description": "Gained hands-on experience in game development using Unity engine. Worked on level design, implemented game mechanics, and learned about shaders and collision systems.",
+        "skills": [
+          "Unity",
+          "Colliders",
+          "Shaders",
+          "Level Design"
+        ],
+        "projects": [
+          {
+            "name": "AR Puzzle Game",
+            "description": "Augmented reality puzzle game prototype"
+          },
+          {
+            "name": "3D Environment Design",
+            "description": "Interactive 3D environments and level design"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Aug 2019 - Sep 2019",
-    "role": "Internship (Web Development)",
     "company": "i2 Technologies",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "REST-API",
-      "FrontEnd",
-      "Database"
+    "totalDuration": "Aug 2019 - Sep 2019",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Internship (Web Development)",
+        "date": "Aug 2019 - Sep 2019",
+        "description": "Introduction to web development and database management. Worked on front-end development and learned about RESTful API integration.",
+        "skills": [
+          "REST-API",
+          "FrontEnd",
+          "Database"
+        ],
+        "projects": [
+          {
+            "name": "Company Website",
+            "description": "Corporate website with responsive design"
+          },
+          {
+            "name": "Database Management System",
+            "description": "Client data management system"
+          }
+        ]
+      }
     ]
   }
 ]
