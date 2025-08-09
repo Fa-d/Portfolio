@@ -47,8 +47,8 @@ const getMuiTheme = (mode: string) => createTheme({
     palette: {
         mode: mode === 'dark' ? 'dark' : 'light',
         background: {
-            default: mode === 'dark' ? '#181a1b' : '#f5f6fa',
-            paper: mode === 'dark' ? '#23272b' : '#f9fafb', // slightly different from default
+            default: mode === 'dark' ? '#181a1b' : '#eef2f8',
+            paper: mode === 'dark' ? '#23272b' : '#ffffff', // slightly different from default
         },
         // Central custom colors
         custom: {
