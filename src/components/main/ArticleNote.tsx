@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { openInNewTab } from "../../utils/NewTab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import { keyframes } from "@mui/system";
 import IconButton from "@mui/material/IconButton";

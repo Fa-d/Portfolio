@@ -2,8 +2,8 @@
   {
     "name": "JobSage ",
     "desc": "A website that works With AI for job recommendation, CV Andlysis, Application Tracking etc., Built With AI, for AI jobs",
-    "image": "/assets/project-jobsage.jpg",
-    "type": "client",
+    "image": "/assets/jobsage.png",
+    "type": "personal",
     "languages": [
       {
         "logo": "/assets/typescript.png",
@@ -22,75 +22,53 @@
     ]
   },
   {
-    "name": "RickandMorty ",
-    "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
-    "image": "/assets/project-rickmorty.jpg",
+    "name": "Learning Agent",
+    "desc": "a production-ready FastAPI application that generates interactive learning content using local LLM models. It supports streaming responses and generates various types of educational questions including fill-in-the-blank, true/false, and ordering tasks.",
+    "image": "/assets/techtrends.png",
+    "type": "personal",
+    "languages": [
+      {
+        "logo": "/assets/python.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/llms.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/learning_agent"
+      }
+    ]
+  },
+  {
+    "name": "Usage Tracker App",
+    "desc": "A gamified app to track daily usage of apps and websites, promoting healthy digital habits.",
+    "image": "/assets/UsageTracker.png",
     "type": "personal",
     "languages": [
       {
         "logo": "/assets/kotlin.png",
         "url": ""
-      }
-    ],
-    "references": [
-      {
-        "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/RickandMorty"
-      }
-    ]
-  },
-  {
-    "name": "URLEncryption  ",
-    "desc": "Encrypting network data within compiled binary",
-    "image": "/assets/project-encryption.jpg",
-    "type": "open-source",
-    "languages": [
-      {
-        "logo": "/assets/cpp.png",
-        "url": ""
       },
       {
-        "logo": "/assets/java.png",
+        "logo": "/assets/android.png",
         "url": ""
       }
     ],
     "references": [
       {
         "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/URLEncryption"
-      }
-    ]
-  },
-  {
-    "name": "Portfolio  ",
-    "desc": "The portfolio you are currently visiting.",
-    "image": "/assets/project-portfolio.jpg",
-    "type": "personal",
-    "languages": [
-      {
-        "logo": "/assets/typescript.png",
-        "url": ""
-      },
-      {
-        "logo": "/assets/jscript.png",
-        "url": ""
-      }
-    ],
-    "references": [
-      {
-        "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/Portfolio"
-      },
-      {
-        "logo": "/assets/live.png",
-        "url": "https://sadakat.dev"
+        "url": "https://github.com/Fa-d/UsageTracker-Client"
       }
     ]
   },
   {
     "name": "VPNSDK   ",
     "desc": "This project ensembles the basic features of all protocols.",
-    "image": "/assets/project-vpn.jpg",
+    "image": "/assets/vpnsdk.png",
     "type": "office",
     "languages": [
       {
@@ -114,10 +92,29 @@
     ]
   },
   {
-    "name": "E-Commerce Platform",
-    "desc": "A full-stack e-commerce solution with modern UI and secure payment integration.",
-    "image": "/assets/project-ecommerce.jpg",
-    "type": "client",
+    "name": "RickandMorty ",
+    "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
+    "image": "/assets/rickmotry.png",
+    "type": "open-source",
+    "languages": [
+      {
+        "logo": "/assets/kotlin.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/RickandMorty"
+      }
+    ]
+  },
+
+  {
+    "name": "Portfolio  ",
+    "desc": "The portfolio you are currently visiting.",
+    "image": "/assets/portfolio.png",
+    "type": "personal",
     "languages": [
       {
         "logo": "/assets/typescript.png",
@@ -131,16 +128,48 @@
     "references": [
       {
         "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/ecommerce"
+        "url": "https://github.com/Fa-d/Portfolio"
+      },
+      {
+        "logo": "/assets/live.png",
+        "url": "https://sadakat.dev"
       }
     ]
   },
+
   {
-    "name": "Mobile Finance App",
-    "desc": "React Native application for personal finance tracking with AI insights.",
-    "image": "/assets/project-finance.jpg",
-    "type": "personal",
+    "name": "Pioneer VPN",
+    "desc": "Protect your digital identity and browse the internet with confidence using our reliable VPN service.",
+    "image": "/assets/pioneer.png",
+    "type": "client",
     "languages": [
+      {
+        "logo": "/assets/kotlin.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/android.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/live.png",
+        "url": "https://www.pioneeraaa.com/"
+      }
+    ]
+  },
+
+  {
+    "name": "Proxy Browser Extension",
+    "desc": "A Chrome Extension that allows users to access blocked websites by routing traffic through a proxy server.",
+    "image": "/assets/techtrends.png",
+    "type": "office",
+    "languages": [
+      {
+        "logo": "/assets/react.png",
+        "url": ""
+      },
       {
         "logo": "/assets/typescript.png",
         "url": ""
@@ -149,29 +178,51 @@
     "references": [
       {
         "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/finance-app"
+        "url": "https://github.com/Fa-d/proxy-browser-extension"
       }
     ]
   },
   {
-    "name": "Task Management System",
-    "desc": "Enterprise-level project management tool with team collaboration features.",
-    "image": "/assets/project-task.jpg",
-    "type": "office",
+    "name": "Tech Trends",
+    "desc": "A Mobile App that provides the latest tech news and trends, keeping users informed about the ever-evolving world of technology.",
+    "image": "/assets/techtrends.png",
+    "type": "personal",
     "languages": [
       {
-        "logo": "/assets/typescript.png",
+        "logo": "/assets/kotlin.png",
         "url": ""
       },
       {
-        "logo": "/assets/java.png",
+        "logo": "/assets/android.png",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/live.png",
-        "url": "https://tasks.company.com"
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/TechTrends"
+      }
+    ]
+  },
+  {
+    "name": "Learning Agent",
+    "desc": "a production-ready FastAPI application that generates interactive learning content using local LLM models. It supports streaming responses and generates various types of educational questions including fill-in-the-blank, true/false, and ordering tasks.",
+    "image": "/assets/techtrends.png",
+    "type": "personal",
+    "languages": [
+      {
+        "logo": "/assets/python.png",
+        "url": ""
+      },
+      {
+        "logo": "/assets/llms.png",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "logo": "/assets/github.png",
+        "url": "https://github.com/Fa-d/learning_agent"
       }
     ]
   }

@@ -35,13 +35,13 @@ jobs:
           git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/Fa-d/Fa-d.github.io.git
           git push -u origin main --force
 
-      - name: Setup SSH for Portfolio Server
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PORTFOLIO_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H jobsage.sadakat.dev >> ~/.ssh/known_hosts
+      # - name: Setup SSH for Portfolio Server
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrets.PORTFOLIO_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+      #     chmod 600 ~/.ssh/id_ed25519
+      #     ssh-keyscan -H jobsage.sadakat.dev >> ~/.ssh/known_hosts
 
-      - name: Sync to Portfolio Server (sadakat.dev)
-        run: |
-          rsync -avz -e "ssh -i ~/.ssh/id_ed25519" dist/ deployer@jobsage.sadakat.dev:/var/www/sadakat.dev/
+      # - name: Sync to Portfolio Server (sadakat.dev)
+      #   run: |
+      #     rsync -avz -e "ssh -i ~/.ssh/id_ed25519" dist/ deployer@jobsage.sadakat.dev:/var/www/sadakat.dev/

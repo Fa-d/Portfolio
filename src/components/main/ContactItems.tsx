@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { keyframes } from '@mui/system';
-import { alpha } from '@mui/material/styles';
 const linkedin = '/assets/linkedin.png';
 const github = '/assets/github.png';
 const whatsapp = '/assets/whatsapp.png';

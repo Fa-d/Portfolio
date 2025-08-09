@@ -1,53 +1,142 @@
 [
   {
-    "date": "May 2021- Present",
-    "role": "Software Engineer (III)",
     "company": "Kolpolok Limited",
-    "description": "Responsibilities include publishing and maintaining application binaries, Collaborating with international clients, gathering requirements and building, refactoring, updating necessary changes, writing documentations for the development of mobile and android TV apps. ",
-    "skills": [
-      "Multi-module",
-      "Compose",
-      "Datastore",
-      "Ktor",
-      "Flow",
-      "Coroutine",
-      "Chrome Extension",
-      "React"
+    "totalDuration": "May 2021 - Present",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Senior Software Engineer (I)",
+        "date": "Aug 2025 - Present",
+        "description": "Worked on end to end development and deployment of a AI Learning platform.",
+        "skills": [
+          "React.js",
+          "Typescript",
+          "Next.js",
+          "Python",
+          "Large Language Models (LLM)"
+        ],
+        "projects": [
+          {
+            "name": "Coursel",
+            "description": "An AI learning platform that provides personalized learning experiences using AI.",
+            "url": "https://coursel.app"
+          }
+        ]
+      },
+      {
+        "role": "Software Engineer (III)",
+        "date": "Jun 2024 - Aug 2025",
+        "description": "· Developed a custom VPN SDK that inhibits multiple VPN protocols, all core features of VPN application, which is completely decoupled from any android application, deployed to private maven server.\n· Developed a chrome extension that implements VPN proxy securing the clients traffic.",
+        "skills": [
+          "Coroutine",
+          "Ktor",
+          "Compose",
+          "Flow",
+          "Room",
+          "DataStore",
+          "Multi-module"
+        ],
+        "projects": [
+          {
+            "name": "VPN SDK",
+            "description": "A custom VPN SDK that supports multiple protocols and is decoupled from any Android application, deployed to a private Maven server."
+          },
+          {
+            "name": "Chrome Extension",
+            "description": "A Chrome Extension that implements VPN proxy to secure client traffic."
+          }
+        ]
+      },
+      {
+        "role": "Software Engineer (I)",
+        "date": "May 2022 - Jun 2024",
+        "description": [
+          "· Responsibilities include publishing and maintaining application binaries, targeting the latest API version of android and ensuring compliance with policies on the Play store and Huawei store.\n· Collaborating with international clients, gathering requirements and building, refactoring, updating necessary changes, writing documentations for the development of mobile and android TV apps.\n· Successfully reconstructed a Video-Streaming based application, achieving a significant reduction in size from 54 MB to 6 MB within a two-week time frame.\n· Integrated payment methods (Subscriptions) e.g. Google Pay In app purchases, Stripe, SSLCommerz.\n· Performed comprehensive refactoring of deprecated code, optimizing gradle configurations, modularizing codebase, updating dependencies, managing inclusion of relevant open-source projects.\n"
+        ],
+        "skills": [
+          "Virtual Private Network (VPN)",
+          "Kotlin Coroutines",
+          "Open vpn",
+          "REST APIs",
+          "ShadowSocks",
+          "Wireguard",
+          "Firebase",
+          "ProGuard",
+          "Payments"
+        ],
+        "projects": [
+          {
+            "name": "Symlex VPN",
+            "description": "A VPN application that provides secure and private internet access.",
+            "url": "https://play.google.com/store/apps/details?id=app.kismyo.vpn"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Jul 2021 - Apr 2022",
-    "role": "Junior Software Engineer",
     "company": "AjkerDeal.Com",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "REST APIs",
-      "Java",
-      "Kotlin",
-      "Andorid"
+    "totalDuration": "Jul 2021 - Apr 2022",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Junior Software Engineer",
+        "date": "Jul 2021 - Apr 2022",
+        "description": "Responsible for translating logistics, E-commerce business requirements into android applications. Developed user-facing features and worked on improving app performance.",
+        "skills": ["REST APIs", "Java", "Kotlin", "Android"],
+        "projects": [
+          {
+            "name": "AjkerDeal Mobile App",
+            "description": "E-commerce mobile application for customers",
+            "url": "https://play.google.com/store/apps/details?id=com.ajkerdeal"
+          },
+          {
+            "name": "Delivery Tiger",
+            "description": "Logistics  system for merchant"
+          },
+          {
+            "name": "Delivery Bondhu",
+            "description": "Logistics  system for delivery agents"
+          },
+          {
+            "name": "AjkerDeal Admin",
+            "description": "Admin app for managing all internal workflow"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Feb 2020 - Mar 2020",
-    "role": "Internship (Game Development)",
     "company": "Lab AR",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "Unity",
-      "Colliders",
-      "Shaders",
-      "Level Design"
+    "totalDuration": "Feb 2020 - Mar 2020",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Internship (Game Development)",
+        "date": "Feb 2020 - Mar 2020",
+        "description": "Gained hands-on experience in game development using Unity engine. Worked on level design, implemented game mechanics, and learned about shaders and collision systems.",
+        "skills": ["Unity", "Colliders", "Shaders", "Level Design"],
+        "projects": [
+          {
+            "name": "3D Environment Design",
+            "description": "Interactive 3D environments and level design"
+          }
+        ]
+      }
     ]
   },
   {
-    "date": "Aug 2019 - Sep 2019",
-    "role": "Internship (Web Development)",
     "company": "i2 Technologies",
-    "description": "Responsible for translating logistics, E-commerce business requirements into android applications.",
-    "skills": [
-      "REST-API",
-      "FrontEnd",
-      "Database"
+    "totalDuration": "Aug 2019 - Sep 2019",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "Internship (Web Development)",
+        "date": "Aug 2019 - Sep 2019",
+        "description": "Introduction to web development and database management. Worked on front-end development and learned about RESTful API integration.",
+        "skills": ["REST-API", "FrontEnd", "Database"],
+        "projects": []
+      }
     ]
   }
 ]
