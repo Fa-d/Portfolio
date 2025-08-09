@@ -87,9 +87,80 @@ const CareerSteps: React.FC = () => {
     }
 
     return (
-        <Box sx={{ color: 'text.primary', px: { xs: 2, md: 12 }, pb: { xs: 4, md: 8 }, pt: 4 }}>
-            <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, textAlign: 'center', color: 'text.primary' }}>Experience</Typography>
-            <Box sx={{ position: 'relative' }}>
+        <Box 
+            sx={{ 
+                color: 'text.primary', 
+                position: 'relative',
+                minHeight: '100vh',
+                py: { xs: 4, md: 8 },
+                // Progressive background elements for large screens
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: {
+                        xs: 'transparent',
+                        md: `radial-gradient(circle at 20% 30%, rgba(25, 118, 210, 0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 70%, rgba(156, 39, 176, 0.04) 0%, transparent 50%),
+                              linear-gradient(135deg, rgba(25, 118, 210, 0.02) 0%, transparent 50%)`
+                    },
+                    zIndex: -2,
+                },
+                // Geometric accent shapes
+                '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: { xs: 0, md: '10%' },
+                    right: { xs: 0, md: '5%' },
+                    width: { xs: 0, md: 300, lg: 400 },
+                    height: { xs: 0, md: 300, lg: 400 },
+                    background: 'rgba(25, 118, 210, 0.03)',
+                    borderRadius: '50% 20% 50% 20%',
+                    transform: 'rotate(45deg)',
+                    zIndex: -1,
+                    display: { xs: 'none', md: 'block' }
+                }
+            }}
+        >
+            {/* Content Container with Progressive Centering */}
+            <Box
+                sx={{
+                    maxWidth: { xs: '100%', sm: '90%', md: '85%', lg: '1200px', xl: '1400px' },
+                    mx: 'auto',
+                    px: { xs: 2, sm: 3, md: 4, lg: 6 },
+                    position: 'relative',
+                    zIndex: 1
+                }}
+            >
+                <Typography 
+                    variant="h4" 
+                    sx={{ 
+                        mb: { xs: 3, md: 5, lg: 6 }, 
+                        fontWeight: 600, 
+                        textAlign: 'center', 
+                        color: 'text.primary',
+                        fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
+                        letterSpacing: { xs: 0, md: '-0.5px', lg: '-1px' },
+                        position: 'relative',
+                        '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            bottom: { xs: -8, md: -12 },
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: { xs: 60, md: 80, lg: 100 },
+                            height: 3,
+                            background: 'linear-gradient(90deg, transparent, rgba(25, 118, 210, 0.6), transparent)',
+                            borderRadius: 2
+                        }
+                    }}
+                >
+                    Experience
+                </Typography>
+                <Box sx={{ position: 'relative' }}>
                 {/* Continuous vertical timeline line */}
                 <Box
                     sx={{
@@ -98,14 +169,29 @@ const CareerSteps: React.FC = () => {
                         transform: 'translateX(-50%)',
                         top: 0,
                         bottom: 0,
-                        width: 2,
-                        bgcolor: 'primary.main',
+                        width: { xs: 2, md: 3 },
+                        background: theme => `linear-gradient(180deg, 
+                            ${theme.palette.primary.main}00 0%, 
+                            ${theme.palette.primary.main} 10%, 
+                            ${theme.palette.primary.main} 90%, 
+                            ${theme.palette.primary.main}00 100%)`,
+                        borderRadius: 2,
                         zIndex: 0,
                     }}
                 />
 
                 {companies.map((company, companyIdx) => (
-                    <Box key={companyIdx} sx={{ display: 'flex', alignItems: 'flex-start', mb: 6, minHeight: 80 }}>
+                    <Box key={companyIdx} sx={{ 
+                        display: 'flex', 
+                        alignItems: 'flex-start', 
+                        mb: { xs: 4, md: 6, lg: 8 }, 
+                        minHeight: 80,
+                        // Add subtle hover effect for the entire timeline item
+                        transition: 'transform 0.2s ease-in-out',
+                        '&:hover': {
+                            transform: { xs: 'none', md: 'translateY(-2px)' }
+                        }
+                    }}>
                         {/* Timeline Dot Container */}
                         <Box
                             sx={{
@@ -120,25 +206,55 @@ const CareerSteps: React.FC = () => {
                             <Box
                                 sx={{
                                     transform: 'translateY(100%)',
-                                    width: 24,
-                                    height: 24,
+                                    width: { xs: 24, md: 32 },
+                                    height: { xs: 24, md: 32 },
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    border: '2px solid',
+                                    border: '3px solid',
                                     borderColor: 'primary.main',
                                     borderRadius: '50%',
                                     bgcolor: 'background.paper',
+                                    boxShadow: '0 0 0 4px rgba(25, 118, 210, 0.1)',
+                                    transition: 'all 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'translateY(100%) scale(1.1)',
+                                        boxShadow: '0 0 0 6px rgba(25, 118, 210, 0.15)'
+                                    }
                                 }}
                             >
-                                <Avatar sx={{ bgcolor: 'primary.main', width: 20, height: 20 }}>
+                                <Avatar sx={{ 
+                                    bgcolor: 'primary.main', 
+                                    width: { xs: 18, md: 24 }, 
+                                    height: { xs: 18, md: 24 },
+                                    background: theme => `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`
+                                }}>
                                     <WorkIcon fontSize="small" />
                                 </Avatar>
                             </Box>
                         </Box>
 
                         {/* Company Card */}
-                        <Paper sx={{ p: 3, borderRadius: 2, flexGrow: 1 }}>
+                        <Paper sx={{ 
+                            p: { xs: 2, md: 3, lg: 4 }, 
+                            borderRadius: { xs: 2, md: 3 }, 
+                            flexGrow: 1,
+                            boxShadow: { 
+                                xs: 1, 
+                                md: '0 4px 20px rgba(0,0,0,0.08)', 
+                                lg: '0 8px 32px rgba(0,0,0,0.1)' 
+                            },
+                            transition: 'all 0.3s ease-in-out',
+                            '&:hover': {
+                                boxShadow: { 
+                                    xs: 2, 
+                                    md: '0 8px 32px rgba(0,0,0,0.12)', 
+                                    lg: '0 12px 48px rgba(0,0,0,0.15)' 
+                                }
+                            },
+                            backdrop: 'blur(10px)',
+                            background: theme => `${theme.palette.background.paper}f0`
+                        }}>
                             {/* Company Header - Always Visible */}
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                                 <Box sx={{ flexGrow: 1 }}>
@@ -340,6 +456,7 @@ const CareerSteps: React.FC = () => {
                         </Paper>
                     </Box>
                 ))}
+                </Box>
             </Box>
         </Box>
     );
