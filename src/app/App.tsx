@@ -13,6 +13,7 @@ import ManageNotes from "../components/admin/ManageNotes.tsx";
 import ManageCareer from "../components/admin/ManageCareer.tsx";
 import ManageEducation from "../components/admin/ManageEducation.tsx";
 import ManageProjects from "../components/admin/ManageProjects.tsx";
+import ManageOpenSourceContributions from "../components/admin/ManageOpenSourceContributions.tsx";
 import ManageSkills from "../components/admin/ManageSkills.tsx";
 import ManageStrings from "../components/admin/ManageStrings.tsx";
 
@@ -21,6 +22,7 @@ import Box from "@mui/material/Box";
 import Projects from "../components/main/projects/Projects.tsx";
 import { useState, useEffect } from "react";
 import CareerSteps from "../components/main/Experience.tsx";
+import OpenSourceContributions from "../components/main/OpenSourceContributions.tsx";
 
 export default function AppContent() {
   const [setAnimationData] = useState<any>(null);
@@ -57,6 +59,7 @@ export default function AppContent() {
               element={<ArticleNote isArticle={true} />}
             />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/opensource" element={<OpenSourceContributions />} />
             <Route path="/experience" element={<CareerSteps />} />
 
             {/* Admin Routes */}
@@ -76,6 +79,7 @@ export default function AppContent() {
                 <Route path="career" element={<ManageCareer />} />
                 <Route path="education" element={<ManageEducation />} />
                 <Route path="projects" element={<ManageProjects />} />
+                <Route path="opensourcecontributions" element={<ManageOpenSourceContributions />} />
                 <Route path="skills" element={<ManageSkills />} />
                 <Route path="strings" element={<ManageStrings />} />
               </Route>
