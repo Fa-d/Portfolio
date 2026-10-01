@@ -19,6 +19,7 @@ import ManageStrings from "../components/admin/ManageStrings.tsx";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Projects from "../components/main/projects/Projects.tsx";
+import Products from "../components/main/products/Products.tsx";
 import { useState, useEffect } from "react";
 import CareerSteps from "../components/main/Experience.tsx";
 
@@ -57,6 +58,7 @@ export default function AppContent() {
               element={<ArticleNote isArticle={true} />}
             />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/experience" element={<CareerSteps />} />
 
             {/* Admin Routes */}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "live-intently",
+    "name": "Live Intently",
+    "tagline": "Build mindful habits, live with intention",
+    "longDescription": "Live Intently is a comprehensive habit tracking and personal growth application designed to help you build mindful habits and live each day with purpose. Track your daily habits, set morning intentions, and monitor your progress over time with beautiful visualizations.",
+    "shortDescription": "A cross-platform habit tracking and personal growth app with daily intentions, progress visualization, and seamless synchronization across all your devices.",
+    "image": "/assets/live.png",
+    "website": "https://liveintently.app",
+    "github": "https://github.com/Fa-d/live-intently",
+    "platforms": [
+      {
+        "platform": "android",
+        "name": "Google Play",
+        "url": "https://play.google.com/store/apps/details?id=com.liveintently.app"
+      },
+      {
+        "platform": "ios",
+        "name": "App Store",
+        "url": "https://apps.apple.com/app/live-intently/id1234567890"
+      },
+      {
+        "platform": "chrome",
+        "name": "Chrome Web Store",
+        "url": "https://chrome.google.com/webstore/detail/live-intently/abcdefghijklmnop"
+      }
+    ],
+    "features": [
+      {
+        "title": "Habit Tracking",
+        "description": "Track unlimited habits with customizable frequencies and reminders",
+        "icon": "track_changes"
+      },
+      {
+        "title": "Daily Intentions",
+        "description": "Set and review your morning intentions to start each day mindfully",
+        "icon": "wb_sunny"
+      },
+      {
+        "title": "Cross-Platform Sync",
+        "description": "Seamless synchronization across Android, iOS, and Chrome extension",
+        "icon": "sync"
+      },
+      {
+        "title": "Progress Analytics",
+        "description": "Beautiful charts and statistics to visualize your growth journey",
+        "icon": "analytics"
+      },
+      {
+        "title": "Smart Reminders",
+        "description": "Intelligent notifications that adapt to your schedule and habits",
+        "icon": "notifications_active"
+      },
+      {
+        "title": "Dark Mode",
+        "description": "Easy on the eyes with full dark mode support across all platforms",
+        "icon": "dark_mode"
+      }
+    ],
+    "status": "released",
+    "featured": true,
+    "tags": ["Productivity", "Wellness", "Habit Tracking", "Cross-Platform"],
+    "publishDate": "2024-06-15"
+  }
+]

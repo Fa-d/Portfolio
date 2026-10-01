@@ -1,7 +1,31 @@
 [
   {
+    "company": "Chorki",
+    "totalDuration": "November 2025 - Present",
+    "location": "Dhaka, Bangladesh",
+    "positions": [
+      {
+        "role": "App Developer",
+        "date": "Aug 2025 - Present",
+        "description": "Worked on end to end development and deployment of a AI Learning platform.",
+        "skills": [
+          "Flurter",
+          "iOS",
+          "HLS Streaming"
+        ],
+        "projects": [
+          {
+            "name": "Chorki App",
+            "description": "Chorki is Bangladesh’s leading OTT platform with a wide range of movies and web series.",
+            "url": "https://chorki.com"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "company": "Kolpolok Limited",
-    "totalDuration": "May 2021 - Present",
+    "totalDuration": "May 2021 - October 2025",
     "location": "Dhaka, Bangladesh",
     "positions": [
       {

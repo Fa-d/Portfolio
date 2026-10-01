@@ -23,6 +23,7 @@ const darkImgPath = "/assets/dark.png";
 const resumePath = "/assets/MD_SADAKAT_HUSSAIN_FAHAD.pdf";
 
 const navLinks = [
+  { label: "Products", path: "/products" },
   { label: "Projects", path: "/projects" },
   { label: "Experience", path: "/experience" },
   { label: "Articles", path: "/articles" },

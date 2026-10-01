@@ -3,6 +3,7 @@ import CareerSteps from "./Experience";
 import Education from "./Education";
 import ReactGA from "react-ga4";
 import Projects from "./projects/Projects";
+import Products from "./products/Products";
 import ArticleNote from "./ArticleNote";
 import Skills from "./Skills";
 
@@ -15,6 +16,7 @@ export default function Main() {
     <>
       <About />
       <Skills />
+      <Products />
       <Projects />
       <CareerSteps />
       <Education />
