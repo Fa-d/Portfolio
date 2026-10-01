@@ -1,47 +1,82 @@
-name: CI + Deploy to GitHub Pages + VPN Server
+name: CI + Deploy to GitHub Pages (sadakat.dev)
 
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a new push cancels the in-flight one
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment:
+      name: github-pages
+      url: https://sadakat.dev
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          repository: 'Fa-d/Portfolio'
-          ref: 'master'
-          token: ${{ secrets.API_TOKEN_GITHUB }}
+          node-version: 20
+          cache: npm
 
-      - name: Build Project (adjust if using npm/yarn)
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Push to GitHub Pages
-        run: |
-          mkdir ../../_temp/portf_dist
-          cp -r dist ../../_temp/portf_dist
-          cd ../../_temp/portf_dist/dist
-          git init
-          git config user.name "Fa-d"
-          git config user.email "fsadakathussain@gmail.com"
-          git add .
-          git commit -m "Deployed from $GITHUB_SHA"
-          git branch -M main
-          git remote add origin https://${{ secrets.API_TOKEN_GITHUB }}@github.com/Fa-d/Fa-d.github.io.git
-          git push -u origin main --force
+      - name: Build
+        run: npm run build
 
-      # - name: Setup SSH for Portfolio Server
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.PORTFOLIO_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
-      #     chmod 600 ~/.ssh/id_ed25519
-      #     ssh-keyscan -H jobsage.sadakat.dev >> ~/.ssh/known_hosts
+      - name: Add custom domain (sadakat.dev)
+        run: cp CNAME dist/CNAME
 
-      # - name: Sync to Portfolio Server (sadakat.dev)
-      #   run: |
-      #     rsync -avz -e "ssh -i ~/.ssh/id_ed25519" dist/ deployer@jobsage.sadakat.dev:/var/www/sadakat.dev/
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ---------------------------------------------------------------
+  # Optional: sync build to the self-hosted VPN server (disabled)
+  # ---------------------------------------------------------------
+  # sync-server:
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout source
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: npm
+  #
+  #     - name: Build Project
+  #       run: |
+  #         npm ci
+  #         npm run build
+  #
+  #     - name: Setup SSH for Portfolio Server
+  #       run: |
+  #         mkdir -p ~/.ssh
+  #         echo "${{ secrets.PORTFOLIO_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+  #         chmod 600 ~/.ssh/id_ed25519
+  #         ssh-keyscan -H jobsage.sadakat.dev >> ~/.ssh/known_hosts
+  #
+  #     - name: Sync to Portfolio Server (sadakat.dev)
+  #       run: |
+  #         rsync -avz -e "ssh -i ~/.ssh/id_ed25519" dist/ deployer@jobsage.sadakat.dev:/var/www/sadakat.dev/
