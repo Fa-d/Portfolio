@@ -6,6 +6,7 @@ import Projects from "./projects/Projects";
 import Products from "./products/Products";
 import ArticleNote from "./ArticleNote";
 import Skills from "./Skills";
+import OpenSourceContributions from "./OpenSourceContributions";
 
 // All direct data imports from '../../data/...' are now removed
 
@@ -18,6 +19,7 @@ export default function Main() {
       <Skills />
       <Products />
       <Projects />
+      <OpenSourceContributions />
       <CareerSteps />
       <Education />
       <ArticleNote isArticle={true} />

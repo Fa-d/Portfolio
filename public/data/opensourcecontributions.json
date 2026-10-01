@@ -1,0 +1,12 @@
+[
+  {
+    "type": "PR",
+    "title": "Add Missing Number challenge type",
+    "repository": "msbelaid/PlugBrain",
+    "date": "October 2025",
+    "description": "Implemented a new numerical challenge type where users must find the missing value in an equation, with four challenge types (Addition, Subtraction, Multiplication, Division) across different difficulty levels. Added abstract base class, Compose UI with animated text display, and comprehensive unit tests.",
+    "technologies": ["Kotlin", "Android", "Compose UI", "Unit Testing"],
+    "url": "https://github.com/msbelaid/PlugBrain/pull/66",
+    "status": "Merged"
+  }
+]

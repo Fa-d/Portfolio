@@ -16,6 +16,7 @@ const AdminDashboard: React.FC = () => {
     { path: 'career', label: 'Career', icon: '💼' },
     { path: 'education', label: 'Education', icon: '🎓' },
     { path: 'projects', label: 'Projects', icon: '🚀' },
+    { path: 'opensourcecontributions', label: 'Open Source', icon: '🌐' },
     { path: 'skills', label: 'Skills', icon: '🛠️' },
     { path: 'strings', label: 'Site Strings', icon: '🔤' },
   ];
