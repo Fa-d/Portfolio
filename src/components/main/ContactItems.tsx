@@ -7,12 +7,12 @@ import { useTheme } from '@mui/material/styles';
 export const CONTACT_EMAIL = 'contact@sadakat.dev';
 
 const contacts = [
-    { href: `mailto:${CONTACT_EMAIL}`, icon: '/assets/email.png', label: 'Email' },
-    { href: 'https://www.linkedin.com/in/sadakat-hussain-fahad/', icon: '/assets/linkedin.png', label: 'LinkedIn' },
-    { href: 'https://github.com/Fa-d', icon: '/assets/github.png', label: 'GitHub' },
-    { href: 'https://wa.me/8801749948098', icon: '/assets/whatsapp.png', label: 'WhatsApp' },
-    { href: 'https://www.facebook.com/sadakat.hussain.fahad/', icon: '/assets/facebook.png', label: 'Facebook' },
-    { href: 'https://x.com/faddy_fahad__', icon: '/assets/x.png', label: 'X (Twitter)' },
+    { href: `mailto:${CONTACT_EMAIL}`, icon: '/assets/email.webp', label: 'Email' },
+    { href: 'https://www.linkedin.com/in/sadakat-hussain-fahad/', icon: '/assets/linkedin.webp', label: 'LinkedIn' },
+    { href: 'https://github.com/Fa-d', icon: '/assets/github.webp', label: 'GitHub' },
+    { href: 'https://wa.me/8801749948098', icon: '/assets/whatsapp.webp', label: 'WhatsApp' },
+    { href: 'https://www.facebook.com/sadakat.hussain.fahad/', icon: '/assets/facebook.webp', label: 'Facebook' },
+    { href: 'https://x.com/faddy_fahad__', icon: '/assets/x.webp', label: 'X (Twitter)' },
 ];
 
 interface ContactItemsProps {

@@ -11,7 +11,7 @@ import { useJsonData } from '../../utils/useJsonData';
 
 export interface SkillsProps {
     title: string;
-    image: string; // Path to image, e.g., /assets/kotlin.png
+    image: string; // Path to image, e.g., /assets/kotlin.webp
 }
 
 const Skills: React.FC = () => {

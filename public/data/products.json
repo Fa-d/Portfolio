@@ -5,7 +5,7 @@
     "tagline": "Build mindful habits, live with intention",
     "longDescription": "Live Intently is a comprehensive habit tracking and personal growth application designed to help you build mindful habits and live each day with purpose. Track your daily habits, set morning intentions, and monitor your progress over time with beautiful visualizations.",
     "shortDescription": "A cross-platform habit tracking and personal growth app with daily intentions, progress visualization, and seamless synchronization across all your devices.",
-    "image": "/assets/live.png",
+    "image": "/assets/live.webp",
     "website": "https://liveintently.app",
     "github": "https://github.com/Fa-d/live-intently",
     "platforms": [
@@ -13,16 +13,6 @@
         "platform": "android",
         "name": "Google Play",
         "url": "https://play.google.com/store/apps/details?id=com.liveintently.app"
-      },
-      {
-        "platform": "ios",
-        "name": "App Store",
-        "url": "https://apps.apple.com/app/live-intently/id1234567890"
-      },
-      {
-        "platform": "chrome",
-        "name": "Chrome Web Store",
-        "url": "https://chrome.google.com/webstore/detail/live-intently/abcdefghijklmnop"
       }
     ],
     "features": [

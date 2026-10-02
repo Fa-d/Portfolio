@@ -1,58 +1,58 @@
 [
   {
     "title": "Kotlin",
-    "image": "/assets/kotlin.png"
+    "image": "/assets/kotlin.webp"
   },
   {
     "title": "Android",
-    "image": "/assets/android.png"
+    "image": "/assets/android.webp"
   },
   {
     "title": "Git",
-    "image": "/assets/git.png"
+    "image": "/assets/git.webp"
   },
   {
     "title": "TypeScript",
-    "image": "/assets/typescript.png"
+    "image": "/assets/typescript.webp"
   },
   {
     "title": "JavaScript",
-    "image": "/assets/jscript.png"
+    "image": "/assets/jscript.webp"
   },
   {
     "title": "C++",
-    "image": "/assets/cpp.png"
+    "image": "/assets/cpp.webp"
   },
   {
     "title": "Java",
-    "image": "/assets/java.png"
+    "image": "/assets/java.webp"
   },
   {
     "title": "Node",
-    "image": "/assets/node.png"
+    "image": "/assets/node.webp"
   },
   {
     "title": "React",
-    "image": "/assets/react.png"
+    "image": "/assets/react.webp"
   },
   {
     "title": "Next.js",
-    "image": "/assets/nextjs.png"
+    "image": "/assets/nextjs.webp"
   },
   {
     "title": "REST-API",
-    "image": "/assets/api.png"
+    "image": "/assets/api.webp"
   },
   {
     "title": "MySQL",
-    "image": "/assets/mysql.png"
+    "image": "/assets/mysql.webp"
   },
   {
     "title": "LLM's",
-    "image": "/assets/llms.png"
+    "image": "/assets/llms.webp"
   },
   {
     "title": "Python",
-    "image": "/assets/python.png"
+    "image": "/assets/python.webp"
   }
 ]

@@ -67,7 +67,7 @@ export default function Header() {
           aria-current={pathname === "/" ? "page" : undefined}
           sx={{ display: "flex", alignItems: "center", borderRadius: 2, mr: "auto" }}
         >
-          <Box component="img" src="/assets/logo.png" alt="" width={40} height={40} />
+          <Box component="img" src="/assets/logo.webp" alt="" width={40} height={40} />
         </Box>
 
         {/* Desktop navigation */}

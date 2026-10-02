@@ -1,22 +1,22 @@
 [
   {
-    "name": "JobSage ",
-    "desc": "A website that works With AI for job recommendation, CV Andlysis, Application Tracking etc., Built With AI, for AI jobs",
-    "image": "/assets/jobsage.png",
+    "name": "JobSage",
+    "desc": "A website that works With AI for job recommendation, CV Analysis, Application Tracking etc., Built With AI, for AI jobs",
+    "image": "/assets/jobsage.webp",
     "type": "personal",
     "languages": [
       {
-        "logo": "/assets/typescript.png",
+        "logo": "/assets/typescript.webp",
         "url": ""
       },
       {
-        "logo": "/assets/jscript.png",
+        "logo": "/assets/jscript.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/live.png",
+        "logo": "/assets/live.webp",
         "url": "https://jobsage.sadakat.dev"
       }
     ]
@@ -24,21 +24,21 @@
   {
     "name": "Learning Agent",
     "desc": "a production-ready FastAPI application that generates interactive learning content using local LLM models. It supports streaming responses and generates various types of educational questions including fill-in-the-blank, true/false, and ordering tasks.",
-    "image": "/assets/techtrends.png",
+    "image": "/assets/techtrends.webp",
     "type": "personal",
     "languages": [
       {
-        "logo": "/assets/python.png",
+        "logo": "/assets/python.webp",
         "url": ""
       },
       {
-        "logo": "/assets/llms.png",
+        "logo": "/assets/llms.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/learning_agent"
       }
     ]
@@ -46,92 +46,92 @@
   {
     "name": "Usage Tracker App",
     "desc": "A gamified app to track daily usage of apps and websites, promoting healthy digital habits.",
-    "image": "/assets/UsageTracker.png",
+    "image": "/assets/UsageTracker.webp",
     "type": "personal",
     "languages": [
       {
-        "logo": "/assets/kotlin.png",
+        "logo": "/assets/kotlin.webp",
         "url": ""
       },
       {
-        "logo": "/assets/android.png",
+        "logo": "/assets/android.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/UsageTracker-Client"
       }
     ]
   },
   {
-    "name": "VPNSDK   ",
+    "name": "VPNSDK",
     "desc": "This project ensembles the basic features of all protocols.",
-    "image": "/assets/vpnsdk.png",
+    "image": "/assets/vpnsdk.webp",
     "type": "office",
     "languages": [
       {
-        "logo": "/assets/java.png",
+        "logo": "/assets/java.webp",
         "url": ""
       },
       {
-        "logo": "/assets/kotlin.png",
+        "logo": "/assets/kotlin.webp",
         "url": ""
       },
       {
-        "logo": "/assets/cpp.png",
+        "logo": "/assets/cpp.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/VPNSDK"
       }
     ]
   },
   {
-    "name": "RickandMorty ",
+    "name": "RickandMorty",
     "desc": "A simple android application implementing clean architecture principals with Rick And Morty API.",
-    "image": "/assets/rickmotry.png",
+    "image": "/assets/rickmotry.webp",
     "type": "open-source",
     "languages": [
       {
-        "logo": "/assets/kotlin.png",
+        "logo": "/assets/kotlin.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/RickandMorty"
       }
     ]
   },
 
   {
-    "name": "Portfolio  ",
+    "name": "Portfolio",
     "desc": "The portfolio you are currently visiting.",
-    "image": "/assets/portfolio.png",
+    "image": "/assets/portfolio.webp",
     "type": "personal",
     "languages": [
       {
-        "logo": "/assets/typescript.png",
+        "logo": "/assets/typescript.webp",
         "url": ""
       },
       {
-        "logo": "/assets/jscript.png",
+        "logo": "/assets/jscript.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/Portfolio"
       },
       {
-        "logo": "/assets/live.png",
+        "logo": "/assets/live.webp",
         "url": "https://sadakat.dev"
       }
     ]
@@ -140,21 +140,21 @@
   {
     "name": "Pioneer VPN",
     "desc": "Protect your digital identity and browse the internet with confidence using our reliable VPN service.",
-    "image": "/assets/pioneer.png",
+    "image": "/assets/pioneer.webp",
     "type": "client",
     "languages": [
       {
-        "logo": "/assets/kotlin.png",
+        "logo": "/assets/kotlin.webp",
         "url": ""
       },
       {
-        "logo": "/assets/android.png",
+        "logo": "/assets/android.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/live.png",
+        "logo": "/assets/live.webp",
         "url": "https://www.pioneeraaa.com/"
       }
     ]
@@ -163,21 +163,21 @@
   {
     "name": "Proxy Browser Extension",
     "desc": "A Chrome Extension that allows users to access blocked websites by routing traffic through a proxy server.",
-    "image": "/assets/techtrends.png",
+    "image": "/assets/techtrends.webp",
     "type": "office",
     "languages": [
       {
-        "logo": "/assets/react.png",
+        "logo": "/assets/react.webp",
         "url": ""
       },
       {
-        "logo": "/assets/typescript.png",
+        "logo": "/assets/typescript.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/proxy-browser-extension"
       }
     ]
@@ -185,44 +185,22 @@
   {
     "name": "Tech Trends",
     "desc": "A Mobile App that provides the latest tech news and trends, keeping users informed about the ever-evolving world of technology.",
-    "image": "/assets/techtrends.png",
+    "image": "/assets/techtrends.webp",
     "type": "personal",
     "languages": [
       {
-        "logo": "/assets/kotlin.png",
+        "logo": "/assets/kotlin.webp",
         "url": ""
       },
       {
-        "logo": "/assets/android.png",
+        "logo": "/assets/android.webp",
         "url": ""
       }
     ],
     "references": [
       {
-        "logo": "/assets/github.png",
+        "logo": "/assets/github.webp",
         "url": "https://github.com/Fa-d/TechTrends"
-      }
-    ]
-  },
-  {
-    "name": "Learning Agent",
-    "desc": "a production-ready FastAPI application that generates interactive learning content using local LLM models. It supports streaming responses and generates various types of educational questions including fill-in-the-blank, true/false, and ordering tasks.",
-    "image": "/assets/techtrends.png",
-    "type": "personal",
-    "languages": [
-      {
-        "logo": "/assets/python.png",
-        "url": ""
-      },
-      {
-        "logo": "/assets/llms.png",
-        "url": ""
-      }
-    ],
-    "references": [
-      {
-        "logo": "/assets/github.png",
-        "url": "https://github.com/Fa-d/learning_agent"
       }
     ]
   }
