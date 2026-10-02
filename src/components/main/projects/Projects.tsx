@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import ProjectLanguages from "./ProjectLanguages";
 import ProjectLinks from "./ProjectLinks";
 import ProjectRibbon, { ProjectType } from "./ProjectRibbon";
@@ -7,10 +7,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import CardMedia from "@mui/material/CardMedia";
+import SectionContainer from "../../common/SectionContainer";
+import SectionHeader from "../../common/SectionHeader";
+import { CardGridSkeleton, EmptyState, ErrorState } from "../../common/DataStates";
+import { useJsonData } from "../../../utils/useJsonData";
 
-// Define interfaces locally or move to a shared types file
 export interface ProjectLanguageProps {
   logo: string;
   url: string;
@@ -29,178 +30,148 @@ export interface ProjectProps {
   type: ProjectType;
 }
 
-const Projects: React.FC = () => {
-  const [items, setItems] = useState<ProjectProps[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState<boolean>(false);
-  const maxItems = 4;
-  const navigate = useNavigate();
-  const location = useLocation();
+const MEDIA_HEIGHT = 220;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setError(null);
-      try {
-        const response = await fetch("/data/projects.json");
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch projects data: ${response.statusText}`
-          );
-        }
-        const data: ProjectProps[] = await response.json();
-        setItems(data);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "An unknown error occurred while fetching projects"
-        );
-        setItems([]);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Show all if on /projects route
-  useEffect(() => {
-    if (location.pathname === "/projects") {
-      setShowAll(true);
-    } else {
-      setShowAll(false);
-    }
-  }, [location.pathname]);
-
-  if (items.length === 0 && !error) {
-    return <Typography>No projects found.</Typography>;
-  }
-
-  const displayedItems = showAll ? items : items.slice(0, maxItems);
+// Portrait phone screenshots are shown whole inside a phone-like frame;
+// landscape screenshots fill the media area.
+const ProjectImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+  const [portrait, setPortrait] = useState<boolean | null>(null);
 
   return (
     <Box
       sx={{
-        color: "text.primary",
-        px: { xs: 2, md: 12 },
-        pb: { xs: 4, md: 8 },
-        pt: 4,
+        height: MEDIA_HEIGHT,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: (theme) => theme.palette.custom.gradientSoft,
+        overflow: "hidden",
+        pt: portrait ? 2 : 0,
       }}
     >
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ mb: 4 }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: 600, color: "text.primary" }}
-        >
-          Projects
-        </Typography>
-        {items.length > maxItems && location.pathname !== "/projects" && (
-          <Button
-            variant="outlined"
-            onClick={() => {
-              if (!showAll) {
-                navigate("/projects");
-              } else {
-                navigate("/"); // or your main route
-              }
-            }}
-            sx={{
-              textTransform: "none",
-              borderRadius: 2,
-              px: 3,
-              fontSize: "0.9rem",
-              fontWeight: 500,
-            }}
-          >
-            {showAll ? "Show Less" : "See All"}
-          </Button>
-        )}
-      </Stack>
-
       <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: {
-            xs: "1fr",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(4, 1fr)",
-          },
-          gap: 3,
-          width: "100%",
+        component="img"
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
+          const img = e.currentTarget;
+          setPortrait(img.naturalHeight > img.naturalWidth);
         }}
-      >
-        {displayedItems.map((item, index) => (
-          <Paper
-            key={item.name || index}
-            elevation={2}
-            sx={{
-              borderRadius: 3,
-              overflow: "hidden",
-              position: "relative",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                elevation: 6,
-                transform: "translateY(-4px)",
-              },
-            }}
-          >
-            <ProjectRibbon type={item.type || "personal"} />
-
-            <CardMedia
-              component="img"
-              height="200"
-              image={item.image}
-              alt={item.name}
-              sx={{
+        sx={
+          portrait
+            ? {
+                height: "100%",
+                width: "auto",
                 objectFit: "cover",
-                backgroundColor: "grey.100",
-              }}
-            />
-
-            <Box sx={{ p: 3 }}>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 700,
-                  mb: 1.5,
-                  fontSize: "1.25rem",
-                  lineHeight: 1.2,
-                }}
-              >
-                {item.name.trim()}
-              </Typography>
-
-              <Typography
-                variant="body2"
-                sx={{
-                  mb: 3,
-                  color: "text.secondary",
-                  lineHeight: 1.6,
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
-                }}
-              >
-                {item.desc}
-              </Typography>
-
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <ProjectLanguages items={item.languages} />
-                <ProjectLinks items={item.references} />
-              </Stack>
-            </Box>
-          </Paper>
-        ))}
-      </Box>
+                objectPosition: "top",
+                borderRadius: "14px 14px 0 0",
+                border: "4px solid",
+                borderBottom: 0,
+                borderColor: "grey.900",
+                boxShadow: 4,
+              }
+            : {
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
+              }
+        }
+      />
     </Box>
+  );
+};
+
+const Projects: React.FC = () => {
+  const { data, loading, error, retry } = useJsonData<ProjectProps[]>("/data/projects.json");
+  const location = useLocation();
+  const items = data ?? [];
+  const maxItems = 4;
+  const showAll = location.pathname === "/projects";
+  const displayedItems = showAll ? items : items.slice(0, maxItems);
+
+  return (
+    <SectionContainer id="projects">
+      <SectionHeader
+        title="Projects"
+        seeAllTo={!showAll && items.length > maxItems ? "/projects" : undefined}
+      />
+
+      {error ? (
+        <ErrorState what="projects" onRetry={retry} />
+      ) : loading ? (
+        <CardGridSkeleton count={showAll ? 6 : maxItems} minWidth={260} mediaHeight={MEDIA_HEIGHT} />
+      ) : displayedItems.length === 0 ? (
+        <EmptyState message="No projects listed yet." />
+      ) : (
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))",
+            gap: 3,
+          }}
+        >
+          {displayedItems.map((item, index) => {
+            const name = item.name.trim();
+            return (
+              <Paper
+                component="article"
+                key={`${name}-${index}`}
+                variant="outlined"
+                sx={{
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  position: "relative",
+                  display: "flex",
+                  flexDirection: "column",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  "&:hover, &:focus-within": {
+                    transform: "translateY(-4px)",
+                    boxShadow: 6,
+                  },
+                }}
+              >
+                <ProjectRibbon type={item.type || "personal"} />
+                <ProjectImage src={item.image} alt={`${name} screenshot`} />
+
+                <Box sx={{ p: 2.5, display: "flex", flexDirection: "column", flexGrow: 1 }}>
+                  <Typography variant="h3" sx={{ fontSize: "1.2rem", mb: 1, lineHeight: 1.3 }}>
+                    {name}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      mb: 2,
+                      color: "text.secondary",
+                      lineHeight: 1.6,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {item.desc}
+                  </Typography>
+
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    sx={{ mt: "auto" }}
+                  >
+                    <ProjectLanguages items={item.languages} />
+                    <ProjectLinks items={item.references} projectName={name} />
+                  </Stack>
+                </Box>
+              </Paper>
+            );
+          })}
+        </Box>
+      )}
+    </SectionContainer>
   );
 };
 

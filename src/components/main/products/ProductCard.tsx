@@ -7,6 +7,7 @@ import {
   Button,
   CardMedia,
   SxProps,
+  alpha,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import ProductStatusBadge, { ProductStatus } from "./ProductStatusBadge";
@@ -45,9 +46,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, sx = {}, isHomePage 
 
   return (
     <Paper
-      elevation={2}
+      variant="outlined"
       sx={{
-        borderRadius: 4,
+        borderRadius: 3,
         overflow: "hidden",
         position: "relative",
         transition:
@@ -55,11 +56,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, sx = {}, isHomePage 
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        border: "2px solid transparent",
+        width: "100%",
         "&:hover, &:focus-within": {
-          transform: "translateY(-6px)",
+          transform: "translateY(-4px)",
           borderColor: "primary.main",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+          boxShadow: 6,
         },
         "@media (prefers-reduced-motion: reduce)": {
           transform: "none",
@@ -105,7 +106,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, sx = {}, isHomePage 
                 px: 1,
                 py: 0.5,
                 borderRadius: 1,
-                bgcolor: "rgba(255,255,255,0.9)",
+                bgcolor: (theme) => alpha(theme.palette.background.paper, 0.92),
+                border: "1px solid",
+                borderColor: "divider",
                 backdropFilter: "blur(4px)",
                 fontSize: "0.7rem",
                 fontWeight: 600,
@@ -123,62 +126,61 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, sx = {}, isHomePage 
         </Box>
       )}
 
-      {/* Hero Image */}
-      {product.image && !imgError ? (
-        <CardMedia
-          component="img"
-          image={product.image}
-          alt={product.name}
-          loading="lazy"
-          onError={() => setImgError(true)}
-          sx={{
-            height: { xs: 180, sm: 220, md: 260 },
-            width: "100%",
-            objectFit: "cover",
-            backgroundColor: "grey.100",
-          }}
-        />
-      ) : (
-        <Box
-          sx={{
-            height: { xs: 180, sm: 220, md: 260 },
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            background: (theme) =>
-              `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-          }}
-        >
-          <Typography
-            variant="h4"
+      {/* Hero Image: product icons are square, so show them whole on a soft backdrop */}
+      <Box
+        sx={{
+          height: { xs: 170, sm: 200 },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: (theme) => theme.palette.custom.gradientSoft,
+        }}
+      >
+        {product.image && !imgError ? (
+          <CardMedia
+            component="img"
+            image={product.image}
+            alt={`${product.name} icon`}
+            loading="lazy"
+            onError={() => setImgError(true)}
             sx={{
-              fontWeight: 700,
+              width: { xs: 96, sm: 112 },
+              height: { xs: 96, sm: 112 },
+              objectFit: "contain",
+              borderRadius: 4,
+              boxShadow: 6,
+            }}
+          />
+        ) : (
+          <Box
+            aria-hidden
+            sx={{
+              width: 96,
+              height: 96,
+              borderRadius: 4,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: (theme) => theme.palette.custom.gradient,
               color: "white",
-              lineHeight: 1,
+              fontSize: "2.5rem",
+              fontWeight: 700,
             }}
           >
             {product.name.charAt(0)}
-          </Typography>
-          <Typography
-            variant="caption"
-            sx={{ color: "rgba(255,255,255,0.85)", mt: 0.5 }}
-          >
-            {product.name}
-          </Typography>
-        </Box>
-      )}
+          </Box>
+        )}
+      </Box>
 
       {/* Content */}
       <Box sx={{ p: 3, flex: 1, display: "flex", flexDirection: "column" }}>
         {/* Product Name and Tagline */}
         <Typography
-          variant="h5"
+          variant="h3"
           sx={{
             fontWeight: 700,
             mb: 0.5,
-            fontSize: "1.5rem",
+            fontSize: "1.4rem",
             lineHeight: 1.2,
             color: "text.primary",
           }}

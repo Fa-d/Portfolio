@@ -3,9 +3,35 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fahad's - Porfolio</title>
+  <title>Md Sadakat Hussain Fahad — Portfolio</title>
+  <meta name="description" content="Md Sadakat Hussain Fahad — software engineer building Android, mobile and full-stack applications. Products, projects, open-source work and experience." />
+  <meta name="theme-color" content="#667eea" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sadakat.dev/" />
+  <meta property="og:title" content="Md Sadakat Hussain Fahad — Portfolio" />
+  <meta property="og:description" content="Software engineer building Android, mobile and full-stack applications." />
+  <meta property="og:image" content="https://sadakat.dev/assets/logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    // Apply the saved or OS theme before first paint to avoid a light/dark flash.
+    (function () {
+      try {
+        var saved = localStorage.getItem("PORT_THEME");
+        var mode = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.classList.add(mode);
+        document.documentElement.style.colorScheme = mode;
+      } catch (e) { }
+    })();
+  </script>
 </head>
 
 <body>

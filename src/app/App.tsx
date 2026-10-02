@@ -1,93 +1,45 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import Box from "@mui/material/Box";
 import Main from "../components/main/Main.tsx";
 import Header from "../components/main/Header.tsx";
 import Footer from "../components/main/Footer.tsx";
 import ArticleNote from "../components/main/ArticleNote.tsx";
 import Skills from "../components/main/Skills.tsx";
-
-import AdminLogin from "../components/admin/AdminLogin.tsx";
-import AdminDashboard from "../components/admin/AdminDashboard.tsx";
-import ProtectedRoute from "../components/admin/ProtectedRoute.tsx";
-import ManageArticles from "../components/admin/ManageArticles.tsx";
-import ManageNotes from "../components/admin/ManageNotes.tsx";
-import ManageCareer from "../components/admin/ManageCareer.tsx";
-import ManageEducation from "../components/admin/ManageEducation.tsx";
-import ManageProjects from "../components/admin/ManageProjects.tsx";
-import ManageOpenSourceContributions from "../components/admin/ManageOpenSourceContributions.tsx";
-import ManageSkills from "../components/admin/ManageSkills.tsx";
-import ManageStrings from "../components/admin/ManageStrings.tsx";
-
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 import Projects from "../components/main/projects/Projects.tsx";
 import Products from "../components/main/products/Products.tsx";
-import { useState, useEffect } from "react";
-import CareerSteps from "../components/main/Experience.tsx";
+import Career from "../components/main/Career.tsx";
 import OpenSourceContributions from "../components/main/OpenSourceContributions.tsx";
 
-export default function AppContent() {
-  const [setAnimationData] = useState<any>(null);
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    fetch("/assets/connecting.json")
-      .then((res) => res.json())
-      .then(setAnimationData);
-  }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
 
-  // if (!animationData) {
-  //   return (
-  //     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-  //       <Lottie
-  //         loop
-  //         play
-  //         animationData={animationData}
-  //         style={{ width: 180, height: 180 }}
-  //       />
-  //     </Box>
-  //   );
-  // }
+  return null;
+}
 
+export default function AppContent() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
-      <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
-        <Container maxWidth={"xl"} sx={{ p: 0 }}>
-          <Routes>
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/" element={<Main />} />
-            <Route
-              path="/articles"
-              element={<ArticleNote isArticle={true} />}
-            />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/opensource" element={<OpenSourceContributions />} />
-            <Route path="/experience" element={<CareerSteps />} />
-
-            {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/admin/dashboard" element={<AdminDashboard />}>
-                <Route
-                  index
-                  element={
-                    <div>
-                      Please select a section to manage from the sidebar.
-                    </div>
-                  }
-                />
-                <Route path="articles" element={<ManageArticles />} />
-                <Route path="notes" element={<ManageNotes />} />
-                <Route path="career" element={<ManageCareer />} />
-                <Route path="education" element={<ManageEducation />} />
-                <Route path="projects" element={<ManageProjects />} />
-                <Route path="opensourcecontributions" element={<ManageOpenSourceContributions />} />
-                <Route path="skills" element={<ManageSkills />} />
-                <Route path="strings" element={<ManageStrings />} />
-              </Route>
-            </Route>
-          </Routes>
-        </Container>
+      <Box component="main" sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route
+            path="/articles"
+            element={<ArticleNote isArticle={true} />}
+          />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/opensource" element={<OpenSourceContributions />} />
+          <Route path="/experience" element={<Career />} />
+          <Route path="*" element={<Main />} />
+        </Routes>
       </Box>
       <Footer />
     </BrowserRouter>

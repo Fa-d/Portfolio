@@ -1,6 +1,5 @@
 import React from "react";
 import { Chip, SxProps, Theme } from "@mui/material";
-import { keyframes } from "@emotion/react";
 
 export type ProductStatus = "released" | "beta" | "coming-soon";
 
@@ -9,31 +8,21 @@ interface ProductStatusBadgeProps {
   sx?: SxProps<Theme>;
 }
 
-const pulseAnimation = keyframes`
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-`;
-
 const statusConfig: Record<
   ProductStatus,
-  { label: string; bgColor: string; animation?: string }
+  { label: string; bgColor: string }
 > = {
   released: {
     label: "Released",
-    bgColor: "success.main",
+    bgColor: "success.dark",
   },
   beta: {
     label: "Beta",
-    bgColor: "warning.main",
+    bgColor: "warning.dark",
   },
   "coming-soon": {
     label: "Coming Soon",
-    bgColor: "grey.400",
-    animation: `${pulseAnimation} 2s ease-in-out infinite`,
+    bgColor: "grey.700",
   },
 };
 
@@ -53,9 +42,8 @@ const ProductStatusBadge: React.FC<ProductStatusBadgeProps> = ({
         pr: 1,
         backdropFilter: "blur(4px)",
         bgcolor: config.bgColor,
-        color: "white",
+        color: "common.white",
         fontWeight: 600,
-        animation: config.animation,
         ...sx,
       } as SxProps<Theme>}
     />

@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
-import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import WorkIcon from "@mui/icons-material/Work";
+import Skeleton from "@mui/material/Skeleton";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import FolderIcon from "@mui/icons-material/Folder";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import LaunchIcon from "@mui/icons-material/Launch";
+import SectionContainer from "../common/SectionContainer";
+import SectionHeader from "../common/SectionHeader";
+import { EmptyState, ErrorState } from "../common/DataStates";
+import { useJsonData } from "../../utils/useJsonData";
 
-// Image paths are now direct URLs to public/assets
-const idImgPath = "/assets/identification-card.png";
-const calenderPath = "/assets/calender.png";
-const jobLocPath = "/assets/job_loc.png";
-
-// Define the interfaces for the new structure
 interface Project {
   name: string;
   description: string;
@@ -29,7 +27,8 @@ interface Project {
 interface Position {
   role: string;
   date: string;
-  description: string;
+  // Some entries store the description as an array of paragraphs.
+  description: string | string[];
   skills: string[];
   projects: Project[];
 }
@@ -41,706 +40,233 @@ interface CompanyExperience {
   positions: Position[];
 }
 
-const CareerSteps: React.FC = () => {
-  const [companies, setCompanies] = useState<CompanyExperience[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [expandedCompanies, setExpandedCompanies] = useState<Set<number>>(
-    new Set()
-  );
+const isCurrent = (date: string) => /present/i.test(date);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setError(null);
-      try {
-        const response = await fetch("/data/career.json");
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch career data: ${response.statusText}`
-          );
-        }
-        const data: CompanyExperience[] = await response.json();
-        setCompanies(data);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "An unknown error occurred while fetching career data"
-        );
-        setCompanies([]);
-      } finally {
-      }
-    };
+// Split descriptions into lines; lines written as "· item" become bullet points.
+const descriptionLines = (description: Position["description"]): string[] =>
+  (Array.isArray(description) ? description.join("\n") : description ?? "")
+    .split("\n")
+    .map((line) => line.replace(/^\s*[·•-]\s*/, "").trim())
+    .filter(Boolean);
 
-    fetchData();
-  }, []);
-
-  const toggleCompany = (index: number) => {
-    const newExpanded = new Set(expandedCompanies);
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index);
-    } else {
-      newExpanded.add(index);
-    }
-    setExpandedCompanies(newExpanded);
-  };
-
-  const handleProjectClick = (project: Project) => {
-    if (project.url) {
-      window.open(project.url, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  if (companies.length === 0 && !error) {
-    return <Typography>No experience data found.</Typography>;
-  }
+const PositionDetails: React.FC<{ position: Position }> = ({ position }) => {
+  const lines = descriptionLines(position.description);
 
   return (
-    <Box
-      sx={{
-        color: "text.primary",
-        position: "relative",
-        minHeight: "100vh",
-        py: { xs: 4, md: 8 },
-        // Progressive background elements for large screens
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: {
-            xs: "transparent",
-            md: `radial-gradient(circle at 20% 30%, rgba(25, 118, 210, 0.05) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 70%, rgba(156, 39, 176, 0.04) 0%, transparent 50%),
-                              linear-gradient(135deg, rgba(25, 118, 210, 0.02) 0%, transparent 50%)`,
-          },
-          zIndex: -2,
-        },
-        // Geometric accent shapes
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          top: { xs: 0, md: "10%" },
-          right: { xs: 0, md: "5%" },
-          width: { xs: 0, md: 300, lg: 400 },
-          height: { xs: 0, md: 300, lg: 400 },
-          background: "rgba(25, 118, 210, 0.03)",
-          borderRadius: "50% 20% 50% 20%",
-          transform: "rotate(45deg)",
-          zIndex: -1,
-          display: { xs: "none", md: "block" },
-        },
-      }}
-    >
-      {/* Content Container with Progressive Centering */}
-      <Box
-        sx={{
-          maxWidth: {
-            xs: "100%",
-            sm: "90%",
-            md: "85%",
-            lg: "1200px",
-            xl: "1400px",
-          },
-          mx: "auto",
-          px: { xs: 2, sm: 3, md: 4, lg: 6 },
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            mb: { xs: 3, md: 5, lg: 6 },
-            fontWeight: 600,
-            textAlign: "center",
-            color: "text.primary",
-            fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
-            letterSpacing: { xs: 0, md: "-0.5px", lg: "-1px" },
-            position: "relative",
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              bottom: { xs: -8, md: -12 },
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: { xs: 60, md: 80, lg: 100 },
-              height: 3,
-              background:
-                "linear-gradient(90deg, transparent, rgba(25, 118, 210, 0.6), transparent)",
-              borderRadius: 2,
-            },
-          }}
-        >
-          Experience
+    <Box sx={{ pl: 2, borderLeft: "2px solid", borderColor: "divider" }}>
+      <Stack direction="row" alignItems="center" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 0.5 }}>
+        <Typography variant="h4" sx={{ fontSize: "1.05rem", fontWeight: 600 }}>
+          {position.role}
         </Typography>
-        <Box sx={{ position: "relative" }}>
-          {/* Continuous vertical timeline line */}
-          <Box
-            sx={{
-              position: "absolute",
-              left: { xs: 20, md: 20 },
-              transform: "translateX(-50%)",
-              top: 0,
-              bottom: 0,
-              width: { xs: 2, md: 3 },
-              background: (theme) => `linear-gradient(180deg, 
-                            ${theme.palette.primary.main}00 0%, 
-                            ${theme.palette.primary.main} 10%, 
-                            ${theme.palette.primary.main} 90%, 
-                            ${theme.palette.primary.main}00 100%)`,
-              borderRadius: 2,
-              zIndex: 0,
-            }}
-          />
+        {isCurrent(position.date) && (
+          <Chip label="Current" size="small" color="primary" sx={{ height: 22, fontWeight: 600 }} />
+        )}
+      </Stack>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+        {position.date}
+      </Typography>
 
-          {companies.map((company, companyIdx) => (
-            <Box
-              key={companyIdx}
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                mb: { xs: 4, md: 6, lg: 8 },
-                minHeight: 80,
-                // Add subtle hover effect for the entire timeline item
-                transition: "transform 0.2s ease-in-out",
-                "&:hover": {
-                  transform: { xs: "none", md: "translateY(-2px)" },
-                },
-              }}
-            >
-              {/* Timeline Dot Container */}
-              <Box
-                sx={{
-                  width: { xs: 40, md: 40 },
-                  flexShrink: 0,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  zIndex: 1,
-                }}
-              >
-                <Box
-                  sx={{
-                    transform: "translateY(100%)",
-                    width: { xs: 24, md: 32 },
-                    height: { xs: 24, md: 32 },
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "3px solid",
-                    borderColor: "primary.main",
-                    borderRadius: "50%",
-                    bgcolor: "background.paper",
-                    boxShadow: "0 0 0 4px rgba(25, 118, 210, 0.1)",
-                    transition: "all 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "translateY(100%) scale(1.1)",
-                      boxShadow: "0 0 0 6px rgba(25, 118, 210, 0.15)",
-                    },
-                  }}
-                >
-                  <Avatar
-                    sx={{
-                      bgcolor: "primary.main",
-                      width: { xs: 18, md: 24 },
-                      height: { xs: 18, md: 24 },
-                      background: (theme) =>
-                        `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-                    }}
-                  >
-                    <WorkIcon fontSize="small" />
-                  </Avatar>
-                </Box>
-              </Box>
-
-              {/* Company Card */}
-              <Paper
-                sx={{
-                  p: { xs: 2, md: 3, lg: 4 },
-                  borderRadius: { xs: 2, md: 3 },
-                  flexGrow: 1,
-                  boxShadow: {
-                    xs: 1,
-                    md: "0 4px 20px rgba(0,0,0,0.08)",
-                    lg: "0 8px 32px rgba(0,0,0,0.1)",
-                  },
-                  transition: "all 0.3s ease-in-out",
-                  "&:hover": {
-                    boxShadow: {
-                      xs: 2,
-                      md: "0 8px 32px rgba(0,0,0,0.12)",
-                      lg: "0 12px 48px rgba(0,0,0,0.15)",
-                    },
-                  },
-                  backdrop: "blur(10px)",
-                  background: (theme) => `${theme.palette.background.paper}f0`,
-                }}
-              >
-                {/* Company Header - Always Visible */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    mb: 2,
-                  }}
-                >
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        mb: 2,
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src={jobLocPath}
-                        alt="Company icon"
-                        sx={{ width: 30, height: 30, mr: 2 }}
-                      />
-                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        {company.company}
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: { xs: "column", md: "row" },
-                        alignItems: { xs: "flex-start", md: "center" },
-                        mb: 1,
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          mb: { xs: 1, md: 0 },
-                        }}
-                      >
-                        <Box
-                          component="img"
-                          src={calenderPath}
-                          alt="Date icon"
-                          sx={{ width: 24, height: 24, mr: 1 }}
-                        />
-                        <Typography
-                          variant="subtitle2"
-                          color="text.secondary"
-                          sx={{ mr: { md: 4 } }}
-                        >
-                          {company.totalDuration}
-                        </Typography>
-                      </Box>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <LocationOnIcon
-                          sx={{
-                            width: 20,
-                            height: 20,
-                            mr: 1,
-                            color: "text.secondary",
-                          }}
-                        />
-                        <Typography variant="subtitle2" color="text.secondary">
-                          {company.location}
-                        </Typography>
-                      </Box>
-                    </Box>
-                    {company.positions.length > 1 && (
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ mb: 1 }}
-                      >
-                        {company.positions.length} positions
-                      </Typography>
-                    )}
-                  </Box>
-                  {company.positions.length > 1 && (
-                    <IconButton
-                      onClick={() => toggleCompany(companyIdx)}
-                      sx={{ ml: 1 }}
-                      aria-label={
-                        expandedCompanies.has(companyIdx)
-                          ? "collapse"
-                          : "expand"
-                      }
-                    >
-                      {expandedCompanies.has(companyIdx) ? (
-                        <ExpandLessIcon />
-                      ) : (
-                        <ExpandMoreIcon />
-                      )}
-                    </IconButton>
-                  )}
-                </Box>
-
-                {/* Show latest position summary for companies with multiple positions */}
-                {company.positions.length > 1 &&
-                  !expandedCompanies.has(companyIdx) && (
-                    <Box
-                      sx={{
-                        pl: 2,
-                        borderLeft: "2px solid",
-                        borderColor: "divider",
-                        ml: 2,
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          mb: 1,
-                        }}
-                      >
-                        <Box
-                          component="img"
-                          src={idImgPath}
-                          alt="Role icon"
-                          sx={{ width: 24, height: 24, mr: 2 }}
-                        />
-                        <Typography
-                          variant="subtitle1"
-                          sx={{ fontWeight: 600 }}
-                        >
-                          {company.positions[0].role}
-                        </Typography>
-                      </Box>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ mb: 2 }}
-                      >
-                        Current Role • {company.positions[0].date}
-                      </Typography>
-                      <Stack
-                        direction="row"
-                        spacing={1}
-                        sx={{ flexWrap: "wrap", rowGap: 1, mb: 2 }}
-                      >
-                        {company.positions[0].skills
-                          .slice(0, 6)
-                          .map((skill, skillIndex) => (
-                            <Chip
-                              key={skillIndex}
-                              label={skill}
-                              size="small"
-                              sx={{ mb: 1 }}
-                            />
-                          ))}
-                        {company.positions[0].skills.length > 6 && (
-                          <Chip
-                            label={`+${
-                              company.positions[0].skills.length - 6
-                            } more`}
-                            size="small"
-                            variant="outlined"
-                          />
-                        )}
-                      </Stack>
-                      {company.positions[0].projects.length > 0 && (
-                        <Box>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              fontWeight: 600,
-                              mb: 1,
-                              color: "text.secondary",
-                            }}
-                          >
-                            Key Projects:
-                          </Typography>
-                          <Stack
-                            direction="row"
-                            spacing={1}
-                            sx={{ flexWrap: "wrap", rowGap: 1 }}
-                          >
-                            {company.positions[0].projects
-                              .slice(0, 3)
-                              .map((project, projectIndex) => (
-                                <Chip
-                                  key={projectIndex}
-                                  icon={<FolderIcon />}
-                                  label={project.name}
-                                  size="small"
-                                  variant="outlined"
-                                  clickable={!!project.url}
-                                  onClick={() =>
-                                    project.url && handleProjectClick(project)
-                                  }
-                                  sx={{
-                                    mb: 1,
-                                    "&:hover": project.url
-                                      ? {
-                                          backgroundColor: "primary.light",
-                                          color: "primary.contrastText",
-                                        }
-                                      : {},
-                                  }}
-                                  deleteIcon={
-                                    project.url ? <LaunchIcon /> : undefined
-                                  }
-                                  onDelete={
-                                    project.url
-                                      ? () => handleProjectClick(project)
-                                      : undefined
-                                  }
-                                />
-                              ))}
-                            {company.positions[0].projects.length > 3 && (
-                              <Chip
-                                label={`+${
-                                  company.positions[0].projects.length - 3
-                                } more projects`}
-                                size="small"
-                                variant="outlined"
-                                sx={{ opacity: 0.7 }}
-                              />
-                            )}
-                          </Stack>
-                        </Box>
-                      )}
-                    </Box>
-                  )}
-
-                {/* Single position company - show directly */}
-                {company.positions.length === 1 && (
-                  <Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        mb: 1,
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src={idImgPath}
-                        alt="Role icon"
-                        sx={{ width: 24, height: 24, mr: 2 }}
-                      />
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                        {company.positions[0].role}
-                      </Typography>
-                    </Box>
-                    <Typography
-                      variant="body2"
-                      sx={{ mb: 2, color: "text.secondary" }}
-                    >
-                      {(company.positions[0].description ?? "")
-                        .split("\n")
-                        .map((line, idx) => (
-                          <React.Fragment key={idx}>
-                            {line}
-                            <br />
-                          </React.Fragment>
-                        ))}
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      sx={{ flexWrap: "wrap", rowGap: 1, mb: 2 }}
-                    >
-                      {company.positions[0].skills.map((skill, skillIndex) => (
-                        <Chip key={skillIndex} label={skill} sx={{ mb: 1 }} />
-                      ))}
-                    </Stack>
-                    {company.positions[0].projects.length > 0 && (
-                      <Box>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontWeight: 600,
-                            mb: 1,
-                            color: "text.secondary",
-                          }}
-                        >
-                          Projects:
-                        </Typography>
-                        <Stack
-                          direction="row"
-                          spacing={1}
-                          sx={{ flexWrap: "wrap", rowGap: 1 }}
-                        >
-                          {company.positions[0].projects.map(
-                            (project, projectIndex) => (
-                              <Chip
-                                key={projectIndex}
-                                icon={<FolderIcon />}
-                                label={project.name}
-                                size="small"
-                                variant="outlined"
-                                clickable={!!project.url}
-                                onClick={() =>
-                                  project.url && handleProjectClick(project)
-                                }
-                                sx={{
-                                  mb: 1,
-                                  "&:hover": project.url
-                                    ? {
-                                        backgroundColor: "primary.light",
-                                        color: "primary.contrastText",
-                                      }
-                                    : {},
-                                }}
-                                deleteIcon={
-                                  project.url ? <LaunchIcon /> : undefined
-                                }
-                                onDelete={
-                                  project.url
-                                    ? () => handleProjectClick(project)
-                                    : undefined
-                                }
-                              />
-                            )
-                          )}
-                        </Stack>
-                      </Box>
-                    )}
-                  </Box>
-                )}
-
-                {/* Expanded positions for multi-position companies */}
-                <Collapse
-                  in={expandedCompanies.has(companyIdx)}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <Box sx={{ mt: 2 }}>
-                    {company.positions.map((position, posIdx) => (
-                      <Box
-                        key={posIdx}
-                        sx={{
-                          pl: 2,
-                          borderLeft: "2px solid",
-                          borderColor: "divider",
-                          ml: 2,
-                          mb: posIdx < company.positions.length - 1 ? 3 : 0,
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            mb: 1,
-                          }}
-                        >
-                          <Box
-                            component="img"
-                            src={idImgPath}
-                            alt="Role icon"
-                            sx={{ width: 24, height: 24, mr: 2 }}
-                          />
-                          <Typography
-                            variant="subtitle1"
-                            sx={{ fontWeight: 600 }}
-                          >
-                            {position.role}
-                          </Typography>
-                        </Box>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mb: 2 }}
-                        >
-                          {position.date}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{ mb: 2, color: "text.primary" }}
-                        >
-                          {position.description}
-                        </Typography>
-                        <Stack
-                          direction="row"
-                          spacing={1}
-                          sx={{ flexWrap: "wrap", rowGap: 1, mb: 2 }}
-                        >
-                          {position.skills.map((skill, skillIndex) => (
-                            <Chip
-                              key={skillIndex}
-                              label={skill}
-                              size="small"
-                              sx={{ mb: 1 }}
-                            />
-                          ))}
-                        </Stack>
-                        {position.projects.length > 0 && (
-                          <Box>
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                fontWeight: 600,
-                                mb: 1,
-                                color: "text.secondary",
-                              }}
-                            >
-                              Projects:
-                            </Typography>
-                            <Stack
-                              direction="row"
-                              spacing={1}
-                              sx={{ flexWrap: "wrap", rowGap: 1 }}
-                            >
-                              {position.projects.map(
-                                (project, projectIndex) => (
-                                  <Chip
-                                    key={projectIndex}
-                                    icon={<FolderIcon />}
-                                    label={project.name}
-                                    size="small"
-                                    variant="outlined"
-                                    clickable={!!project.url}
-                                    onClick={() =>
-                                      project.url && handleProjectClick(project)
-                                    }
-                                    sx={{
-                                      mb: 1,
-                                      "&:hover": project.url
-                                        ? {
-                                            backgroundColor: "primary.light",
-                                            color: "primary.contrastText",
-                                          }
-                                        : {},
-                                    }}
-                                    deleteIcon={
-                                      project.url ? <LaunchIcon /> : undefined
-                                    }
-                                    onDelete={
-                                      project.url
-                                        ? () => handleProjectClick(project)
-                                        : undefined
-                                    }
-                                  />
-                                )
-                              )}
-                            </Stack>
-                          </Box>
-                        )}
-                      </Box>
-                    ))}
-                  </Box>
-                </Collapse>
-              </Paper>
-            </Box>
+      {lines.length > 1 ? (
+        <Box component="ul" sx={{ pl: 2.5, mb: 2, color: "text.secondary" }}>
+          {lines.map((line, idx) => (
+            <Typography component="li" variant="body2" key={idx} sx={{ mb: 0.5, lineHeight: 1.6 }}>
+              {line}
+            </Typography>
           ))}
         </Box>
-      </Box>
+      ) : lines.length === 1 ? (
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2, lineHeight: 1.6 }}>
+          {lines[0]}
+        </Typography>
+      ) : null}
+
+      {position.skills.length > 0 && (
+        <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1, mb: 2 }}>
+          {position.skills.map((skill) => (
+            <Chip key={skill} label={skill} size="small" />
+          ))}
+        </Stack>
+      )}
+
+      {position.projects.length > 0 && (
+        <Box>
+          <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, color: "text.secondary" }}>
+            Projects
+          </Typography>
+          <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
+            {position.projects.map((project) =>
+              project.url ? (
+                <Chip
+                  key={project.name}
+                  component="a"
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  clickable
+                  icon={<LaunchIcon />}
+                  label={project.name}
+                  size="small"
+                  variant="outlined"
+                  color="primary"
+                  title={project.description}
+                />
+              ) : (
+                <Chip
+                  key={project.name}
+                  icon={<FolderOutlinedIcon />}
+                  label={project.name}
+                  size="small"
+                  variant="outlined"
+                  title={project.description}
+                />
+              )
+            )}
+          </Stack>
+        </Box>
+      )}
     </Box>
   );
 };
 
-export default CareerSteps;
+const CompanyCard: React.FC<{ company: CompanyExperience }> = ({ company }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [latest, ...earlier] = company.positions;
+
+  return (
+    <Paper variant="outlined" sx={{ p: { xs: 2, md: 3 }, borderRadius: 3, flexGrow: 1, minWidth: 0 }}>
+      <Typography variant="h3" sx={{ fontSize: { xs: "1.15rem", md: "1.3rem" }, mb: 1 }}>
+        {company.company}
+      </Typography>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={{ xs: 0.5, sm: 3 }}
+        sx={{ mb: 2.5, color: "text.secondary" }}
+      >
+        <Stack direction="row" alignItems="center" spacing={0.75}>
+          <CalendarTodayIcon sx={{ fontSize: 16 }} />
+          <Typography variant="body2">{company.totalDuration}</Typography>
+        </Stack>
+        <Stack direction="row" alignItems="center" spacing={0.75}>
+          <LocationOnOutlinedIcon sx={{ fontSize: 18 }} />
+          <Typography variant="body2">{company.location}</Typography>
+        </Stack>
+      </Stack>
+
+      {latest && <PositionDetails position={latest} />}
+
+      {earlier.length > 0 && (
+        <>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <Stack spacing={3} sx={{ mt: 3 }}>
+              {earlier.map((position) => (
+                <PositionDetails key={`${position.role}-${position.date}`} position={position} />
+              ))}
+            </Stack>
+          </Collapse>
+          <Button
+            size="small"
+            onClick={() => setExpanded((value) => !value)}
+            aria-expanded={expanded}
+            endIcon={
+              <ExpandMoreIcon
+                sx={{ transform: expanded ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}
+              />
+            }
+            sx={{ mt: 2 }}
+          >
+            {expanded
+              ? "Hide earlier roles"
+              : `Show ${earlier.length} earlier ${earlier.length === 1 ? "role" : "roles"}`}
+          </Button>
+        </>
+      )}
+    </Paper>
+  );
+};
+
+const CareerSkeleton: React.FC = () => (
+  <Stack spacing={3} aria-busy="true" aria-label="Loading">
+    {Array.from({ length: 3 }).map((_, index) => (
+      <Paper key={index} variant="outlined" sx={{ p: 3, borderRadius: 3, ml: { xs: 5, md: 7 } }}>
+        <Skeleton variant="text" sx={{ fontSize: "1.4rem", width: "40%" }} />
+        <Skeleton variant="text" width="30%" sx={{ mb: 2 }} />
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" width="85%" />
+      </Paper>
+    ))}
+  </Stack>
+);
+
+const Career: React.FC = () => {
+  const { data, loading, error, retry } = useJsonData<CompanyExperience[]>("/data/career.json");
+  const companies = data ?? [];
+
+  return (
+    <SectionContainer id="experience">
+      <SectionHeader title="Experience" />
+
+      {error ? (
+        <ErrorState what="experience" onRetry={retry} />
+      ) : loading ? (
+        <CareerSkeleton />
+      ) : companies.length === 0 ? (
+        <EmptyState message="No experience listed yet." />
+      ) : (
+        <Box component="ol" sx={{ listStyle: "none", position: "relative" }}>
+          {companies.map((company, index) => (
+            <Box
+              component="li"
+              key={`${company.company}-${index}`}
+              sx={{ display: "flex", gap: { xs: 1.5, md: 3 }, pb: index < companies.length - 1 ? { xs: 3, md: 4 } : 0 }}
+            >
+              {/* Timeline rail: dot aligned with the company name, line runs to the next item */}
+              <Box
+                aria-hidden
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  flexShrink: 0,
+                  pt: { xs: 2, md: 3 },
+                }}
+              >
+                <Box
+                  sx={{
+                    width: { xs: 32, md: 40 },
+                    height: { xs: 32, md: 40 },
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "common.white",
+                    background: (theme) => theme.palette.custom.gradient,
+                    boxShadow: (theme) => `0 0 0 4px ${theme.palette.background.default}`,
+                  }}
+                >
+                  <WorkOutlineIcon sx={{ fontSize: { xs: 16, md: 20 } }} />
+                </Box>
+                {index < companies.length - 1 && (
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      width: 2,
+                      mt: 1,
+                      mb: { xs: -3, md: -4 },
+                      background: (theme) =>
+                        `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                      opacity: 0.5,
+                    }}
+                  />
+                )}
+              </Box>
+              <CompanyCard company={company} />
+            </Box>
+          ))}
+        </Box>
+      )}
+    </SectionContainer>
+  );
+};
+
+export default Career;

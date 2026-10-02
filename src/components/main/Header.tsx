@@ -1,150 +1,175 @@
+import { useState } from "react";
+import { Link as RouterLink, NavLink, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import Tooltip from "@mui/material/Tooltip";
+import { alpha } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme as useMuiTheme } from "@mui/material/styles";
+import CloseIcon from "@mui/icons-material/Close";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import { useTheme } from "../../utils/ThemeContext.tsx";
-import { useNavigate } from "react-router-dom";
-import Logo from "/assets/logo.png";
-import { useState } from "react";
-
-// Direct paths to assets in public folder
-const lightImgPath = "/assets/light.png";
-const darkImgPath = "/assets/dark.png";
-const resumePath = "/assets/MD_SADAKAT_HUSSAIN_FAHAD.pdf";
+import { RESUME_PATH } from "../../utils/siteStrings";
 
 const navLinks = [
   { label: "Products", path: "/products" },
   { label: "Projects", path: "/projects" },
+  { label: "Open Source", path: "/opensource" },
   { label: "Experience", path: "/experience" },
   { label: "Articles", path: "/articles" },
-  { label: "Home", path: "/" },
 ];
 
-export default function Header() {
+function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  const navigate = useNavigate();
-  const muiTheme = useMuiTheme();
-  const isMobile = useMediaQuery(muiTheme.breakpoints.down("md"));
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleDrawerToggle = () => setDrawerOpen((open) => !open);
-  const handleNavClick = (path: string) => {
-    navigate(path);
-    setDrawerOpen(false);
-  };
+  const isDark = theme === "dark";
+  const label = isDark ? "Switch to light theme" : "Switch to dark theme";
 
   return (
-    <AppBar position="sticky" color="default" elevation={2}>
-      <Toolbar
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <Tooltip title={label}>
+      <IconButton onClick={toggleTheme} aria-label={label} aria-pressed={isDark} color="inherit">
+        {isDark ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+      </IconButton>
+    </Tooltip>
+  );
+}
+
+export default function Header() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  return (
+    <AppBar
+      position="sticky"
+      color="default"
+      elevation={0}
+      sx={{
+        bgcolor: (theme) => alpha(theme.palette.background.paper, 0.85),
+        backdropFilter: "saturate(180%) blur(12px)",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+      }}
+    >
+      {/* Same gutters and content width as SectionContainer, so the logo lines up with section content. */}
+      <Toolbar disableGutters sx={{ maxWidth: { xs: "100%", md: 1200 + 96 }, width: "100%", mx: "auto", px: { xs: 2, sm: 3, md: 6 }, gap: 1 }}>
         <Box
-          sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
-          onClick={() => navigate("/")}
+          component={RouterLink}
+          to="/"
+          aria-label="Home"
+          aria-current={pathname === "/" ? "page" : undefined}
+          sx={{ display: "flex", alignItems: "center", borderRadius: 2, mr: "auto" }}
         >
-          <img src={Logo} alt="Logo" style={{ height: 40, marginRight: 16 }} />
-          <Typography variant="h6" color="inherit" noWrap></Typography>
+          <Box component="img" src="/assets/logo.png" alt="" width={40} height={40} />
         </Box>
-        {isMobile ? (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 1 }}>
-              <img
-                src={theme === "dark" ? darkImgPath : lightImgPath}
-                alt="Toggle theme"
-                style={{ height: 30, width: 30 }}
-              />
-            </IconButton>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={handleDrawerToggle}
-              sx={{ ml: 1 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              anchor="right"
-              open={drawerOpen}
-              onClose={handleDrawerToggle}
-            >
-              <Box
-                sx={{ width: 220 }}
-                role="presentation"
-                onClick={handleDrawerToggle}
-              >
-                <List>
-                  {navLinks.map((link) => (
-                    <ListItem key={link.label} disablePadding>
-                      <ListItemButton onClick={() => handleNavClick(link.path)}>
-                        <ListItemText primary={link.label} />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                  <ListItem disablePadding>
-                    <ListItemButton
-                      component="a"
-                      href={resumePath}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ListItemText primary="Resume" />
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </Box>
-            </Drawer>
-          </Box>
-        ) : (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            {navLinks.map((link) => (
-              <Button
-                key={link.label}
-                color="inherit"
-                onClick={() => navigate(link.path)}
-              >
-                {link.label}
-              </Button>
-            ))}
+
+        {/* Desktop navigation */}
+        <Box component="nav" aria-label="Main" sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
+          {navLinks.map((link) => (
             <Button
-              variant="contained"
+              key={link.path}
+              component={NavLink}
+              to={link.path}
               color="inherit"
-              href={resumePath}
+              sx={{
+                px: 1.5,
+                fontWeight: 500,
+                color: "text.secondary",
+                position: "relative",
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  left: 12,
+                  right: 12,
+                  bottom: 4,
+                  height: 2,
+                  borderRadius: 1,
+                  background: (theme) => theme.palette.custom.gradient,
+                  transform: "scaleX(0)",
+                  transition: "transform 0.2s ease",
+                },
+                "&:hover": { color: "text.primary", bgcolor: "transparent" },
+                "&:hover::after": { transform: "scaleX(0.5)" },
+                "&.active": { color: "text.primary", fontWeight: 600 },
+                "&.active::after": { transform: "scaleX(1)" },
+              }}
+            >
+              {link.label}
+            </Button>
+          ))}
+          <Button
+            variant="contained"
+            href={RESUME_PATH}
+            target="_blank"
+            rel="noopener noreferrer"
+            startIcon={<DescriptionOutlinedIcon />}
+            sx={{ borderRadius: 5, ml: 1.5, px: 2.5, background: (theme) => theme.palette.custom.gradient }}
+          >
+            Resume
+          </Button>
+        </Box>
+
+        <ThemeToggle />
+
+        {/* Mobile navigation */}
+        <IconButton
+          color="inherit"
+          aria-label="Open menu"
+          aria-controls="mobile-nav"
+          aria-expanded={drawerOpen}
+          onClick={() => setDrawerOpen(true)}
+          sx={{ display: { xs: "inline-flex", md: "none" } }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+          <Box id="mobile-nav" component="nav" aria-label="Main" sx={{ width: 260, p: 1 }}>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <IconButton aria-label="Close menu" onClick={() => setDrawerOpen(false)}>
+                <CloseIcon />
+              </IconButton>
+            </Box>
+            <List>
+              {[{ label: "Home", path: "/" }, ...navLinks].map((link) => (
+                <ListItem key={link.path} disablePadding>
+                  <ListItemButton
+                    component={NavLink}
+                    to={link.path}
+                    end={link.path === "/"}
+                    onClick={() => setDrawerOpen(false)}
+                    sx={{
+                      borderRadius: 2,
+                      "&.active": {
+                        bgcolor: "action.selected",
+                        "& .MuiListItemText-primary": { fontWeight: 700, color: "primary.main" },
+                      },
+                    }}
+                  >
+                    <ListItemText primary={link.label} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+            <Button
+              fullWidth
+              variant="contained"
+              href={RESUME_PATH}
               target="_blank"
               rel="noopener noreferrer"
-              sx={{
-                borderRadius: 5,
-                ml: 2,
-                backgroundColor: muiTheme.palette.custom.button,
-                color: "#fff",
-                "&:hover": { backgroundColor: muiTheme.palette.custom.button },
-              }}
-              endIcon={<span style={{ marginLeft: 4 }}>&rarr;</span>}
+              startIcon={<DescriptionOutlinedIcon />}
+              sx={{ mt: 1, borderRadius: 2, background: (theme) => theme.palette.custom.gradient }}
             >
               Resume
             </Button>
-            <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 2 }}>
-              <img
-                src={theme === "dark" ? darkImgPath : lightImgPath}
-                alt="Toggle theme"
-                style={{ height: 30, width: 30 }}
-              />
-            </IconButton>
           </Box>
-        )}
+        </Drawer>
       </Toolbar>
     </AppBar>
   );

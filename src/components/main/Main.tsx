@@ -1,18 +1,14 @@
 import About from "./About";
-import CareerSteps from "./Experience";
+import Career from "./Career";
 import Education from "./Education";
-import ReactGA from "react-ga4";
 import Projects from "./projects/Projects";
 import Products from "./products/Products";
 import ArticleNote from "./ArticleNote";
 import Skills from "./Skills";
 import OpenSourceContributions from "./OpenSourceContributions";
-
-// All direct data imports from '../../data/...' are now removed
+import Contact from "./Contact";
 
 export default function Main() {
-  ReactGA.initialize("YOUR_TRACKING_ID");
-
   return (
     <>
       <About />
@@ -20,9 +16,10 @@ export default function Main() {
       <Products />
       <Projects />
       <OpenSourceContributions />
-      <CareerSteps />
+      <Career />
       <Education />
       <ArticleNote isArticle={true} />
+      <Contact />
     </>
   );
 }

@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
 import Button from "@mui/material/Button";
-import { keyframes } from "@mui/system";
+import Avatar from "@mui/material/Avatar";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CodeIcon from "@mui/icons-material/Code";
 import MergeTypeIcon from "@mui/icons-material/MergeType";
-import LinkIcon from "@mui/icons-material/Link";
+import LaunchIcon from "@mui/icons-material/Launch";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import Avatar from "@mui/material/Avatar";
+import SectionContainer from "../common/SectionContainer";
+import SectionHeader from "../common/SectionHeader";
+import { CardGridSkeleton, EmptyState, ErrorState } from "../common/DataStates";
+import { useJsonData } from "../../utils/useJsonData";
 
 export interface OpenSourceContribution {
   type: "PR" | "Project" | "Other";
@@ -25,334 +28,135 @@ export interface OpenSourceContribution {
   status?: "Merged" | "Open" | "Closed" | "Active" | "Completed";
 }
 
+const typeConfig = {
+  PR: { icon: <MergeTypeIcon />, color: "primary.main" },
+  Project: { icon: <CodeIcon />, color: "success.dark" },
+  Other: { icon: <GitHubIcon />, color: "secondary.main" },
+};
+
+const statusColor: Record<string, string> = {
+  Merged: "success.dark",
+  Completed: "success.dark",
+  Open: "info.dark",
+  Active: "info.dark",
+  Closed: "error.dark",
+};
+
 const OpenSourceContributions: React.FC = () => {
-  const [contributions, setContributions] = useState<OpenSourceContribution[]>(
-    []
+  const { data, loading, error, retry } = useJsonData<OpenSourceContribution[]>(
+    "/data/opensourcecontributions.json"
   );
-  const [error, setError] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState<boolean>(false);
-  const maxItems = 3;
-  const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setError(null);
-      try {
-        const response = await fetch("/data/opensourcecontributions.json");
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch open source contributions data: ${response.statusText}`
-          );
-        }
-        const data: OpenSourceContribution[] = await response.json();
-        setContributions(data);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : "An unknown error occurred while fetching open source contributions"
-        );
-        setContributions([]);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Show all if on /opensource route
-  useEffect(() => {
-    if (location.pathname === "/opensource") {
-      setShowAll(true);
-    } else {
-      setShowAll(false);
-    }
-  }, [location.pathname]);
-
-  if (contributions.length === 0 && !error) {
-    return <Typography>No open source contributions found.</Typography>;
-  }
-
-  const displayedContributions = showAll
-    ? contributions
-    : contributions.slice(0, maxItems);
-
-  const fadeIn = keyframes`
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  `;
-
-  const slideInDown = keyframes`
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  `;
-
-  const staggerDelay = (index: number) => `${index * 0.15}s`;
-
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case "PR":
-        return <MergeTypeIcon sx={{ fontSize: 24 }} />;
-      case "Project":
-        return <CodeIcon sx={{ fontSize: 24 }} />;
-      default:
-        return <GitHubIcon sx={{ fontSize: 24 }} />;
-    }
-  };
-
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case "PR":
-        return "#2196f3";
-      case "Project":
-        return "#4caf50";
-      default:
-        return "#9c27b0";
-    }
-  };
-
-  const getStatusColor = (status?: string) => {
-    switch (status) {
-      case "Merged":
-        return "success.main";
-      case "Open":
-        return "info.main";
-      case "Active":
-        return "info.main";
-      case "Completed":
-        return "success.main";
-      case "Closed":
-        return "error.main";
-      default:
-        return "text.secondary";
-    }
-  };
+  const contributions = data ?? [];
+  const maxItems = 3;
+  const showAll = location.pathname === "/opensource";
+  const displayedContributions = showAll ? contributions : contributions.slice(0, maxItems);
 
   return (
-    <Box
-      sx={{
-        color: "text.primary",
-        px: { xs: 2, md: 12 },
-        py: { xs: 4, md: 8 },
-        position: "relative",
-        bgcolor: "background.default",
-      }}
-    >
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ mb: 5, maxWidth: "1400px", mx: "auto" }}
-      >
-        <Typography
-          variant="h4"
+    <SectionContainer id="opensource">
+      <SectionHeader
+        title="Open Source"
+        subtitle="Contributions to projects I use and care about."
+        seeAllTo={!showAll && contributions.length > maxItems ? "/opensource" : undefined}
+      />
+
+      {error ? (
+        <ErrorState what="open source contributions" onRetry={retry} />
+      ) : loading ? (
+        <CardGridSkeleton count={maxItems} minWidth={320} />
+      ) : displayedContributions.length === 0 ? (
+        <EmptyState message="No open source contributions listed yet." />
+      ) : (
+        <Box
           sx={{
-            fontWeight: 600,
-            color: "text.primary",
-            animation: `${slideInDown} 0.6s ease-out`,
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))",
+            gap: 3,
           }}
         >
-          Open Source Contributions
-        </Typography>
-        {contributions.length > maxItems &&
-          location.pathname !== "/opensource" && (
-            <Button
-              variant="outlined"
-              onClick={() => {
-                if (!showAll) {
-                  navigate("/opensource");
-                } else {
-                  navigate("/");
-                }
-              }}
-              sx={{
-                textTransform: "none",
-                borderRadius: 2,
-                px: 3,
-                fontSize: "0.9rem",
-                fontWeight: 500,
-              }}
-            >
-              {showAll ? "Show Less" : "See All"}
-            </Button>
-          )}
-      </Stack>
-
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: {
-            xs: "1fr",
-            sm: "repeat(2, 1fr)",
-            lg: "repeat(3, 1fr)",
-          },
-          gap: 3,
-          maxWidth: "1400px",
-          mx: "auto",
-        }}
-      >
-        {displayedContributions.map((item, index) => (
-          <Paper
-            key={`${item.repository}-${index}`}
-            sx={{
-              p: 3,
-              borderRadius: 3,
-              bgcolor: "background.paper",
-              border: "1px solid",
-              borderColor: "divider",
-              boxShadow: (theme) =>
-                theme.palette.mode === "dark"
-                  ? "0 4px 20px rgba(0, 0, 0, 0.3)"
-                  : "0 4px 20px rgba(0, 0, 0, 0.08)",
-              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-              animation: `${fadeIn} 0.6s ease-out ${staggerDelay(index)} both`,
-              position: "relative",
-              overflow: "hidden",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "4px",
-                background: getTypeColor(item.type),
-              },
-              "&:hover": {
-                transform: "translateY(-8px)",
-                boxShadow: (theme) =>
-                  theme.palette.mode === "dark"
-                    ? "0 12px 40px rgba(0, 0, 0, 0.4)"
-                    : "0 12px 40px rgba(0, 0, 0, 0.15)",
-              },
-            }}
-          >
-            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-              <Avatar
+          {displayedContributions.map((item, index) => {
+            const config = typeConfig[item.type] ?? typeConfig.Other;
+            return (
+              <Paper
+                component="article"
+                key={`${item.repository}-${index}`}
+                variant="outlined"
                 sx={{
-                  bgcolor: getTypeColor(item.type),
-                  width: 48,
-                  height: 48,
+                  p: 3,
+                  borderRadius: 3,
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative",
+                  overflow: "hidden",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 4,
+                    bgcolor: config.color,
+                  },
+                  "&:hover, &:focus-within": {
+                    transform: "translateY(-4px)",
+                    boxShadow: 6,
+                  },
                 }}
               >
-                {getTypeIcon(item.type)}
-              </Avatar>
-              <Box sx={{ flex: 1, minWidth: 0 }}>
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="flex-start"
-                  spacing={1}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 700,
-                      color: "text.primary",
-                      lineHeight: 1.3,
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Chip
-                    label={item.type}
-                    size="small"
-                    sx={{
-                      fontWeight: 600,
-                      bgcolor: getTypeColor(item.type),
-                      color: "white",
-                      fontSize: "0.7rem",
-                    }}
-                  />
+                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                  <Avatar sx={{ bgcolor: config.color, color: "common.white", width: 44, height: 44 }}>
+                    {config.icon}
+                  </Avatar>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="h3" sx={{ fontSize: "1.1rem", lineHeight: 1.35 }}>
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "primary.main", fontWeight: 600, mt: 0.5, wordBreak: "break-word" }}
+                    >
+                      {item.repository}
+                    </Typography>
+                  </Box>
                 </Stack>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "primary.main",
-                    fontWeight: 600,
-                    mt: 0.5,
-                  }}
-                >
-                  {item.repository}
-                </Typography>
-              </Box>
-            </Stack>
-            <Typography
-                  variant="body2"
-                  sx={{
-                    color: "text.secondary",
-                    mb: 2,
-                    lineHeight: 1.6,
-                  }}
-                >
+
+                <Typography variant="body2" sx={{ color: "text.secondary", mb: 2, lineHeight: 1.6 }}>
                   {item.description}
                 </Typography>
 
-                {item.technologies && item.technologies.length > 0 && (
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{ flexWrap: "wrap", gap: 1, mb: 2 }}
-                  >
-                    {item.technologies.map((tech, techIndex) => (
-                      <Chip
-                        key={techIndex}
-                        label={tech}
-                        size="small"
-                        variant="outlined"
-                        sx={{
-                          borderColor: "primary.main",
-                          color: "text.primary",
-                        }}
-                      />
+                {item.technologies?.length > 0 && (
+                  <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1, mb: 2 }}>
+                    {item.technologies.map((tech) => (
+                      <Chip key={tech} label={tech} size="small" variant="outlined" />
                     ))}
                   </Stack>
                 )}
-
-                <Box
-                  sx={{
-                    height: "1px",
-                    bgcolor: "divider",
-                    mx: -3,
-                    my: 2,
-                    borderRadius: "1px",
-                  }}
-                />
 
                 <Stack
                   direction="row"
                   justifyContent="space-between"
                   alignItems="center"
                   flexWrap="wrap"
-                  gap={2}
+                  gap={1.5}
+                  sx={{ mt: "auto", pt: 2, borderTop: "1px solid", borderColor: "divider" }}
                 >
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    <CalendarTodayIcon
-                      sx={{ fontSize: 18, color: "text.secondary" }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        fontWeight: 500,
-                        bgcolor: "action.hover",
-                        px: 2,
-                        py: 0.5,
-                        borderRadius: 2,
-                      }}
-                    >
+                  <Stack direction="row" alignItems="center" spacing={1}>
+                    <CalendarTodayIcon sx={{ fontSize: 16, color: "text.secondary" }} />
+                    <Typography variant="body2" color="text.secondary">
                       {item.date}
                     </Typography>
-                  </Box>
+                  </Stack>
 
                   <Stack direction="row" spacing={1} alignItems="center">
+                    <Chip label={item.type} size="small" variant="outlined" />
                     {item.status && (
                       <Chip
                         label={item.status}
                         size="small"
                         sx={{
-                          bgcolor: getStatusColor(item.status),
-                          color: "white",
+                          bgcolor: statusColor[item.status] ?? "grey.700",
+                          color: "common.white",
                           fontWeight: 600,
                         }}
                       />
@@ -361,24 +165,23 @@ const OpenSourceContributions: React.FC = () => {
                       <Button
                         variant="outlined"
                         size="small"
-                        startIcon={<LinkIcon />}
+                        endIcon={<LaunchIcon />}
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        sx={{
-                          textTransform: "none",
-                          borderRadius: 2,
-                        }}
+                        aria-label={`View ${item.title} on GitHub (opens in a new tab)`}
                       >
                         View
                       </Button>
                     )}
                   </Stack>
                 </Stack>
-          </Paper>
-        ))}
-      </Box>
-    </Box>
+              </Paper>
+            );
+          })}
+        </Box>
+      )}
+    </SectionContainer>
   );
 };
 

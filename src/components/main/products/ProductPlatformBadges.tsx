@@ -55,7 +55,7 @@ const platformConfig: Record<
   },
   web: {
     icon: <LanguageIcon />,
-    bgColor: "#1976d2",
+    bgColor: "#667eea",
     badgeText: "Open on",
   },
   windows: {

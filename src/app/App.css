@@ -6,6 +6,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+html.light body {
+  background-color: #eef2f8;
+}
+
+html.dark body {
+  background-color: #181a1b;
 }
 
 * {
@@ -14,55 +23,62 @@ html, body {
   padding: 0;
 }
 
+/* Leave room for the sticky header when jumping to in-page anchors */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Visible keyboard focus everywhere; mouse clicks don't show the ring */
+:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
-/* Light theme scrollbar */
 html.light ::-webkit-scrollbar-track {
-  background: rgba(102, 126, 234, 0.1);
-  border-radius: 4px;
+  background: rgba(102, 126, 234, 0.08);
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(255, 107, 107, 0.8));
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
   border-radius: 10px;
-  transition: background 0.3s ease;
 }
 
 html.light ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, rgba(102, 126, 234, 1), rgba(255, 107, 107, 1));
+  background: linear-gradient(180deg, #667eea, #764ba2);
 }
 
-/* Dark theme scrollbar */
 html.dark ::-webkit-scrollbar-track {
-  background: rgba(120, 119, 198, 0.1);
-  border-radius: 4px;
+  background: rgba(102, 126, 234, 0.06);
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, rgba(120, 119, 198, 0.8), rgba(255, 107, 107, 0.8));
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
   border-radius: 10px;
-  transition: background 0.3s ease;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, rgba(120, 119, 198, 1), rgba(255, 107, 107, 1));
+  background: linear-gradient(180deg, #667eea, #764ba2);
 }
 
-/* Global transition for smooth interactions */
-* {
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    scroll-behavior: auto;
+  }
 
-/* Prevent flash of unstyled content */
-body {
-  opacity: 1;
-  animation: fadeInBody 0.5s ease-in;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-@keyframes fadeInBody {
-  from { opacity: 0; }
-  to { opacity: 1; }
-} 
