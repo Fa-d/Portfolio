@@ -14,12 +14,7 @@
         "url": ""
       }
     ],
-    "references": [
-      {
-        "logo": "/assets/live.webp",
-        "url": "https://jobsage.sadakat.dev"
-      }
-    ]
+    "references": []
   },
   {
     "name": "Learning Agent",
