@@ -1,0 +1,33 @@
+{
+  "siteUrl": "https://sadakat.dev",
+  "routes": {
+    "/": {
+      "title": "Md Sadakat Hussain Fahad — Portfolio",
+      "description": "Md Sadakat Hussain Fahad — software engineer building Android, mobile and full-stack applications. Products, projects, open-source work and experience."
+    },
+    "/skills": {
+      "title": "Skills — Md Sadakat Hussain Fahad",
+      "description": "Technical skills of Md Sadakat Hussain Fahad: Kotlin, Android, Java, C++, TypeScript, JavaScript, React, Next.js, Node, Python, MySQL, REST APIs and LLMs."
+    },
+    "/articles": {
+      "title": "Articles — Md Sadakat Hussain Fahad",
+      "description": "Articles by Md Sadakat Hussain Fahad on Android engineering: how VPNs work inside Android, optional library features in multi-module projects, and AES via JNI."
+    },
+    "/projects": {
+      "title": "Projects — Md Sadakat Hussain Fahad",
+      "description": "Projects by Md Sadakat Hussain Fahad: VPN SDK and Pioneer VPN, a gamified usage tracker app, a proxy browser extension, a local-LLM learning agent and more."
+    },
+    "/products": {
+      "title": "Products — Md Sadakat Hussain Fahad",
+      "description": "Products built by Md Sadakat Hussain Fahad, including Live Intently, a cross-platform habit tracking and personal growth app with daily intentions."
+    },
+    "/opensource": {
+      "title": "Open Source — Md Sadakat Hussain Fahad",
+      "description": "Open-source contributions by Md Sadakat Hussain Fahad, including a Missing Number challenge type for the PlugBrain Android app."
+    },
+    "/experience": {
+      "title": "Experience — Md Sadakat Hussain Fahad",
+      "description": "Work experience of Md Sadakat Hussain Fahad: App Developer at Chorki, Senior Software Engineer at Kolpolok Limited, and earlier roles at AjkerDeal.com, Lab AR and i2 Technologies."
+    }
+  }
+}
